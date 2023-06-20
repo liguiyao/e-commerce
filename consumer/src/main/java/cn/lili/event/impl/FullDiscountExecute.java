@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 订单状态处理类
+ * Order状态处理类
  *
  * @author Chopper
  * @since 2020-07-03 11:20
@@ -93,18 +93,18 @@ public class FullDiscountExecute implements TradeEvent, OrderStatusChangeEvent {
 
     @Override
     public void orderChange(OrderMessage orderMessage) {
-        //如果订单已支付
+        //如果Order已支付
         if (orderMessage.getNewStatus().equals(OrderStatusEnum.PAID)) {
-            log.debug("满减活动，订单状态操作 {}", CachePrefix.ORDER.getPrefix() + orderMessage.getOrderSn());
+            log.debug("满减活动，Order状态操作 {}", CachePrefix.ORDER.getPrefix() + orderMessage.getOrderSn());
             renderGift(JSONUtil.toBean(cache.getString(CachePrefix.ORDER.getPrefix() + orderMessage.getOrderSn()), CartVO.class), orderMessage);
         } else if (orderMessage.getNewStatus().equals(OrderStatusEnum.CANCELLED)) {
-            log.debug("满减活动，取消订单状态操作 {}", CachePrefix.ORDER.getPrefix() + orderMessage.getOrderSn());
+            log.debug("满减活动，取消Order状态操作 {}", CachePrefix.ORDER.getPrefix() + orderMessage.getOrderSn());
             OrderSearchParams searchParams = new OrderSearchParams();
             searchParams.setParentOrderSn(orderMessage.getOrderSn());
             searchParams.setOrderPromotionType(OrderPromotionTypeEnum.GIFT.name());
             List<Order> orders = orderService.queryListByParams(searchParams);
             if (orders != null && !orders.isEmpty()) {
-                orderService.systemCancel(orders.get(0).getSn(),"主订单取消，赠送订单字段自动取消");
+                orderService.systemCancel(orders.get(0).getSn(),"主Order取消，赠送Order字段自动取消");
             }
         }
     }
@@ -122,10 +122,10 @@ public class FullDiscountExecute implements TradeEvent, OrderStatusChangeEvent {
         try {
             if (cartVO.getGiftPoint() != null && cartVO.getGiftPoint() > 0) {
                 memberService.updateMemberPoint(cartVO.getGiftPoint().longValue(), PointTypeEnum.INCREASE.name(),
-                        order.getMemberId(), "订单满优惠赠送积分" + cartVO.getGiftPoint());
+                        order.getMemberId(), "Order满优惠赠送积分" + cartVO.getGiftPoint());
             }
         } catch (Exception e) {
-            log.error("订单赠送积分异常", e);
+            log.error("Order赠送积分异常", e);
         }
 
 
@@ -135,7 +135,7 @@ public class FullDiscountExecute implements TradeEvent, OrderStatusChangeEvent {
                 cartVO.getGiftCouponList().forEach(couponId -> memberCouponService.receiveCoupon(couponId, order.getMemberId(), order.getMemberName()));
             }
         } catch (Exception e) {
-            log.error("订单赠送优惠券异常", e);
+            log.error("Order赠送优惠券异常", e);
         }
 
         try {
@@ -144,15 +144,15 @@ public class FullDiscountExecute implements TradeEvent, OrderStatusChangeEvent {
                 generatorGiftOrder(cartVO.getGiftList(), order);
             }
         } catch (Exception e) {
-            log.error("订单赠送赠品异常", e);
+            log.error("Order赠送赠品异常", e);
         }
     }
 
     /**
-     * 生成赠品订单
+     * 生成赠品Order
      *
      * @param skuIds      赠品sku信息
-     * @param originOrder 赠品原订单信息
+     * @param originOrder 赠品原Order信息
      */
     private void generatorGiftOrder(List<String> skuIds, Order originOrder) {
         //获取赠品列表
@@ -169,7 +169,7 @@ public class FullDiscountExecute implements TradeEvent, OrderStatusChangeEvent {
         List<GoodsSku> virtualSkus = goodsSkus.stream().filter(goodsSku -> goodsSku.getGoodsType().equals(GoodsTypeEnum.VIRTUAL_GOODS.name())).collect(Collectors.toList());
         List<GoodsSku> eCouponSkus = goodsSkus.stream().filter(goodsSku -> goodsSku.getGoodsType().equals(GoodsTypeEnum.E_COUPON.name())).collect(Collectors.toList());
 
-        //如果赠品不为空，则生成对应的赠品订单
+        //如果赠品不为空，则生成对应的赠品Order
         if (!physicalSkus.isEmpty()) {
             giftOrderHandler(physicalSkus, originOrder, OrderTypeEnum.NORMAL);
         }
@@ -182,14 +182,14 @@ public class FullDiscountExecute implements TradeEvent, OrderStatusChangeEvent {
     }
 
     /**
-     * 赠品订单处理
+     * 赠品Order处理
      *
      * @param skuList       赠品列表
-     * @param originOrder   原始订单
-     * @param orderTypeEnum 订单类型
+     * @param originOrder   原始Order
+     * @param orderTypeEnum Order类型
      */
     private void giftOrderHandler(List<GoodsSku> skuList, Order originOrder, OrderTypeEnum orderTypeEnum) {
-        //初始化订单对象/订单日志/自订单
+        //初始化Order对象/Order日志/自Order
         Order order = new Order();
         List<OrderItem> orderItems = new ArrayList<>();
         List<OrderLog> orderLogs = new ArrayList<>();
@@ -198,7 +198,7 @@ public class FullDiscountExecute implements TradeEvent, OrderStatusChangeEvent {
         //复制通用属性
         BeanUtil.copyProperties(originOrder, order, "id");
         BeanUtil.copyProperties(priceDetailDTO, order, "id");
-        //生成订单参数
+        //生成Order参数
         order.setSn(SnowFlake.createStr("G"));
         order.setParentOrderSn(originOrder.getSn());
         order.setOrderPromotionType(OrderPromotionTypeEnum.GIFT.name());
@@ -208,11 +208,11 @@ public class FullDiscountExecute implements TradeEvent, OrderStatusChangeEvent {
         order.setNeedReceipt(false);
         order.setPriceDetailDTO(priceDetailDTO);
         order.setClientType(originOrder.getClientType());
-        //订单日志
-        String message = "赠品订单[" + order.getSn() + "]创建";
+        //Order日志
+        String message = "赠品Order[" + order.getSn() + "]create";
         orderLogs.add(new OrderLog(order.getSn(), originOrder.getMemberId(), UserEnums.MEMBER.name(), originOrder.getMemberName(), message));
 
-        //生成子订单
+        //生成子Order
         for (GoodsSku goodsSku : skuList) {
             OrderItem orderItem = new OrderItem();
             BeanUtil.copyProperties(goodsSku, orderItem, "id");
@@ -232,20 +232,20 @@ public class FullDiscountExecute implements TradeEvent, OrderStatusChangeEvent {
             orderItem.setPriceDetailDTO(priceDetailDTO);
             orderItems.add(orderItem);
         }
-        //保存订单
+        //保存Order
         orderService.save(order);
         orderItemService.saveBatch(orderItems);
         orderLogService.saveBatch(orderLogs);
 
 
-        //发送订单已付款消息（PS:不在这里处理逻辑是因为期望加交给消费者统一处理库存等等问题）
+        //发送Order已付款消息（PS:不在这里处理逻辑是因为期望加交给消费者统一处理库存等等问题）
         OrderMessage orderMessage = new OrderMessage();
         orderMessage.setOrderSn(order.getSn());
         orderMessage.setPaymentMethod(order.getPaymentMethod());
         orderMessage.setNewStatus(OrderStatusEnum.PAID);
 
         String destination = rocketmqCustomProperties.getOrderTopic() + ":" + OrderTagsEnum.STATUS_CHANGE.name();
-        //发送订单变更mq消息
+        //发送Order变更mq消息
         rocketMQTemplate.asyncSend(destination, JSONUtil.toJsonStr(orderMessage), RocketmqSendCallbackBuilder.commonCallback());
     }
 }

@@ -30,7 +30,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 /**
- * 订单统计业务层实现
+ * Order统计业务层实现
  *
  * @author Bulbasaur
  * @since 2020/12/9 17:16
@@ -71,17 +71,17 @@ public class OrderStatisticsServiceImpl extends ServiceImpl<OrderStatisticsMappe
     /**
      * 运算转换率
      *
-     * @param orderOverviewVO 订单统计视图
+     * @param orderOverviewVO Order统计视图
      */
     private void conversionRateOperation(OrderOverviewVO orderOverviewVO) {
 
-        //下单转换率 订单数/UV
+        //下单转换率 Order数/UV
         Double orderConversionRate = CurrencyUtil.div(orderOverviewVO.getOrderNum(), orderOverviewVO.getUvNum(), 4);
         if (orderConversionRate > 1) {
             orderConversionRate = 1d;
         }
         orderOverviewVO.setOrderConversionRate(CurrencyUtil.mul(orderConversionRate, 100) + "%");
-        //付款转换率 付款订单数/订单数
+        //付款转换率 付款Order数/Order数
         Double paymentsConversionRate = CurrencyUtil.div(orderOverviewVO.getPaymentOrderNum(), orderOverviewVO.getOrderNum(), 4);
         if (paymentsConversionRate > 1) {
             paymentsConversionRate = 1d;

@@ -30,7 +30,7 @@ public class TransactionCommitSendMQListener {
     public void send(TransactionCommitSendMQEvent event) {
         log.info("事务提交，发送mq信息!{}", event);
         String destination = event.getTopic() + ":" + event.getTag();
-        //发送订单变更mq消息
+        //发送Order变更mq消息
         rocketMQTemplate.asyncSend(destination, event.getMessage(), RocketmqSendCallbackBuilder.commonCallback());
     }
 

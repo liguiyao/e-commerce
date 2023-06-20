@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 库存扣减，他表示了订单状态是否出库成功
+ * 库存扣减，他表示了Order状态是否出库成功
  *
  * @author Chopper
  * @since 2020-07-03 11:20
@@ -53,7 +53,7 @@ public class StockUpdateExecute implements OrderStatusChangeEvent {
     @Autowired
     private DefaultRedisScript<Boolean> quantityScript;
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
@@ -86,7 +86,7 @@ public class StockUpdateExecute implements OrderStatusChangeEvent {
 
         switch (orderMessage.getNewStatus()) {
             case PAID: {
-                //获取订单详情
+                //获取Order详情
                 OrderDetailVO order = orderService.queryDetail(orderMessage.getOrderSn());
                 //库存key 和 扣减数量
                 List<String> keys = new ArrayList<>();
@@ -104,7 +104,7 @@ public class StockUpdateExecute implements OrderStatusChangeEvent {
 
                 //库存扣除结果
                 Boolean skuResult = stringRedisTemplate.execute(quantityScript, keys, values.toArray());
-                //如果库存扣减都成功，则记录成交订单
+                //如果库存扣减都成功，则记录成交Order
                 if (Boolean.TRUE.equals(skuResult)) {
                     log.info("库存扣减成功,参数为{};{}", keys, values);
                     //库存确认之后对结构处理
@@ -113,15 +113,15 @@ public class StockUpdateExecute implements OrderStatusChangeEvent {
                     synchroDB(order);
                 } else {
                     log.info("库存扣件失败，变更缓存key{} 变更缓存value{}", keys, values);
-                    //失败之后取消订单
+                    //失败之后取消Order
                     this.errorOrder(orderMessage.getOrderSn());
                 }
                 break;
             }
             case CANCELLED: {
-                //获取订单详情
+                //获取Order详情
                 OrderDetailVO order = orderService.queryDetail(orderMessage.getOrderSn());
-                //判定是否已支付 并且 非库存不足导致库存回滚 则需要考虑订单库存返还业务
+                //判定是否已支付 并且 非库存不足导致库存回滚 则需要考虑Order库存返还业务
                 if (order.getOrder().getPayStatus().equals(PayStatusEnum.PAID.name())
                         && !order.getOrder().getCancelReason().equals(outOfStockMessage)) {
                     //库存key 和 还原数量
@@ -217,9 +217,9 @@ public class StockUpdateExecute implements OrderStatusChangeEvent {
 
 
     /**
-     * 订单出库失败
+     * Order出库失败
      *
-     * @param orderSn 失败入库订单信息
+     * @param orderSn 失败入库Order信息
      */
     private void errorOrder(String orderSn) {
         orderService.systemCancel(orderSn, outOfStockMessage);
@@ -256,7 +256,7 @@ public class StockUpdateExecute implements OrderStatusChangeEvent {
      * 3.写入促销商品的卖出数量、剩余数量,批量修改
      * 4.调用方法修改商品库存
      *
-     * @param order 订单
+     * @param order Order
      */
     private void synchroDB(OrderDetailVO order) {
 
@@ -269,7 +269,7 @@ public class StockUpdateExecute implements OrderStatusChangeEvent {
         //促销库存key 集合
         List<String> promotionKey = new ArrayList<>();
 
-        //循环订单
+        //循环Order
         for (OrderItem orderItem : order.getOrderItems()) {
             skuKeys.add(GoodsSkuService.getStockCacheKey(orderItem.getSkuId()));
 
@@ -338,14 +338,14 @@ public class StockUpdateExecute implements OrderStatusChangeEvent {
         //商品库存，包含sku库存集合，批量更新商品库存相关
         goodsSkuService.updateGoodsStuck(goodsSkus);
 
-        log.info("订单确认，库存同步：商品信息--{}；促销信息---{}", goodsSkus, promotionGoods);
+        log.info("Order确认，库存同步：商品信息--{}；促销信息---{}", goodsSkus, promotionGoods);
 
     }
 
     /**
      * 恢复商品库存
      *
-     * @param order 订单
+     * @param order Order
      */
     private void rollbackOrderStock(OrderDetailVO order) {
 
@@ -353,7 +353,7 @@ public class StockUpdateExecute implements OrderStatusChangeEvent {
         List<GoodsSku> goodsSkus = new ArrayList<>();
         //sku库存key 集合
         List<String> skuKeys = new ArrayList<>();
-        //循环订单
+        //循环Order
         for (OrderItem orderItem : order.getOrderItems()) {
             skuKeys.add(GoodsSkuService.getStockCacheKey(orderItem.getSkuId()));
             GoodsSku goodsSku = new GoodsSku();
@@ -367,7 +367,7 @@ public class StockUpdateExecute implements OrderStatusChangeEvent {
         for (int i = 0; i < skuStocks.size(); i++) {
             goodsSkus.get(i).setQuantity(Convert.toInt(skuStocks.get(i).toString()));
         }
-        log.info("订单取消，库存还原：{}", goodsSkus);
+        log.info("Order取消，库存还原：{}", goodsSkus);
         //批量修改商品库存
         goodsSkuService.updateBatchById(goodsSkus);
         goodsSkuService.updateGoodsStuck(goodsSkus);

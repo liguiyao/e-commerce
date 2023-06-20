@@ -46,7 +46,7 @@ public class UnifiedOrderModel {
     private String description;
 
     /**
-     * 商户订单号
+     * 商户Order号
      */
     private String out_trade_no;
     /**
@@ -62,7 +62,7 @@ public class UnifiedOrderModel {
      */
     private String notify_url;
     /**
-     * 订单优惠标记
+     * Order优惠标记
      */
     private String goods_tag;
     /**
@@ -70,7 +70,7 @@ public class UnifiedOrderModel {
      */
     private SettleInfo settle_info;
     /**
-     * 订单金额
+     * Order金额
      */
     private Amount amount;
     /**

@@ -36,27 +36,27 @@ public enum WechatApiEnum {
 
 
     /**
-     * 创建/查询支付分订单
+     * create/查询支付分Order
      */
     PAY_SCORE_SERVICE_ORDER("/v3/payscore/serviceorder"),
     /**
-     * 取消支付分订单
+     * 取消支付分Order
      */
     PAY_SCORE_SERVICE_ORDER_CANCEL("/v3/payscore/serviceorder/%s/cancel"),
     /**
-     * 修改支付分订单金额
+     * 修改支付分Order金额
      */
     PAY_SCORE_SERVICE_ORDER_MODIFY("/v3/payscore/serviceorder/%s/modify"),
     /**
-     * 完结支付分订单
+     * 完结支付分Order
      */
     PAY_SCORE_SERVICE_ORDER_COMPLETE("/v3/payscore/serviceorder/%s/complete"),
     /**
-     * 支付分订单收款
+     * 支付分Order收款
      */
     PAY_SCORE_SERVICE_ORDER_PAY("/v3/payscore/serviceorder/%s/pay"),
     /**
-     * 同步服务订单信息
+     * 同步服务Order信息
      */
     PAY_SCORE_SERVICE_ORDER_SYNC("/v3/payscore/serviceorder/%s/sync"),
     /**
@@ -107,13 +107,13 @@ public enum WechatApiEnum {
      */
     MERCHANT_SERVICE_COMPLAINTS("/v3/merchant-service/complaints"),
     /**
-     * 商业支付投诉-创建/查询/更新/删除投诉通知回调
+     * 商业支付投诉-create/查询/更新/删除投诉通知回调
      */
     MERCHANT_SERVICE_COMPLAINTS_NOTIFICATIONS("/v3/merchant-service/complaint-notifications"),
 
 
     /**
-     * 代金券-创建代金券批次
+     * 代金券-create代金券批次
      */
     CREATE_COUPON_STOCKS("/v3/marketing/favor/coupon-stocks"),
     /**
@@ -169,7 +169,7 @@ public enum WechatApiEnum {
      */
     SETTING_COUPON_CALLBACKS("/v3/marketing/favor/callbacks"),
     /**
-     * 商家券-创建商家券
+     * 商家券-create商家券
      */
     CREATE_BUSINESS_COUPON("/v3/marketing/busifavor/stocks"),
     /**
@@ -205,16 +205,16 @@ public enum WechatApiEnum {
      */
     BUSINESS_COUPON_CALLBACKS("/v3/marketing/busifavor/callbacks"),
     /**
-     * 关联订单信息
+     * 关联Order信息
      */
     BUSINESS_COUPON_ASSOCIATE("/v3/marketing/busifavor/coupons/associate"),
     /**
-     * 取消关联订单信息
+     * 取消关联Order信息
      */
     BUSINESS_COUPON_DISASSOCIATE("/v3/marketing/busifavor/coupons/disassociate"),
 
     /**
-     * 支付有礼-创建全场满额送活动
+     * 支付有礼-create全场满额送活动
      */
     PAY_GIFT_ACTIVITY("/v3/marketing/paygiftactivity/unique-threshold-activity"),
     /**
@@ -291,11 +291,11 @@ public enum WechatApiEnum {
      */
     COMBINE_TRANSACTIONS_NATIVE("/v3/combine-transactions/native"),
     /**
-     * 合单下单-合单查询订单
+     * 合单下单-合单查询Order
      */
     COMBINE_TRANSACTIONS_QUERY("/v3/combine-transactions/out-trade-no/%s"),
     /**
-     * 合单下单-合单关闭订单
+     * 合单下单-合单关闭Order
      */
     COMBINE_TRANSACTIONS_CLOSE("/v3/combine-transactions/out-trade-no/%s/close"),
 
@@ -447,11 +447,11 @@ public enum WechatApiEnum {
     QUERY_WORK_WX_RED_PACK("/mmpaymkttransfers/queryworkwxredpack"),
 
     /**
-     * 查询/更新先享卡订单
+     * 查询/更新先享卡Order
      */
     DISCOUNT_CARD_ORDER("/v3/discount-card/orders/%s"),
     /**
-     * 查询先享卡订单
+     * 查询先享卡Order
      */
     DISCOUNT_CARD_ORDER_TRADE_NO("/v3/discount-card/orders/out-trade-no/%s"),
 
@@ -470,15 +470,15 @@ public enum WechatApiEnum {
     SMART_GUIDE_GUIDES_UPDATE("/v3/smartguide/guides/%s"),
 
     /**
-     * 报关接口-订单附加信息提交接口
+     * 报关接口-Order附加信息提交接口
      */
     CUSTOM_DECLARE_ORDER("/cgi-bin/mch/customs/customdeclareorder"),
     /**
-     * 报关接口-订单附加信息查询接口
+     * 报关接口-Order附加信息查询接口
      */
     CUSTOM_DECLARE_QUERY("/cgi-bin/mch/customs/customdeclarequery"),
     /**
-     * 报关接口-订单附加信息重推接口
+     * 报关接口-Order附加信息重推接口
      */
     CUSTOM_DECLARE_RE_DECLARE("/cgi-bin/mch/newcustoms/customdeclareredeclare"),
 
@@ -503,17 +503,17 @@ public enum WechatApiEnum {
     H5_PAY("/v3/pay/transactions/h5"),
     PARTNER_H5_PAY("/v3/pay/partner/transactions/h5"),
     /**
-     * 微信支付订单号查询
+     * 微信支付Order号查询
      */
     ORDER_QUERY_BY_ID("/v3/pay/transactions/id/%s"),
     PARTNER_ORDER_QUERY_BY_ID("/v3/pay/partner/transactions/id/%s"),
     /**
-     * 商户订单号查询
+     * 商户Order号查询
      */
     ORDER_QUERY_BY_NO("/v3/pay/transactions/out-trade-no/%s"),
     PARTNER_ORDER_QUERY_BY_NO("/v3/pay/partner/transactions/out-trade-no/%s"),
     /**
-     * 关闭订单
+     * 关闭Order
      */
     CLOSE_ORDER_BY_NO("/v3/pay/transactions/out-trade-no/%s/close"),
     PARTNER_CLOSE_ORDER_BY_NO("/v3/pay/partner/transactions/out-trade-no/%s/close"),

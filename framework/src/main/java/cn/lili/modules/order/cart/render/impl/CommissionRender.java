@@ -71,7 +71,7 @@ public class CommissionRender implements CartRenderStep {
                     priceDetailDTO.setPlatFormCommissionPoint(commissionRate);
                 }
 
-                //如果积分订单 积分订单，单独操作订单结算金额和商家结算字段
+                //如果积分Order 积分Order，单独操作Order结算金额和商家结算字段
                 if (tradeDTO.getCartTypeEnum().equals(CartTypeEnum.POINTS) && tradeDTO.getSkuList().get(0).getPromotionMap() != null && !tradeDTO.getSkuList().get(0).getPromotionMap().isEmpty()) {
                     Optional<Map.Entry<String, Object>> pointsPromotions = tradeDTO.getSkuList().get(0).getPromotionMap().entrySet().stream().filter(i -> i.getKey().contains(PromotionTypeEnum.POINTS_GOODS.name())).findFirst();
                     if (pointsPromotions.isPresent()) {
@@ -80,7 +80,7 @@ public class CommissionRender implements CartRenderStep {
                         priceDetailDTO.setSettlementPrice(pointsGoods.getSettlementPrice());
                     }
                 }
-                //如果砍价订单 计算金额，单独操作订单结算金额和商家结算字段
+                //如果砍价Order 计算金额，单独操作Order结算金额和商家结算字段
                 else if (tradeDTO.getCartTypeEnum().equals(CartTypeEnum.KANJIA) && tradeDTO.getSkuList().get(0).getPromotionMap() != null && !tradeDTO.getSkuList().get(0).getPromotionMap().isEmpty()) {
                     Optional<Map.Entry<String, Object>> kanjiaPromotions = tradeDTO.getSkuList().get(0).getPromotionMap().entrySet().stream().filter(i -> i.getKey().contains(PromotionTypeEnum.KANJIA.name())).findFirst();
                     if (kanjiaPromotions.isPresent()) {

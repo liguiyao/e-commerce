@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class AfterSaleDTO {
 
-    @ApiModelProperty(value = "订单SN")
+    @ApiModelProperty(value = "OrderSN")
     private String orderItemSn;
 
     @ApiModelProperty(value = "商品ID")

@@ -56,7 +56,7 @@ public class AfterSaleManagerController {
         return ResultUtil.data(afterSaleService.getAfterSale(sn));
     }
 
-    @ApiOperation(value = "查看买家退货物流踪迹")
+    @ApiOperation(value = "查看买家退货logistics踪迹")
     @ApiImplicitParam(name = "sn", value = "售后单号", required = true, paramType = "path")
     @GetMapping(value = "/getDeliveryTraces/{sn}")
     public ResultMessage<Traces> getDeliveryTraces(@PathVariable String sn) {

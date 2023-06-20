@@ -18,7 +18,7 @@ public class AfterSaleApplyVO {
     @ApiModelProperty(value = "可申请数量")
     private Integer num;
 
-    @ApiModelProperty(value = "订单子项编号")
+    @ApiModelProperty(value = "Order子项编号")
     private String orderItemSn;
 
     @ApiModelProperty(value = "商品ID")

@@ -168,7 +168,7 @@ public class CashierSupport {
             if (cashierParam == null) {
                 continue;
             }
-            //如果订单不需要付款，则抛出异常，直接返回
+            //如果Order不需要付款，则抛出异常，直接返回
             if (cashierParam.getPrice() <= 0) {
                 throw new ServiceException(ResultCode.PAY_UN_WANTED);
             }

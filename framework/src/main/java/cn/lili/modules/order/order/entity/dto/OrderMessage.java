@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 信息队列传输订单信息实体
+ * 信息队列传输Order信息实体
  *
  * @author paulG
  * @since 2020/12/9
@@ -18,7 +18,7 @@ public class OrderMessage {
 
 
     /**
-     * 订单号
+     * Order号
      */
     private String orderSn;
 

@@ -79,7 +79,7 @@ public class StoreChangeEvent implements StoreSettingChangeEvent {
     @Autowired
     private SeckillApplyService seckillApplyService;
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
@@ -97,7 +97,7 @@ public class StoreChangeEvent implements StoreSettingChangeEvent {
     private AfterSaleService afterSaleService;
 
     /**
-     * 订单投诉
+     * Order投诉
      */
     @Autowired
     private OrderComplaintService orderComplaintService;
@@ -136,7 +136,7 @@ public class StoreChangeEvent implements StoreSettingChangeEvent {
     @Autowired
     private DistributionGoodsService distributionGoodsService;
     /**
-     * 分销订单
+     * 分销Order
      */
     @Autowired
     private DistributionOrderService distributionOrderService;
@@ -182,13 +182,13 @@ public class StoreChangeEvent implements StoreSettingChangeEvent {
         seckillApplyService.update(updateWrapper);
         //修改发票中店铺名称
         receiptService.update(updateWrapper);
-        //修改订单中的店铺名称
+        //修改Order中的店铺名称
         orderService.update(updateWrapper);
         //修改店铺流水中店铺名称
         storeFlowService.update(updateWrapper);
         //修改售后中店铺名称
         afterSaleService.update(updateWrapper);
-        //修改订单投诉中店铺名称
+        //修改Order投诉中店铺名称
         orderComplaintService.update(updateWrapper);
         //修改店铺消息中的店铺名称
         storeMessageService.update(updateWrapper);
@@ -196,7 +196,7 @@ public class StoreChangeEvent implements StoreSettingChangeEvent {
         memberEvaluationService.update(updateWrapper);
         //修改结算单中店铺名称
         billService.update(updateWrapper);
-        //修改分销订单中店铺名称
+        //修改分销Order中店铺名称
         distributionOrderService.update(updateWrapper);
         //修改分销商品中店铺名称
         distributionGoodsService.update(updateWrapper);

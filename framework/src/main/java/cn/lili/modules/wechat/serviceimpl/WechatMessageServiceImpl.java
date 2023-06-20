@@ -136,10 +136,10 @@ public class WechatMessageServiceImpl extends ServiceImpl<WechatMessageMapper, W
      */
     private List<WechatMessageData> initData() {
         List<WechatMessageData> msg = new ArrayList<>();
-        //新订单消息提示
+        //新Order消息提示
         msg.add(new WechatMessageData(
-                "订单支付成功通知",
-                "订单支付成功通知",
+                "OrderSuccess通知",
+                "OrderSuccess通知",
                 "如有问题，请联系在线客服",
                 "OPENTM207498902",
                 WechatMessageItemEnums.MEMBER_NAME.name() + "," + WechatMessageItemEnums.ORDER_SN.name() + "," +
@@ -147,18 +147,18 @@ public class WechatMessageServiceImpl extends ServiceImpl<WechatMessageMapper, W
                 OrderStatusEnum.UNDELIVERED));
         //已发货
         msg.add(new WechatMessageData(
-                "订单发货",
-                "您的订单已发货",
+                "Order发货",
+                "您的Order已发货",
                 "如有问题，请联系在线客服",
                 "OPENTM200565259",
                 WechatMessageItemEnums.ORDER_SN.name() + "," +
                         WechatMessageItemEnums.LOGISTICS_NAME.name() + "," + WechatMessageItemEnums.LOGISTICS_NO.name(),
                 OrderStatusEnum.DELIVERED));
 
-        //已完成
+        //Complete
         msg.add(new WechatMessageData(
-                "订单完成",
-                "您的订单已完成，是否有什么想对掌柜说的话呢",
+                "Order完成",
+                "您的OrderComplete，是否有什么想对掌柜说的话呢",
                 "诚邀您来评价，评价还赠送积分哦",
                 "OPENTM416131050",
                 WechatMessageItemEnums.MEMBER_NAME.name() + "," + WechatMessageItemEnums.ORDER_SN.name() + "," +

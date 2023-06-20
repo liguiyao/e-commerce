@@ -8,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 /**
- * 订单统计数据VO
+ * Order统计数据VO
  *
  * @author Bulbasaur
  * @since 2020/12/9 17:13
@@ -22,14 +22,14 @@ public class OrderStatisticsDataVO {
     @ApiModelProperty(value = "购买人")
     private String memberName;
 
-    @ApiModelProperty(value = "订单金额")
+    @ApiModelProperty(value = "Order金额")
     private Double price;
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty(value = "创建时间")
+    @ApiModelProperty(value = "create时间")
     private Date createTime;
 
-    @ApiModelProperty(value = "订单编号")
+    @ApiModelProperty(value = "Order编号")
     private String orderItemSn;
 }

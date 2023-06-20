@@ -17,9 +17,9 @@ public enum BillStatusEnum {
      */
     CHECK("已核对"),
     /**
-     * "已完成"
+     * "Complete"
      */
-    COMPLETE("已完成");
+    COMPLETE("Complete");
     private final String description;
 
     BillStatusEnum(String description) {

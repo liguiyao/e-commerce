@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * 订单vo
+ * Ordervo
  *
  * @author Bulbasaur
  * @since 2020/11/28 11:38
@@ -22,7 +22,7 @@ public class OrderVO extends Order {
 
     private static final long serialVersionUID = 5820637554656388777L;
 
-    @ApiModelProperty(value = "订单商品项目")
+    @ApiModelProperty(value = "Order商品项目")
     private List<OrderItem> orderItems;
 
 

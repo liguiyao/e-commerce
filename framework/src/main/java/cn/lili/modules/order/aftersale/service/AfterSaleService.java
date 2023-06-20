@@ -49,7 +49,7 @@ public interface AfterSaleService extends IService<AfterSale> {
     /**
      * 获取申请售后页面信息
      *
-     * @param sn 订单编号
+     * @param sn Order编号
      * @return
      */
     AfterSaleApplyVO getAfterSaleVO(String sn);
@@ -74,21 +74,21 @@ public interface AfterSaleService extends IService<AfterSale> {
     AfterSale review(String afterSaleSn, String serviceStatus, String remark, Double actualRefundPrice);
 
     /**
-     * 买家退货,物流填写
+     * 买家退货,logistics填写
      *
      * @param afterSaleSn  售后服务单号
-     * @param logisticsNo  物流单号
-     * @param logisticsId  物流公司ID
+     * @param logisticsNo  logistics单号
+     * @param logisticsId  logistics公司ID
      * @param mDeliverTime 买家退货发货时间
      * @return 售后
      */
     AfterSale buyerDelivery(String afterSaleSn, String logisticsNo, String logisticsId, Date mDeliverTime);
 
     /**
-     * 获取买家退货物流踪迹
+     * 获取买家退货logistics踪迹
      *
      * @param afterSaleSn 售后服务单号
-     * @return 物流踪迹
+     * @return logistics踪迹
      */
     Traces deliveryTraces(String afterSaleSn);
 
@@ -114,7 +114,7 @@ public interface AfterSaleService extends IService<AfterSale> {
     /**
      * 买家确认解决问题
      *
-     * @param afterSaleSn 售后订单sn
+     * @param afterSaleSn 售后Ordersn
      * @return 售后服务
      */
     AfterSale complete(String afterSaleSn);
@@ -122,7 +122,7 @@ public interface AfterSaleService extends IService<AfterSale> {
     /**
      * 买家取消售后
      *
-     * @param afterSaleSn 售后订单sn
+     * @param afterSaleSn 售后Ordersn
      * @return 售后服务
      */
     AfterSale cancel(String afterSaleSn);

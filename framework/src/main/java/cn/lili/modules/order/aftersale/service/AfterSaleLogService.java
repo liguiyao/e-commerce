@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import java.util.List;
 
 /**
- * 订单日志业务层
+ * Order日志业务层
  *
  * @author Chopper
  * @since 2020/11/17 7:37 下午

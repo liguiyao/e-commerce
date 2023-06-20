@@ -112,24 +112,24 @@ public class MinioFilePlugin implements FilePlugin {
         }
         synchronized (this) {
             if (minioClient == null) {
-                //创建客户端
+                //create客户端
                 this.minioClient = MinioClient.builder()
                         .endpoint(ossSetting.getM_endpoint())
                         .credentials(ossSetting.getM_accessKey(), ossSetting.getM_secretKey())
                         .build();
                 try {
-                    //查看对应的bucket是否已经存在，不存在则创建
+                    //查看对应的bucket是否已经存在，不存在则create
                     if (!minioClient.bucketExists(BucketExistsArgs.builder().bucket(ossSetting.getM_bucketName()).build())) {
-                        //创建bucket
+                        //createbucket
                         MakeBucketArgs makeBucketArgs = MakeBucketArgs.builder().bucket(ossSetting.getM_bucketName()).build();
                         this.minioClient.makeBucket(makeBucketArgs);
                         setBucketPolicy(this.minioClient, ossSetting.getM_bucketName(), "read-write" );
-                        log.info("创建minio桶成功{}", ossSetting.getM_bucketName());
+                        log.info("createminio桶成功{}", ossSetting.getM_bucketName());
                     }
                 } catch (Exception e) {
                     //晴空配置
                     minioClient = null;
-                    log.error("创建[{}]bucket失败", ossSetting.getM_bucketName());
+                    log.error("create[{}]bucket失败", ossSetting.getM_bucketName());
                     throw new ServiceException(ResultCode.OSS_DELETE_ERROR, e.getMessage());
                 }
             }

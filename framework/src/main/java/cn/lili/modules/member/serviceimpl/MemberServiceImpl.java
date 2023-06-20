@@ -241,7 +241,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     public Member autoRegister(ConnectAuthUser authUser) {
 
         if (CharSequenceUtil.isEmpty(authUser.getNickname())) {
-            authUser.setNickname("临时昵称");
+            authUser.setNickname("temp name");
         }
         if (CharSequenceUtil.isEmpty(authUser.getAvatar())) {
             authUser.setAvatar("https://i.loli.net/2020/11/19/LyN6JF7zZRskdIe.png");
@@ -321,7 +321,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
         //修改会员
         this.updateById(member);
         String destination = rocketmqCustomProperties.getMemberTopic() + ":" + MemberTagsEnum.MEMBER_INFO_EDIT.name();
-        //发送订单变更mq消息
+        //发送Order变更mq消息
         rocketMQTemplate.asyncSend(destination, member, RocketmqSendCallbackBuilder.commonCallback());
         return member;
     }

@@ -15,16 +15,16 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class MemberEvaluationDTO {
 
-    @ApiModelProperty(value = "子订单编号")
-    @NotEmpty(message = "订单异常")
+    @ApiModelProperty(value = "子Order编号")
+    @NotEmpty(message = "Order异常")
     private String orderItemSn;
 
     @ApiModelProperty(value = "商品ID")
-    @NotEmpty(message = "订单商品异常不能为空")
+    @NotEmpty(message = "Order商品异常不能为空")
     private String goodsId;
 
     @ApiModelProperty(value = "规格ID")
-    @NotEmpty(message = "订单商品不能为空")
+    @NotEmpty(message = "Order商品不能为空")
     private String skuId;
 
     @ApiModelProperty(value = "好中差评价")
@@ -39,7 +39,7 @@ public class MemberEvaluationDTO {
     @ApiModelProperty(value = "评论图片")
     private String images;
 
-    @ApiModelProperty(value = "物流评分")
+    @ApiModelProperty(value = "logistics评分")
     private Integer deliveryScore;
 
     @ApiModelProperty(value = "服务评分")

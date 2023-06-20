@@ -15,7 +15,7 @@ import java.util.List;
 public interface SeckillService extends AbstractPromotionsService<Seckill> {
 
     /**
-     * 预创建活动数量
+     * 预create活动数量
      */
     Integer PRE_CREATION = 7;
 

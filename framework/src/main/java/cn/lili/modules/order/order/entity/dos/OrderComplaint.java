@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 import java.util.Date;
 
 /**
- * 订单交易投诉
+ * Order交易投诉
  *
  * @author paulG
  * @since 2020/12/4
@@ -22,7 +22,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @TableName("li_order_complaint")
-@ApiModel(value = "订单交易投诉")
+@ApiModel(value = "Order交易投诉")
 public class OrderComplaint extends BaseEntity {
 
     private static final long serialVersionUID = 7185050229757228184L;
@@ -53,7 +53,7 @@ public class OrderComplaint extends BaseEntity {
     @ApiModelProperty(value = "申诉商家上传的图片")
     private String appealImages;
 
-    @ApiModelProperty(value = "订单号")
+    @ApiModelProperty(value = "Order号")
     private String orderSn;
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
@@ -81,10 +81,10 @@ public class OrderComplaint extends BaseEntity {
     @ApiModelProperty(value = "运费")
     private Double freightPrice;
 
-    @ApiModelProperty(value = "订单金额")
+    @ApiModelProperty(value = "Order金额")
     private Double orderPrice;
 
-    @ApiModelProperty(value = "物流单号")
+    @ApiModelProperty(value = "logistics单号")
     private String logisticsNo;
 
     @ApiModelProperty(value = "商家id")

@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
- * 分销订单入库
+ * 分销Order入库
  *
  * @author Chopper
  * @since 2020-07-03 11:20
@@ -35,7 +35,7 @@ import javax.annotation.Resource;
 public class DistributionOrderExecute implements OrderStatusChangeEvent, EveryDayExecute, AfterSaleStatusChangeEvent {
 
     /**
-     * 分销订单
+     * 分销Order
      */
     @Autowired
     private DistributionOrderService distributionOrderService;
@@ -48,16 +48,16 @@ public class DistributionOrderExecute implements OrderStatusChangeEvent, EveryDa
     public void orderChange(OrderMessage orderMessage) {
 
         switch (orderMessage.getNewStatus()) {
-            //订单带校验/订单代发货/待自提，则记录分销信息
+            //Order带校验/Order代发货/待自提，则记录分销信息
             case TAKE:
             case STAY_PICKED_UP:
             case UNDELIVERED: {
-                //记录分销订单
+                //记录分销Order
                 distributionOrderService.calculationDistribution(orderMessage.getOrderSn());
                 break;
             }
             case CANCELLED: {
-                //修改分销订单状态
+                //修改分销Order状态
                 distributionOrderService.cancelOrder(orderMessage.getOrderSn());
                 break;
             }
@@ -69,7 +69,7 @@ public class DistributionOrderExecute implements OrderStatusChangeEvent, EveryDa
 
     @Override
     public void execute() {
-        log.info("分销订单定时开始执行");
+        log.info("分销Order定时开始执行");
         //设置结算天数(解冻日期)
         Setting setting = settingService.get(SettingEnum.DISTRIBUTION_SETTING.name());
         DistributionSetting distributionSetting = JSONUtil.toBean(setting.getSettingValue(), DistributionSetting.class);
@@ -77,7 +77,7 @@ public class DistributionOrderExecute implements OrderStatusChangeEvent, EveryDa
         DateTime dateTime = new DateTime();
         //当前时间-结算天数=最终结算时间
         dateTime = dateTime.offsetNew(DateField.DAY_OF_MONTH, -distributionSetting.getCashDay());
-        //分销人员订单结算
+        //分销人员Order结算
         distributionOrderService.updateRebate(dateTime,DistributionOrderStatusEnum.WAIT_BILL.name());
 
     }

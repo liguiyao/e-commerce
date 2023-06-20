@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
 public class MemberCouponExecute implements OrderStatusChangeEvent, AfterSaleStatusChangeEvent {
 
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
@@ -34,7 +34,7 @@ public class MemberCouponExecute implements OrderStatusChangeEvent, AfterSaleSta
 
     @Override
     public void orderChange(OrderMessage orderMessage) {
-        // 订单取消返还优惠券
+        // Order取消返还优惠券
         if (orderMessage.getNewStatus() == OrderStatusEnum.CANCELLED) {
             this.refundCoupon(orderMessage.getOrderSn());
         }
@@ -51,7 +51,7 @@ public class MemberCouponExecute implements OrderStatusChangeEvent, AfterSaleSta
 
     /**
      * 退款返还优惠券
-     * @param orderSn 订单编号
+     * @param orderSn Order编号
      */
     private void refundCoupon(String orderSn) {
         Order order = orderService.getBySn(orderSn);

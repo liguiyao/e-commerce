@@ -11,7 +11,7 @@ import java.util.List;
 
 
 /**
- * 分销订单业务层
+ * 分销Order业务层
  *
  * @author pikachu
  * @since 2020-03-15 10:46:33
@@ -19,45 +19,45 @@ import java.util.List;
 public interface DistributionOrderService extends IService<DistributionOrder> {
 
     /**
-     * 获取分销订单分页
-     * @param distributionOrderSearchParams 分销订单搜索参数
-     * @return 分销订单分页
+     * 获取分销Order分页
+     * @param distributionOrderSearchParams 分销Order搜索参数
+     * @return 分销Order分页
      */
     IPage<DistributionOrder> getDistributionOrderPage(DistributionOrderSearchParams distributionOrderSearchParams);
 
     /**
-     * 支付订单
-     * 记录分销订单
+     * 支付Order
+     * 记录分销Order
      *
-     * @param orderSn 订单编号
+     * @param orderSn Order编号
      */
     void calculationDistribution(String orderSn);
 
     /**
-     * 取消订单
-     * 记录分销订单
+     * 取消Order
+     * 记录分销Order
      *
-     * @param orderSn 订单编号
+     * @param orderSn Order编号
      */
     void cancelOrder(String orderSn);
 
     /**
-     * 订单退款
-     * 记录分销订单
+     * Order退款
+     * 记录分销Order
      *
      * @param afterSaleSn 售后单号
      */
     void refundOrder(String afterSaleSn);
 
     /**
-     * 分销订单状态修改
+     * 分销Order状态修改
      *
      * @param orderItems
      */
     void updateDistributionOrderStatus(List<OrderItem> orderItems);
 
     /**
-     * 分销订单结算
+     * 分销Order结算
      * @param dateTime
      * @param distributionOrderStatus
      */

@@ -26,7 +26,7 @@ import org.springframework.stereotype.Service;
 public class PaymentExecute implements OrderStatusChangeEvent {
 
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
@@ -53,11 +53,11 @@ public class PaymentExecute implements OrderStatusChangeEvent {
                     .payPrice(order.getFlowPrice())
                     .memberId(order.getMemberId())
                     .paymentName(order.getPaymentMethod())
-                    .afterSaleNo("订单取消")
+                    .afterSaleNo("Order取消")
                     .orderSn(order.getSn())
                     .paymentReceivableNo(order.getReceivableNo())
                     .outOrderNo("AF" + SnowFlake.getIdStr())
-                    .refundReason("订单取消")
+                    .refundReason("Order取消")
                     .build();
             payment.refund(refundLog);
         }

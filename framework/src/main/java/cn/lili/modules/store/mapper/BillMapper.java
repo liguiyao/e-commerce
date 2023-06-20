@@ -30,7 +30,7 @@ public interface BillMapper extends BaseMapper<Bill> {
     IPage<BillListVO> queryBillPage(IPage<BillListVO> page, @Param(Constants.WRAPPER) Wrapper<BillListVO> queryWrapper);
 
     /**
-     * 查询订单结算
+     * 查询Order结算
      *
      * @param queryWrapper 查询条件
      * @return 结算单

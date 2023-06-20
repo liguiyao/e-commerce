@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 /**
- * 商家订单流水数据处理层
+ * 商家Order流水数据处理层
  *
  * @author Chopper
  * @since 2020/11/17 7:35 下午

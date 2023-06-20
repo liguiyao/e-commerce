@@ -16,7 +16,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface StudioService extends IService<Studio> {
 
     /**
-     * 创建直播间
+     * create直播间
      * 直播间默认手机直播
      * 默认开启：点赞、商品货架、评论、回放
      * @param studio 直播间

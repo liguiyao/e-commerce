@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * 按创建时间年份分库
+ * 按create时间年份分库
  *
  * @author Chopper
  */

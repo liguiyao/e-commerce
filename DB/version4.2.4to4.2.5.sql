@@ -18,7 +18,7 @@ ALTER TABLE `li_store_logistics` ADD `exp_type` varchar(255) COLLATE utf8mb4_bin
 /** 店铺--默认页面是否开启**/
 ALTER TABLE li_store ADD page_show bit(1) DEFAULT NULL COMMENT '默认页面是否开启';
 
-/** 创建店员表 **/
+/** create店员表 **/
 /*
  Navicat Premium Data Transfer
 
@@ -44,8 +44,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `li_clerk`;
 CREATE TABLE `li_clerk`  (
                              `id` bigint NOT NULL COMMENT 'ID',
-                             `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '创建者',
-                             `create_time` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
+                             `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT 'create者',
+                             `create_time` datetime(6) NULL DEFAULT NULL COMMENT 'create时间',
                              `delete_flag` bit(1) NULL DEFAULT NULL COMMENT '删除标志 true/false 删除/未删除',
                              `update_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新者',
                              `update_time` datetime(6) NULL DEFAULT NULL COMMENT '更新时间',
@@ -123,8 +123,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `li_store_department`;
 CREATE TABLE `li_store_department`  (
                                         `id` bigint NOT NULL COMMENT 'ID',
-                                        `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '创建者',
-                                        `create_time` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
+                                        `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT 'create者',
+                                        `create_time` datetime(6) NULL DEFAULT NULL COMMENT 'create时间',
                                         `delete_flag` bit(1) NULL DEFAULT NULL COMMENT '删除标志 true/false 删除/未删除',
                                         `update_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新者',
                                         `update_time` datetime(6) NULL DEFAULT NULL COMMENT '更新时间',
@@ -163,8 +163,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `li_store_department_role`;
 CREATE TABLE `li_store_department_role`  (
                                              `id` bigint NOT NULL COMMENT 'ID',
-                                             `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '创建者',
-                                             `create_time` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
+                                             `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT 'create者',
+                                             `create_time` datetime(6) NULL DEFAULT NULL COMMENT 'create时间',
                                              `delete_flag` bit(1) NULL DEFAULT NULL COMMENT '删除标志 true/false 删除/未删除',
                                              `update_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新者',
                                              `update_time` datetime(6) NULL DEFAULT NULL COMMENT '更新时间',
@@ -201,8 +201,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `li_store_menu_role`;
 CREATE TABLE `li_store_menu_role`  (
                                        `id` bigint NOT NULL COMMENT 'ID',
-                                       `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '创建者',
-                                       `create_time` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
+                                       `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT 'create者',
+                                       `create_time` datetime(6) NULL DEFAULT NULL COMMENT 'create时间',
                                        `delete_flag` bit(1) NULL DEFAULT NULL COMMENT '删除标志 true/false 删除/未删除',
                                        `update_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新者',
                                        `update_time` datetime(6) NULL DEFAULT NULL COMMENT '更新时间',
@@ -242,8 +242,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `li_store_role`;
 CREATE TABLE `li_store_role`  (
                                   `id` bigint NOT NULL COMMENT 'ID',
-                                  `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '创建者',
-                                  `create_time` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
+                                  `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT 'create者',
+                                  `create_time` datetime(6) NULL DEFAULT NULL COMMENT 'create时间',
                                   `delete_flag` bit(1) NULL DEFAULT NULL COMMENT '删除标志 true/false 删除/未删除',
                                   `update_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新者',
                                   `update_time` datetime(6) NULL DEFAULT NULL COMMENT '更新时间',
@@ -282,8 +282,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `li_menu`;
 CREATE TABLE `li_menu`  (
                             `id` bigint NOT NULL COMMENT 'ID',
-                            `create_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者',
-                            `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+                            `create_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'create者',
+                            `create_time` datetime NULL DEFAULT NULL COMMENT 'create时间',
                             `delete_flag` bit(1) NULL DEFAULT NULL COMMENT '删除标志 true/false 删除/未删除',
                             `update_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
                             `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
@@ -312,7 +312,7 @@ INSERT INTO `li_menu` VALUES (1349237928434098176, 'admin', '2021-01-13 14:13:03
 INSERT INTO `li_menu` VALUES (1349246048900243456, 'admin', '2021-01-13 14:45:00', b'0', 'admin', '2021-07-27 16:07:57', 'null', 'sys/setting-manage/settingManage', 'ios-american-football', 2, 'setting', '1349237129847005184', 'setting', 1.00, '系统设置', 'null', '/manager/system/setting/get*,/manager/system/setting/put*,/manager/setting/setting*');
 INSERT INTO `li_menu` VALUES (1349246347597602816, 'admin', '2021-01-13 14:46:12', b'0', 'admin', '2021-07-27 16:08:03', 'null', 'sys/oss-manage/ossManage', 'ios-american-football', 2, 'oss-manage', '1349237129847005184', 'oss-manage', 3.00, 'OSS资源', '', '/manager/common/file*');
 INSERT INTO `li_menu` VALUES (1349246468775239680, 'admin', '2021-01-13 14:46:41', b'0', 'admin', '2021-07-27 16:08:14', 'null', 'region/index', 'ios-american-football', 2, 'region', '1349237129847005184', 'region', 4.00, '行政地区', 'null', '/manager/region*');
-INSERT INTO `li_menu` VALUES (1349246671158796288, 'admin', '2021-01-13 14:47:29', b'0', 'admin', '2021-07-27 16:08:09', 'null', 'logistics/index', 'ios-american-football', 2, 'logistics', '1349237129847005184', 'logistics', 5.00, '物流公司', 'null', '/manager/other/logistics*');
+INSERT INTO `li_menu` VALUES (1349246671158796288, 'admin', '2021-01-13 14:47:29', b'0', 'admin', '2021-07-27 16:08:09', 'null', 'logistics/index', 'ios-american-football', 2, 'logistics', '1349237129847005184', 'logistics', 5.00, 'logistics公司', 'null', '/manager/other/logistics*');
 INSERT INTO `li_menu` VALUES (1349246896661356544, 'admin', '2021-01-13 14:48:23', b'0', 'admin', '2021-07-27 16:08:23', 'null', 'sys/setting-manage/settingManage', 'ios-american-football', 2, 'authLogin', '1349237129847005184', 'authLogin', 6.00, '信任登录', 'null', '/manager/system/setting/get*,/manager/system/setting/put*,/manager/setting/setting*\r\n');
 INSERT INTO `li_menu` VALUES (1349247081504333824, 'admin', '2021-01-13 14:49:07', b'0', 'admin', '2021-07-27 16:08:45', 'null', 'sys/setting-manage/settingManage', 'ios-american-football', 2, 'pay', '1349237129847005184', 'pay', 7.00, '支付设置', 'null', '/manager/system/setting/get*,/manager/system/setting/put*,/manager/system/setting*');
 INSERT INTO `li_menu` VALUES (1349247640584085504, 'admin', '2021-01-13 14:51:20', b'0', 'admin', '2021-07-27 16:08:56', 'null', 'sensitiveWords/index', 'ios-american-football', 2, 'sensitiveWords', '1349237129847005184', 'sensitiveWords', 8.00, '敏感词', 'null', '/manager/other/sensitiveWords*');
@@ -323,7 +323,7 @@ INSERT INTO `li_menu` VALUES (1349256082979840000, 'admin', '2021-01-13 15:24:53
 INSERT INTO `li_menu` VALUES (1357584224760102912, 'admin', '2021-02-05 06:57:57', b'0', 'admin', '2021-07-27 16:09:02', 'null', 'sys/app-version/appVersion', 'ios-american-football', 2, 'appVersion', '1349237129847005184', 'appVersion', 9.00, 'APP版本', 'null', '/manager/other/appVersion*');
 INSERT INTO `li_menu` VALUES (1357873097859923969, 'admin', '2021-02-24 09:53:02', b'0', 'admin', '2021-02-24 09:53:12', NULL, 'sys/menu-manage/menuManage', 'ios-american-football', 2, 'menuManage', '1349237207378714624', 'menu-manage', 2.00, '菜单管理', NULL, NULL);
 INSERT INTO `li_menu` VALUES (1367038467288072192, 'admin', '2021-03-03 09:05:44', b'0', 'admin', '2021-03-03 09:09:27', 'null', 'null', 'ios-person-add', 0, 'member', '0', 'null', 0.00, '会员', 'null', NULL);
-INSERT INTO `li_menu` VALUES (1367039534616805376, 'admin', '2021-03-03 09:09:58', b'0', 'admin', '2021-05-18 10:51:12', 'null', 'null', 'md-reorder', 0, 'order', '0', 'null', 0.00, '订单', 'null', NULL);
+INSERT INTO `li_menu` VALUES (1367039534616805376, 'admin', '2021-03-03 09:09:58', b'0', 'admin', '2021-05-18 10:51:12', 'null', 'null', 'md-reorder', 0, 'order', '0', 'null', 0.00, 'Order', 'null', NULL);
 INSERT INTO `li_menu` VALUES (1367039950368800768, 'admin', '2021-03-03 09:11:37', b'0', NULL, NULL, NULL, NULL, 'ios-share', 0, 'goods', '0', NULL, 0.20, '商品', NULL, NULL);
 INSERT INTO `li_menu` VALUES (1367040067201138688, 'admin', '2021-03-03 09:12:05', b'0', 'admin', '2021-12-02 19:45:22', NULL, 'null', 'ios-hammer', 0, 'promotions', '0', 'null', 0.30, '促销', NULL, 'null');
 INSERT INTO `li_menu` VALUES (1367040599596728320, 'admin', '2021-03-03 09:14:12', b'0', 'admin', '2021-03-03 09:52:13', 'null', 'null', 'ios-color-palette', 0, 'operate', '0', 'null', 0.50, '运营', 'null', NULL);
@@ -337,10 +337,10 @@ INSERT INTO `li_menu` VALUES (1367042804944994304, 'admin', '2021-03-03 09:22:58
 INSERT INTO `li_menu` VALUES (1367042804944994305, 'admin', '2021-03-03 09:22:58', b'0', 'admin', '2021-07-27 16:02:52', NULL, 'member/advance/withdrawApply', 'ios-alert', 2, 'withdrawApply', '1367042490443497472', 'withdrawApply', 1.00, '提现申请', NULL, '/manager/wallet/withdrawApply*');
 INSERT INTO `li_menu` VALUES (1367042917113266176, 'admin', '2021-03-03 09:23:25', b'0', NULL, NULL, NULL, 'Main', 'ios-aperture', 1, 'commont', '1367038467288072192', '/', 0.00, '评价', NULL, NULL);
 INSERT INTO `li_menu` VALUES (1367043020976816128, 'admin', '2021-03-03 09:23:49', b'0', 'admin', '2021-07-27 16:02:35', NULL, 'goods/goods-review/index', 'md-aperture', 2, 'goodsReview', '1367042917113266176', 'goodsReview', 0.00, '会员评价', NULL, '/manager/memberEvaluation*');
-INSERT INTO `li_menu` VALUES (1367043443917848576, 'admin', '2021-03-03 09:25:30', b'0', 'admin', '2021-07-27 16:03:00', NULL, 'Main', 'md-aperture', 1, 'order', '1367039534616805376', '/', 0.00, '订单', NULL, '/manager/orders*');
+INSERT INTO `li_menu` VALUES (1367043443917848576, 'admin', '2021-03-03 09:25:30', b'0', 'admin', '2021-07-27 16:03:00', NULL, 'Main', 'md-aperture', 1, 'order', '1367039534616805376', '/', 0.00, 'Order', NULL, '/manager/orders*');
 INSERT INTO `li_menu` VALUES (1367043505771249664, 'admin', '2021-03-03 09:25:45', b'0', NULL, NULL, NULL, 'Main', 'md-aperture', 1, 'aftersale', '1367039534616805376', '/', 0.00, '售后', NULL, NULL);
-INSERT INTO `li_menu` VALUES (1367043642379730944, 'admin', '2021-03-03 09:26:17', b'0', NULL, NULL, NULL, 'order/order/orderList', 'ios-aperture', 2, 'orderList', '1367043443917848576', 'orderList', 0.00, '商品订单', NULL, '/manager/order/order*');
-INSERT INTO `li_menu` VALUES (1367043791105556480, 'admin', '2021-03-03 09:26:53', b'0', NULL, NULL, NULL, 'order/order/fictitiousOrderList', 'ios-aperture', 2, 'fictitiousOrderList', '1367043443917848576', 'fictitiousOrderList', 1.00, '虚拟订单', NULL, '/manager/order/order*');
+INSERT INTO `li_menu` VALUES (1367043642379730944, 'admin', '2021-03-03 09:26:17', b'0', NULL, NULL, NULL, 'order/order/orderList', 'ios-aperture', 2, 'orderList', '1367043443917848576', 'orderList', 0.00, '商品Order', NULL, '/manager/order/order*');
+INSERT INTO `li_menu` VALUES (1367043791105556480, 'admin', '2021-03-03 09:26:53', b'0', NULL, NULL, NULL, 'order/order/fictitiousOrderList', 'ios-aperture', 2, 'fictitiousOrderList', '1367043443917848576', 'fictitiousOrderList', 1.00, '虚拟Order', NULL, '/manager/order/order*');
 INSERT INTO `li_menu` VALUES (1367043980407078912, 'admin', '2021-03-03 09:27:38', b'0', 'admin', '2021-07-27 16:03:43', NULL, 'order/after-order/afterSaleOrder', 'md-alert', 2, 'afterSaleOrder', '1367043505771249664', 'afterSaleOrder', 0.00, '售后管理', NULL, '/manager/order/afterSale*');
 INSERT INTO `li_menu` VALUES (1367044121163726848, 'admin', '2021-03-03 09:28:12', b'0', 'admin', '2021-07-27 16:03:48', NULL, 'order/after-order/orderComplaint', 'md-alert', 2, 'orderComplaint', '1367043505771249664', 'orderComplaint', 2.00, '交易投诉', NULL, '/manager/order/complain*');
 INSERT INTO `li_menu` VALUES (1367044247978508288, 'admin', '2021-03-03 09:28:42', b'0', 'admin', '2021-07-27 16:03:52', NULL, 'order/after-order/afterSale', 'md-aperture', 2, 'afterSaleReason', '1367043505771249664', 'afterSaleReason', 3.00, '售后原因', NULL, '/manager/order/afterSaleReason*');
@@ -372,7 +372,7 @@ INSERT INTO `li_menu` VALUES (1367050939084570624, 'admin', '2021-03-03 09:55:17
 INSERT INTO `li_menu` VALUES (1367051048232943616, 'admin', '2021-03-03 09:55:43', b'0', 'admin', '2021-07-27 16:06:42', NULL, 'page/article-manage/articleList', 'md-alert', 2, 'articleList', '1367050250249830400', 'articleList', 3.00, '文章管理', NULL, '/manager/other/article*,/manager/other/articleCategory*');
 INSERT INTO `li_menu` VALUES (1367052616634204160, 'admin', '2021-03-03 10:01:57', b'0', 'admin', '2021-07-27 16:07:38', NULL, 'Main', 'md-aperture', 1, 'statistics', '1367040819248234496', '/', 0.00, '统计', NULL, '/manager/store*,/manager/member*');
 INSERT INTO `li_menu` VALUES (1367052705725415424, 'admin', '2021-03-03 10:02:18', b'0', 'admin', '2021-03-11 22:11:05', 'null', 'statistics/member', 'md-alert', 2, 'memberStatistics', '1367052616634204160', 'memberStatistics', 0.00, '会员统计', 'null', NULL);
-INSERT INTO `li_menu` VALUES (1367052805503713280, 'admin', '2021-03-03 10:02:42', b'0', 'admin', '2021-03-11 22:11:14', 'null', 'statistics/order', 'md-alert', 2, 'orderStatistics', '1367052616634204160', 'orderStatistics', 1.00, '订单统计', 'null', NULL);
+INSERT INTO `li_menu` VALUES (1367052805503713280, 'admin', '2021-03-03 10:02:42', b'0', 'admin', '2021-03-11 22:11:14', 'null', 'statistics/order', 'md-alert', 2, 'orderStatistics', '1367052616634204160', 'orderStatistics', 1.00, 'Order统计', 'null', NULL);
 INSERT INTO `li_menu` VALUES (1367052915314786304, 'admin', '2021-03-03 10:03:08', b'0', 'admin', '2021-03-11 22:11:23', 'null', 'statistics/goods', 'md-alert', 2, 'goodsStatistics', '1367052616634204160', 'goodsStatistics', 2.00, '商品统计', 'null', NULL);
 INSERT INTO `li_menu` VALUES (1367053087121866752, 'admin', '2021-03-03 10:03:49', b'0', 'admin', '2021-03-11 22:11:34', 'null', 'statistics/traffic', 'md-alert', 2, 'trafficStatistics', '1367052616634204160', 'trafficStatistics', 4.00, '流量统计', 'null', NULL);
 INSERT INTO `li_menu` VALUES (1372807928452481024, 'admin', '2021-03-19 02:11:30', b'0', NULL, NULL, NULL, 'Main', 'ios-aperture', 1, 'flow', '1367039534616805376', '/', 3.00, '流水', NULL, NULL);
@@ -386,7 +386,7 @@ INSERT INTO `li_menu` VALUES (1374155741123837952, 'admin', '2021-03-22 19:27:14
 INSERT INTO `li_menu` VALUES (1374173575405109248, 'admin', '2021-03-22 20:38:06', b'0', 'admin', '2021-03-22 20:52:58', 'null', 'Main', 'ios-analytics', 1, 'distributionManager', '1367040599596728320', '/', 1.00, '分销管理', 'null', NULL);
 INSERT INTO `li_menu` VALUES (1374177618072436736, 'admin', '2021-03-22 20:54:10', b'0', 'admin', '2021-07-27 16:05:58', 'null', 'distribution/distributionSetting', 'ios-basketball', 2, 'distributionSetting', '1374173575405109248', 'distributionSetting', 0.00, '分销设置', 'null', '/manager/system/setting/put/DISTRIBUTION_SETTING*,/manager/system/setting/get/DISTRIBUTION_SETTING*');
 INSERT INTO `li_menu` VALUES (1374177789581721600, 'admin', '2021-03-22 20:54:51', b'0', 'admin', '2021-07-27 16:06:15', 'null', 'distribution/distributionGoods', 'ios-chatbubbles', 2, 'distributionGoods', '1374173575405109248', 'distributionGoods', 3.00, '分销商品', 'null', '/manager/distribution/goods*');
-INSERT INTO `li_menu` VALUES (1374177910411231232, 'admin', '2021-03-22 20:55:19', b'0', 'admin', '2021-07-27 16:06:20', 'null', 'distribution/distributionOrder', 'ios-cloudy', 2, 'distributionOrder', '1374173575405109248', 'distributionOrder', 4.00, '分销订单', 'null', '/manager/distribution/order*,/manager/store*');
+INSERT INTO `li_menu` VALUES (1374177910411231232, 'admin', '2021-03-22 20:55:19', b'0', 'admin', '2021-07-27 16:06:20', 'null', 'distribution/distributionOrder', 'ios-cloudy', 2, 'distributionOrder', '1374173575405109248', 'distributionOrder', 4.00, '分销Order', 'null', '/manager/distribution/order*,/manager/store*');
 INSERT INTO `li_menu` VALUES (1374178079181635584, 'admin', '2021-03-22 20:56:00', b'0', 'admin', '2021-07-27 16:06:05', 'null', 'distribution/distributionApply', 'md-egg', 2, 'distributionApply', '1374173575405109248', 'distributionApply', 1.00, '分销申请', 'null', '/manager/distribution*');
 INSERT INTO `li_menu` VALUES (1374178303975358464, 'admin', '2021-03-22 20:56:53', b'0', 'admin', '2021-07-27 16:06:08', 'null', 'distribution/distribution', 'md-person', 2, 'distribution', '1374173575405109248', 'distribution', 2.00, '分销员', 'null', '/manager/distribution*');
 INSERT INTO `li_menu` VALUES (1374916594269945856, 'admin', '2021-03-24 21:50:35', b'0', 'admin', '2021-07-27 16:08:51', NULL, 'sys/slider/slider', 'ios-aperture', 2, 'slider', '1349237129847005184', 'slider', 7.00, '验证码', NULL, '/manager/other/verificationSource*');
@@ -435,8 +435,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `li_store_menu`;
 CREATE TABLE `li_store_menu`  (
                                   `id` bigint NOT NULL COMMENT 'ID',
-                                  `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '创建者',
-                                  `create_time` datetime(6) NULL DEFAULT NULL COMMENT '创建时间',
+                                  `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT 'create者',
+                                  `create_time` datetime(6) NULL DEFAULT NULL COMMENT 'create时间',
                                   `delete_flag` bit(1) NULL DEFAULT NULL COMMENT '删除标志 true/false 删除/未删除',
                                   `update_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新者',
                                   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
@@ -462,10 +462,10 @@ INSERT INTO `li_store_menu` VALUES (1349237129847005184, NULL, '2022-01-11 22:35
 INSERT INTO `li_store_menu` VALUES (1349237207378714624, NULL, '2022-01-11 22:35:42.000000', b'0', NULL, '2022-01-11 22:37:02', NULL, 'goods/goods-seller/goods', 'ios-american-football', 2, 'goods', '1348810864748945408', 'goods', '1.12', '商品列表', NULL);
 INSERT INTO `li_store_menu` VALUES (1349237928434098176, NULL, '2022-01-11 22:35:45.000000', b'0', NULL, '2022-01-11 22:37:05', NULL, 'goods/goods-seller/draftGoods', 'ios-american-football', 2, 'template-goods', '1348810864748945408', 'template-goods', '1.13', '商品模板', NULL);
 INSERT INTO `li_store_menu` VALUES (1349246048900243456, NULL, '2022-01-11 22:35:48.000000', b'0', NULL, '2022-01-11 22:37:08', NULL, 'goods/goods-manage/category', 'ios-american-football', 2, 'category', '1348810864748945408', 'category', '1.14', '店铺分类', NULL);
-INSERT INTO `li_store_menu` VALUES (1349246347597602816, NULL, '2022-01-11 22:35:51.000000', b'0', NULL, '2022-01-11 22:37:11', NULL, 'Main', 'ios-american-football', 0, 'order', '0', '/', '2', '订单', NULL);
-INSERT INTO `li_store_menu` VALUES (1349246468775239680, NULL, '2022-01-11 22:38:28.000000', b'0', NULL, '2022-01-11 22:38:31', NULL, 'Main', 'ios-american-football', 1, 'Main', '1349246347597602816', '/', '2.1', '订单管理', NULL);
-INSERT INTO `li_store_menu` VALUES (1349246671158796288, NULL, '2022-01-11 22:38:42.000000', b'0', NULL, '2022-01-11 22:38:35', NULL, 'order/order/orderList', 'ios-american-football', 2, 'orderList', '1349246468775239680', 'orderList', '2.11', '商品订单', '/store/order/order*');
-INSERT INTO `li_store_menu` VALUES (1349246896661356544, NULL, '2022-01-11 22:40:27.000000', b'0', NULL, '2022-01-11 22:40:34', NULL, 'order/order/virtualOrderList', 'ios-american-football', 2, 'virtualOrderList', '1349246468775239680', 'virtualOrderList', '2.12', '虚拟订单', '/store/order/order*');
+INSERT INTO `li_store_menu` VALUES (1349246347597602816, NULL, '2022-01-11 22:35:51.000000', b'0', NULL, '2022-01-11 22:37:11', NULL, 'Main', 'ios-american-football', 0, 'order', '0', '/', '2', 'Order', NULL);
+INSERT INTO `li_store_menu` VALUES (1349246468775239680, NULL, '2022-01-11 22:38:28.000000', b'0', NULL, '2022-01-11 22:38:31', NULL, 'Main', 'ios-american-football', 1, 'Main', '1349246347597602816', '/', '2.1', 'Order管理', NULL);
+INSERT INTO `li_store_menu` VALUES (1349246671158796288, NULL, '2022-01-11 22:38:42.000000', b'0', NULL, '2022-01-11 22:38:35', NULL, 'order/order/orderList', 'ios-american-football', 2, 'orderList', '1349246468775239680', 'orderList', '2.11', '商品Order', '/store/order/order*');
+INSERT INTO `li_store_menu` VALUES (1349246896661356544, NULL, '2022-01-11 22:40:27.000000', b'0', NULL, '2022-01-11 22:40:34', NULL, 'order/order/virtualOrderList', 'ios-american-football', 2, 'virtualOrderList', '1349246468775239680', 'virtualOrderList', '2.12', '虚拟Order', '/store/order/order*');
 INSERT INTO `li_store_menu` VALUES (1349247081504333824, NULL, '2022-01-11 22:41:47.000000', b'0', NULL, '2022-01-11 22:41:50', NULL, 'Main', 'ios-american-football', 1, 'Main', '1349246347597602816', '/', '2.2', '评价管理', NULL);
 INSERT INTO `li_store_menu` VALUES (1349247640584085504, NULL, '2022-01-11 22:43:29.000000', b'0', NULL, '2022-01-11 22:45:47', NULL, 'member/memberComment', 'ios-american-football', 2, 'memberComment', '1349247081504333824', 'memberComment', '2.21', '评价管理', '/store/member/evaluation*');
 INSERT INTO `li_store_menu` VALUES (1349254815809298432, NULL, '2022-01-11 22:45:35.000000', b'0', NULL, '2022-01-11 22:45:50', NULL, 'Main', 'ios-american-football', 1, 'Main', '1349246347597602816', '/', '2.3', '售后管理', NULL);
@@ -490,16 +490,16 @@ INSERT INTO `li_store_menu` VALUES (1367042804944994305, NULL, '2022-01-11 23:24
 INSERT INTO `li_store_menu` VALUES (1367042917113266176, NULL, '2022-01-11 23:26:45.000000', b'0', NULL, '2022-01-11 23:26:50', NULL, 'promotion/coupon/coupon', 'ios-american-football', 2, 'coupon', '1367042804944994304', 'coupon', '4.32', '优惠券', '/store/promotion/coupon*');
 INSERT INTO `li_store_menu` VALUES (1367043020976816128, NULL, '2022-01-11 23:28:50.000000', b'0', NULL, '2022-01-11 23:29:02', NULL, 'Main', 'ios-american-football', 1, 'Main', '1367040599596728320', '/', '4.4', '分销管理', NULL);
 INSERT INTO `li_store_menu` VALUES (1367043443917848576, NULL, '2022-01-11 23:28:53.000000', b'0', NULL, '2022-01-11 23:29:04', NULL, 'distribution/distributionGoods', 'ios-american-football', 2, 'distributionGoods', '1367043020976816128', 'distributionGoods', '4.41', '分销商品', '/store/distribution/goods*');
-INSERT INTO `li_store_menu` VALUES (1367043505771249664, NULL, '2022-01-11 23:28:56.000000', b'0', NULL, '2022-01-11 23:29:07', NULL, 'distribution/distributionOrder', 'ios-american-football', 2, 'distributionOrder', '1367043020976816128', 'distributionOrderdistributionOrder', '4.42', '分销订单', '/store/distribution/order*');
+INSERT INTO `li_store_menu` VALUES (1367043505771249664, NULL, '2022-01-11 23:28:56.000000', b'0', NULL, '2022-01-11 23:29:07', NULL, 'distribution/distributionOrder', 'ios-american-football', 2, 'distributionOrder', '1367043020976816128', 'distributionOrderdistributionOrder', '4.42', '分销Order', '/store/distribution/order*');
 INSERT INTO `li_store_menu` VALUES (1367044121163726848, NULL, '2022-01-12 21:47:03.000000', b'0', NULL, '2022-01-12 21:47:25', NULL, 'Main', 'ios-american-football', 0, 'statistics', '0', '/', '5', '统计', NULL);
 INSERT INTO `li_store_menu` VALUES (1367044247978508288, NULL, '2022-01-12 21:47:19.000000', b'0', NULL, '2022-01-12 21:47:28', NULL, 'Main', 'ios-american-football', 1, 'Main', '1367044121163726848', '/', '5.1', '统计管理', NULL);
 INSERT INTO `li_store_menu` VALUES (1367044376391319552, NULL, '2022-01-12 21:49:45.000000', b'0', NULL, '2022-01-12 21:50:01', NULL, 'statistics/goods', 'ios-american-football', 2, 'goodsStatistics', '1367044247978508288', 'goodsStatistics', '5.11', '商品统计', '/store/statistics/goods*');
-INSERT INTO `li_store_menu` VALUES (1367044657296441344, NULL, '2022-01-12 21:49:48.000000', b'0', NULL, '2022-01-12 21:49:58', NULL, 'statistics/order', 'ios-american-football', 2, 'orderStatistics', '1367044247978508288', 'orderStatistics', '5.12', '订单统计', '/store/statistics/order*,/store/statistics/order*,/store/statistics/order*,/store/statistics/order*');
+INSERT INTO `li_store_menu` VALUES (1367044657296441344, NULL, '2022-01-12 21:49:48.000000', b'0', NULL, '2022-01-12 21:49:58', NULL, 'statistics/order', 'ios-american-football', 2, 'orderStatistics', '1367044247978508288', 'orderStatistics', '5.12', 'Order统计', '/store/statistics/order*,/store/statistics/order*,/store/statistics/order*,/store/statistics/order*');
 INSERT INTO `li_store_menu` VALUES (1367045529720061952, NULL, '2022-01-12 21:49:51.000000', b'0', NULL, '2022-01-12 21:50:03', NULL, 'statistics/traffic', 'ios-american-football', 2, 'trafficStatistics', '1367044247978508288', 'trafficStatistics', '5.13', '流量统计', '/store/statistics/view*');
 INSERT INTO `li_store_menu` VALUES (1367045630710513664, NULL, '2022-01-12 21:52:59.000000', b'0', NULL, '2022-01-12 21:53:09', NULL, 'Main', 'ios-american-football', 0, 'settings', '0', '/', '6', '设置', NULL);
 INSERT INTO `li_store_menu` VALUES (1367045794284175360, NULL, '2022-01-12 21:53:03.000000', b'0', NULL, '2022-01-12 21:53:12', NULL, 'Main', 'ios-american-football', 1, 'Main', '1367045630710513664', '/', '6.1', '配送设置', NULL);
 INSERT INTO `li_store_menu` VALUES (1367045921434501120, NULL, '2022-01-12 21:55:49.000000', b'0', NULL, '2022-01-12 21:55:52', NULL, 'shop/ship/shipTemplate', 'ios-american-football', 2, 'shipTemplate', '1367045794284175360', 'shipTemplate', '6.11', '配送模板', '/store/setting/freightTemplate*');
-INSERT INTO `li_store_menu` VALUES (1367046068369358848, NULL, '2022-01-12 21:58:05.000000', b'0', NULL, '2022-01-12 21:58:13', NULL, 'shop/ship/logistics', 'ios-american-football', 2, 'logistics', '1367045794284175360', 'logistics', '6.12', '物流公司', '/store/other/logistics*');
+INSERT INTO `li_store_menu` VALUES (1367046068369358848, NULL, '2022-01-12 21:58:05.000000', b'0', NULL, '2022-01-12 21:58:13', NULL, 'shop/ship/logistics', 'ios-american-football', 2, 'logistics', '1367045794284175360', 'logistics', '6.12', 'logistics公司', '/store/other/logistics*');
 INSERT INTO `li_store_menu` VALUES (1367046266214678528, NULL, '2022-01-12 21:59:07.000000', b'0', NULL, '2022-01-12 21:59:43', NULL, 'Main', 'ios-american-football', 1, 'Main', '1367045630710513664', '/', '6.2', '店铺管理', NULL);
 INSERT INTO `li_store_menu` VALUES (1367048084701315072, NULL, '2022-01-12 21:59:32.000000', b'0', NULL, '2022-01-12 21:59:48', NULL, 'shop/shopSetting', 'ios-american-football', 2, 'shopSetting', '1367046266214678528', 'shopSetting', '6.21', '店铺设置', NULL);
 INSERT INTO `li_store_menu` VALUES (1367048684339986432, NULL, '2022-01-12 21:59:36.000000', b'0', NULL, '2022-01-12 21:59:51', NULL, 'shop/shopAddress', 'ios-american-football', 2, 'shopAddress', '1367046266214678528', 'shopAddress', '6.22', '自提管理', '/store/member/storeAddress*');

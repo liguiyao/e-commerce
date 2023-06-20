@@ -184,55 +184,55 @@ public enum ResultCode {
     SHIPPING_NOT_APPLY(30005, "购物商品不支持当前收货地址配送"),
 
     /**
-     * 订单
+     * Order
      */
-    ORDER_ERROR(31001, "创建订单异常，请稍后重试"),
-    ORDER_NOT_EXIST(31002, "订单不存在"),
-    ORDER_DELIVERED_ERROR(31003, "订单状态错误，无法进行确认收货"),
-    ORDER_UPDATE_PRICE_ERROR(31004, "已支付的订单不能修改金额"),
-    ORDER_LOGISTICS_ERROR(31005, "物流错误"),
-    ORDER_DELIVER_ERROR(31006, "物流错误"),
-    ORDER_NOT_USER(31007, "非当前会员的订单"),
-    ORDER_TAKE_ERROR(31008, "当前订单无法核销"),
-    MEMBER_ADDRESS_NOT_EXIST(31009, "订单无收货地址，请先配置收货地址"),
-    STORE_ADDRESS_NOT_EXIST(31009, "订单没有自提地址,请先选择自提地址"),
-    ORDER_DELIVER_NUM_ERROR(31010, "没有待发货的订单"),
+    ORDER_ERROR(31001, "createOrder异常，请稍后重试"),
+    ORDER_NOT_EXIST(31002, "Order不存在"),
+    ORDER_DELIVERED_ERROR(31003, "Order状态错误，无法进行确认收货"),
+    ORDER_UPDATE_PRICE_ERROR(31004, "已支付的Order不能修改金额"),
+    ORDER_LOGISTICS_ERROR(31005, "logistics错误"),
+    ORDER_DELIVER_ERROR(31006, "logistics错误"),
+    ORDER_NOT_USER(31007, "非当前会员的Order"),
+    ORDER_TAKE_ERROR(31008, "当前Order无法核销"),
+    MEMBER_ADDRESS_NOT_EXIST(31009, "Order无收货地址，请先配置收货地址"),
+    STORE_ADDRESS_NOT_EXIST(31009, "Order没有自提地址,请先选择自提地址"),
+    ORDER_DELIVER_NUM_ERROR(31010, "没有待发货的Order"),
     ORDER_NOT_SUPPORT_DISTRIBUTION(31011, "购物车中包含不支持配送的商品，请重新选择收货地址，或者重新选择商品"),
     ORDER_NOT_EXIST_VALID(31041, "购物车中无有效商品，请检查购物车内商品，或者重新选择商品"),
-    ORDER_CAN_NOT_CANCEL(31012, "当前订单状态不可取消"),
+    ORDER_CAN_NOT_CANCEL(31012, "当前Order状态不可取消"),
     ORDER_BATCH_DELIVER_ERROR(31013, "批量发货,文件读取失败"),
-    ORDER_ITEM_NOT_EXIST(31014, "当前订单项不存在！"),
+    ORDER_ITEM_NOT_EXIST(31014, "当前Order项不存在！"),
     POINT_NOT_ENOUGH(31015, "当前会员积分不足购买当前积分商品！"),
-    ORDER_LABEL_ORDER_ERROR(31016, "订单不能打印电子面单"),
-    ORDER_PRICE_ERROR(31017,"订单金额不能小于等于0"),
+    ORDER_LABEL_ORDER_ERROR(31016, "Order不能打印电子面单"),
+    ORDER_PRICE_ERROR(31017,"Order金额不能小于等于0"),
 
 
     /**
      * 支付
      */
-    PAY_UN_WANTED(32000, "当前订单不需要付款，返回订单列表等待系统订单出库即可"),
-    PAY_SUCCESS(32001, "支付成功"),
+    PAY_UN_WANTED(32000, "当前Order不需要付款，返回Order列表等待系统Order出库即可"),
+    PAY_SUCCESS(32001, "Success"),
     PAY_INCONSISTENT_ERROR(32002, "付款金额和应付金额不一致"),
-    PAY_DOUBLE_ERROR(32003, "订单已支付，不能再次进行支付"),
+    PAY_DOUBLE_ERROR(32003, "Order已支付，不能再次进行支付"),
     PAY_CASHIER_ERROR(32004, "收银台信息获取错误"),
     PAY_ERROR(32005, "支付业务异常，请稍后重试"),
-    PAY_BAN(32006, "当前订单不需要付款，请返回订单列表重新操作"),
-    PAY_PARTIAL_ERROR(32007, "该订单已部分支付，请前往订单中心进行支付"),
+    PAY_BAN(32006, "当前Order不需要付款，请返回Order列表重新操作"),
+    PAY_PARTIAL_ERROR(32007, "该Order已部分支付，请前往Order中心进行支付"),
     PAY_NOT_SUPPORT(32008, "支付暂不支持"),
     PAY_CLIENT_TYPE_ERROR(32009, "错误的客户端"),
     PAY_POINT_ENOUGH(32010, "积分不足，不能兑换"),
-    PAY_NOT_EXIST_ORDER(32011, "支付订单不存在"),
+    PAY_NOT_EXIST_ORDER(32011, "支付Order不存在"),
     CAN_NOT_RECHARGE_WALLET(32012, "不能使用余额进行充值"),
     RECHARGE_PRICE_ERROR(32013, "充值金额错误"),
 
     /**
      * 售后
      */
-    AFTER_SALES_NOT_PAY_ERROR(33001, "当前订单未支付，不能申请售后"),
+    AFTER_SALES_NOT_PAY_ERROR(33001, "当前Order未支付，不能申请售后"),
     AFTER_SALES_CANCEL_ERROR(33002, "当前售后单无法取消"),
-    AFTER_SALES_BAN(33003, "订单状态不允许申请售后，请联系平台或商家"),
+    AFTER_SALES_BAN(33003, "Order状态不允许申请售后，请联系平台或商家"),
     AFTER_SALES_DOUBLE_ERROR(33004, "售后已审核，无法重复操作"),
-    AFTER_SALES_LOGISTICS_ERROR(33005, "物流公司错误，请重新选择"),
+    AFTER_SALES_LOGISTICS_ERROR(33005, "logistics公司错误，请重新选择"),
     AFTER_STATUS_ERROR(33006, "售后状态错误，请刷新页面"),
     RETURN_MONEY_OFFLINE_BANK_ERROR(33007, "当账号类型为银行转账时，银行信息不能为空"),
     AFTER_SALES_PRICE_ERROR(33004, "申请退款金额错误"),
@@ -241,25 +241,25 @@ public enum ResultCode {
     /**
      * 投诉
      */
-    COMPLAINT_ORDER_ITEM_EMPTY_ERROR(33100, "订单不存在"),
+    COMPLAINT_ORDER_ITEM_EMPTY_ERROR(33100, "Order不存在"),
     COMPLAINT_SKU_EMPTY_ERROR(33101, "商品已下架，如需投诉请联系平台客服"),
     COMPLAINT_ERROR(33102, "投诉异常，请稍后重试"),
     COMPLAINT_NOT_EXIT(33103, "当前投诉记录不存在"),
-    COMPLAINT_ARBITRATION_RESULT_ERROR(33104, "结束订单投诉时，仲裁结果不能为空"),
+    COMPLAINT_ARBITRATION_RESULT_ERROR(33104, "结束Order投诉时，仲裁结果不能为空"),
     COMPLAINT_APPEAL_CONTENT_ERROR(33105, "商家申诉时，申诉内容不能为空"),
-    COMPLAINT_CANCEL_ERROR(33106, "申诉已完成，不需要进行取消申诉操作"),
+    COMPLAINT_CANCEL_ERROR(33106, "申诉Complete，不需要进行取消申诉操作"),
 
 
     /**
      * 余额
      */
     WALLET_NOT_EXIT_ERROR(34000, "钱包不存在，请联系管理员"),
-    WALLET_INSUFFICIENT(34001, "余额不足以支付订单，请充值!"),
+    WALLET_INSUFFICIENT(34001, "余额不足以支付Order，请充值!"),
     WALLET_WITHDRAWAL_INSUFFICIENT(34002, "可提现金额不足！"),
     WALLET_WITHDRAWAL_FROZEN_AMOUNT_INSUFFICIENT(34006, "冻结金额不足，无法处理提现申请请求！"),
     WALLET_ERROR_INSUFFICIENT(34003, "零钱提现失败！"),
     WALLET_REMARK_ERROR(34004, "请填写审核备注！"),
-    WALLET_EXIT_ERROR(34005, "钱包已存在，无法重复创建"),
+    WALLET_EXIT_ERROR(34005, "钱包已存在，无法重复create"),
     WALLET_APPLY_ERROR(34006, "提现申请异常！"),
     WALLET_APPLY_MIN_PRICE_ERROR(34007, "提现最低提现金额错误!"),
     WALLET_WITHDRAWAL_AMOUNT_ERROR(34008, "申请提现金额异常！"),
@@ -456,7 +456,7 @@ public enum ResultCode {
     ALIPAY_PARAMS_EXCEPTION(70004, "支付宝参数异常"),
     LOGISTICS_NOT_SETTING(70005, "您还未配置快递查询"),
     LOGISTICS_CHECK_SETTING(70005, "操作失败,请检查您的快递鸟配置"),
-    ORDER_SETTING_ERROR(70006, "系统订单配置异常"),
+    ORDER_SETTING_ERROR(70006, "系统Order配置异常"),
     ALI_SMS_SETTING_ERROR(70007, "您还未配置阿里云短信"),
     SMS_SIGN_EXIST_ERROR(70008, "短信签名已存在"),
 

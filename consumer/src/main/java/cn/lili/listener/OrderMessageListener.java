@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * 订单消息
+ * Order消息
  *
  * @author paulG
  * @since 2020/12/9
@@ -33,7 +33,7 @@ public class OrderMessageListener implements RocketMQListener<MessageExt> {
     @Autowired
     private List<TradeEvent> tradeEvent;
     /**
-     * 订单状态
+     * Order状态
      */
     @Autowired
     private List<OrderStatusChangeEvent> orderStatusChangeEvents;
@@ -48,18 +48,18 @@ public class OrderMessageListener implements RocketMQListener<MessageExt> {
         try {
             this.orderStatusEvent(messageExt);
         } catch (Exception e) {
-            log.error("订单状态变更事件调用异常", e);
+            log.error("Order状态变更事件调用异常", e);
         }
     }
 
     /**
-     * 订单状态变更
+     * Order状态变更
      * @param messageExt
      */
     public void orderStatusEvent(MessageExt messageExt) {
 
         switch (OrderTagsEnum.valueOf(messageExt.getTags())) {
-            //订单创建
+            //Ordercreate
             case ORDER_CREATE:
                 String key = new String(messageExt.getBody());
                 TradeDTO tradeDTO = JSONUtil.toBean(cache.getString(key), TradeDTO.class);
@@ -81,14 +81,14 @@ public class OrderMessageListener implements RocketMQListener<MessageExt> {
                     cache.remove(key);
                 }
                 break;
-            //订单状态变更
+            //Order状态变更
             case STATUS_CHANGE:
                 for (OrderStatusChangeEvent orderStatusChangeEvent : orderStatusChangeEvents) {
                     try {
                         OrderMessage orderMessage = JSONUtil.toBean(new String(messageExt.getBody()), OrderMessage.class);
                         orderStatusChangeEvent.orderChange(orderMessage);
                     } catch (Exception e) {
-                        log.error("订单{},在{}业务中，状态修改事件执行异常",
+                        log.error("Order{},在{}业务中，状态修改事件执行异常",
                                 new String(messageExt.getBody()),
                                 orderStatusChangeEvent.getClass().getName(),
                                 e);

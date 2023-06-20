@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * 交易构造&&创建
+ * 交易构造&&create
  *
  * @author Chopper
  * @since2020-04-01 9:47 下午
@@ -81,9 +81,9 @@ public class TradeBuilder {
     }
 
     /**
-     * 创建一笔交易
+     * create一笔交易
      * 1.构造交易
-     * 2.创建交易
+     * 2.create交易
      *
      * @param tradeDTO 交易模型
      * @return 交易信息
@@ -99,7 +99,7 @@ public class TradeBuilder {
             renderCartBySteps(tradeDTO, RenderStepStatement.tradeRender);
         }
 
-        //添加order订单及order_item子订单并返回
+        //添加orderOrder及order_item子Order并返回
         return tradeService.createTrade(tradeDTO);
     }
 

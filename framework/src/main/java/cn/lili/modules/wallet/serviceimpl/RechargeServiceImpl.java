@@ -51,7 +51,7 @@ public class RechargeServiceImpl extends ServiceImpl<RechargeMapper, Recharge> i
         AuthUser authUser = UserContext.getCurrentUser();
         //构建sn
         String sn = "Y" + SnowFlake.getId();
-        //整合充值订单数据
+        //整合充值Order数据
         Recharge recharge = new Recharge(sn, authUser.getId(), authUser.getUsername(), price);
         //添加预存款充值账单
         this.save(recharge);
@@ -65,7 +65,7 @@ public class RechargeServiceImpl extends ServiceImpl<RechargeMapper, Recharge> i
         QueryWrapper<Recharge> queryWrapper = new QueryWrapper<>();
         //会员名称
         queryWrapper.like(!CharSequenceUtil.isEmpty(rechargeQueryVO.getMemberName()), "member_name", rechargeQueryVO.getMemberName());
-        //充值订单号
+        //充值Order号
         queryWrapper.eq(!CharSequenceUtil.isEmpty(rechargeQueryVO.getRechargeSn()), "recharge_sn", rechargeQueryVO.getRechargeSn());
         //会员id
         queryWrapper.eq(!CharSequenceUtil.isEmpty(rechargeQueryVO.getMemberId()), "member_id", rechargeQueryVO.getMemberId());

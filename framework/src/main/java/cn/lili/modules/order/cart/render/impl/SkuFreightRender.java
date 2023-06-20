@@ -49,7 +49,7 @@ public class SkuFreightRender implements CartRenderStep {
         if (memberAddress == null && storeAddress == null) {
             return;
         }
-        //选择物流的时候计算价格
+        //选择logistics的时候计算价格
         if(DeliveryMethodEnum.LOGISTICS.name().equals(tradeDTO.getCartList().get(0).getDeliveryMethod())){
             if (memberAddress != null) {
                 //运费分组信息
@@ -86,7 +86,7 @@ public class SkuFreightRender implements CartRenderStep {
                                 break;
                             }
                         }
-                        //如果没有匹配到物流规则，则说明不支持配送
+                        //如果没有匹配到logistics规则，则说明不支持配送
                         if (freightTemplateChild == null) {
                             if (tradeDTO.getNotSupportFreight() == null) {
                                 tradeDTO.setNotSupportFreight(new ArrayList<>());
@@ -95,7 +95,7 @@ public class SkuFreightRender implements CartRenderStep {
                             continue;
                         }
 
-                        //物流规则模型创立
+                        //logistics规则模型创立
                         FreightTemplateChildDTO freightTemplateChildDTO = new FreightTemplateChildDTO(freightTemplateChild);
                         //模型写入运费模版设置的计费方式
                         freightTemplateChildDTO.setPricingMethod(freightTemplate.getPricingMethod());

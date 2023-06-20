@@ -35,7 +35,7 @@ public class HotWordsHistory extends BaseIdEntity implements Comparable<HotWords
      */
     private Integer score;
 
-    @ApiModelProperty(value = "创建时间")
+    @ApiModelProperty(value = "create时间")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;

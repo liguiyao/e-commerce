@@ -14,18 +14,18 @@ public class StoreIndexStatisticsVO {
 
     @ApiModelProperty(value = "商品总数量")
     private Long goodsNum;
-    @ApiModelProperty(value = "订单总数量")
+    @ApiModelProperty(value = "Order总数量")
     private Integer orderNum;
-    @ApiModelProperty(value = "订单总额")
+    @ApiModelProperty(value = "Order总额")
     private Double orderPrice;
     @ApiModelProperty(value = "访客数UV")
     private Integer storeUV;
 
-    @ApiModelProperty(value = "待付款订单数量")
+    @ApiModelProperty(value = "UnpaidOrder数量")
     private Long unPaidOrder;
-    @ApiModelProperty(value = "待发货订单数量")
+    @ApiModelProperty(value = "待发货Order数量")
     private Long unDeliveredOrder;
-    @ApiModelProperty(value = "待收货订单数量")
+    @ApiModelProperty(value = "待收货Order数量")
     private Long deliveredOrder;
 
     @ApiModelProperty(value = "待处理退货数量")

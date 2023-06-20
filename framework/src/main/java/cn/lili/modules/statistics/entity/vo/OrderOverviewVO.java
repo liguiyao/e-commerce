@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * 订单统计概述
+ * Order统计概述
  *
  * @author Chopper
  * @since 2021-03-03 10:27
@@ -30,7 +30,7 @@ public class OrderOverviewVO {
     /**
      * 付款统计
      */
-    @ApiModelProperty(value = "付款订单数量")
+    @ApiModelProperty(value = "付款Order数量")
     private Long paymentOrderNum;
 
     @ApiModelProperty(value = "付款人数")

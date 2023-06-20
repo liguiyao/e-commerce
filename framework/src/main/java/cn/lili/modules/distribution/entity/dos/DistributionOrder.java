@@ -17,13 +17,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 /**
- * 分销订单
+ * 分销Order
  *
  * @author pikachu
  * @since 2020-03-14 23:04:56
  */
 @Data
-@ApiModel(value = "分销订单")
+@ApiModel(value = "分销Order")
 @TableName("li_distribution_order")
 @NoArgsConstructor
 public class DistributionOrder extends BaseIdEntity {
@@ -34,13 +34,13 @@ public class DistributionOrder extends BaseIdEntity {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建时间", hidden = true)
+    @ApiModelProperty(value = "create时间", hidden = true)
     private Date createTime;
 
     /**
      * @see DistributionOrderStatusEnum
      */
-    @ApiModelProperty(value = "分销订单状态")
+    @ApiModelProperty(value = "分销Order状态")
     private String distributionOrderStatus;
     @ApiModelProperty(value = "购买会员的id")
     private String memberId;
@@ -63,9 +63,9 @@ public class DistributionOrder extends BaseIdEntity {
     private String storeId;
     @ApiModelProperty(value = "店铺名称")
     private String storeName;
-    @ApiModelProperty(value = "订单编号")
+    @ApiModelProperty(value = "Order编号")
     private String orderSn;
-    @ApiModelProperty(value = "子订单编号")
+    @ApiModelProperty(value = "子Order编号")
     private String orderItemSn;
     @ApiModelProperty(value = "商品ID")
     private String goodsId;

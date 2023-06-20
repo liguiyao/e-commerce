@@ -22,7 +22,7 @@ public class PayParam {
     private String orderType;
 
     @NotNull
-    @ApiModelProperty(value = "订单号")
+    @ApiModelProperty(value = "Order号")
     private String sn;
 
     @NotNull

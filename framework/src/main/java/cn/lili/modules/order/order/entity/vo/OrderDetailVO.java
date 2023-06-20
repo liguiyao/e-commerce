@@ -18,7 +18,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 订单详情VO
+ * Order详情VO
  *
  * @author Chopper
  * @since 2020/11/17 7:29 下午
@@ -31,17 +31,17 @@ public class OrderDetailVO implements Serializable {
     private static final long serialVersionUID = -6293102172184734928L;
 
     /**
-     * 订单
+     * Order
      */
     private Order order;
 
     /**
-     * 子订单信息
+     * 子Order信息
      */
     private List<OrderItem> orderItems;
 
     /**
-     * 订单状态
+     * Order状态
      */
     private String orderStatusValue;
 
@@ -51,12 +51,12 @@ public class OrderDetailVO implements Serializable {
     private String payStatusValue;
 
     /**
-     * 物流状态
+     * logistics状态
      */
     private String deliverStatusValue;
 
     /**
-     * 物流类型
+     * logistics类型
      */
     private String deliveryMethodValue;
 
@@ -71,7 +71,7 @@ public class OrderDetailVO implements Serializable {
     private Receipt receipt;
 
     /**
-     * 获取订单日志
+     * 获取Order日志
      */
     private List<OrderLog> orderLogs;
     @ApiModelProperty(value = "价格详情")

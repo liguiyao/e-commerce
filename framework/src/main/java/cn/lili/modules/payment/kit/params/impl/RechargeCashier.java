@@ -49,7 +49,7 @@ public class RechargeCashier implements CashierExecute {
         PayParam payParam = paymentSuccessParams.getPayParam();
         if (payParam.getOrderType().equals(CashierEnum.RECHARGE.name())) {
             rechargeService.paySuccess(payParam.getSn(), paymentSuccessParams.getReceivableNo(),paymentSuccessParams.getPaymentMethod());
-            log.info("会员充值-订单号{},第三方流水：{}", payParam.getSn(), paymentSuccessParams.getReceivableNo());
+            log.info("会员充值-Order号{},第三方流水：{}", payParam.getSn(), paymentSuccessParams.getReceivableNo());
         }
     }
 
@@ -59,10 +59,10 @@ public class RechargeCashier implements CashierExecute {
         if (payParam.getOrderType().equals(CashierEnum.RECHARGE.name())) {
             //准备返回的数据
             CashierParam cashierParam = new CashierParam();
-            //订单信息获取
+            //Order信息获取
             Recharge recharge = rechargeService.getRecharge(payParam.getSn());
 
-            //如果订单已支付，则不能发器支付
+            //如果Order已支付，则不能发器支付
             if (recharge.getPayStatus().equals(PayStatusEnum.PAID.name())) {
                 throw new ServiceException(ResultCode.PAY_DOUBLE_ERROR);
             }

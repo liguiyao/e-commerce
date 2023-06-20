@@ -30,14 +30,14 @@ public class CashierParam {
     @ApiModelProperty(value = "支付详细描述")
     private String detail;
 
-    @ApiModelProperty(value = "订单sn集合")
+    @ApiModelProperty(value = "Ordersn集合")
     private String orderSns;
 
     @ApiModelProperty(value = "支持支付方式")
     private List<String> support;
 
 
-    @ApiModelProperty(value = "订单创建时间")
+    @ApiModelProperty(value = "Ordercreate时间")
     private Date createTime;
 
     @ApiModelProperty(value = "支付自动结束时间")

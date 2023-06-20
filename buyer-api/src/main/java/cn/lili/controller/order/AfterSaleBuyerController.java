@@ -71,7 +71,7 @@ public class AfterSaleBuyerController {
 
     @ApiOperation(value = "获取申请售后页面信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "sn", value = "订单货物编号", required = true, dataType = "String", paramType = "path")
+            @ApiImplicitParam(name = "sn", value = "Order货物编号", required = true, dataType = "String", paramType = "path")
     })
     @GetMapping(value = "/applyAfterSaleInfo/{sn}")
     public ResultMessage<AfterSaleApplyVO> applyAfterSaleInfo(@PathVariable String sn) {
@@ -80,25 +80,25 @@ public class AfterSaleBuyerController {
 
     @PreventDuplicateSubmissions
     @PostMapping(value = "/save/{orderItemSn}")
-    @ApiImplicitParam(name = "orderItemSn", value = "订单货物编号", required = true, paramType = "query")
+    @ApiImplicitParam(name = "orderItemSn", value = "Order货物编号", required = true, paramType = "query")
     @ApiOperation(value = "申请售后")
     public ResultMessage<AfterSale> save(AfterSaleDTO afterSaleDTO) {
         return ResultUtil.data(afterSaleService.saveAfterSale(afterSaleDTO));
 
     }
 
-    @ApiOperation(value = "买家 退回 物流信息")
+    @ApiOperation(value = "买家 退回 logistics信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "afterSaleSn", value = "售后sn", required = true, dataType = "String", paramType = "path"),
             @ApiImplicitParam(name = "logisticsNo", value = "发货单号", required = true, dataType = "String", paramType = "query"),
-            @ApiImplicitParam(name = "logisticsId", value = "物流公司id", required = true, dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "logisticsId", value = "logistics公司id", required = true, dataType = "String", paramType = "query"),
             @ApiImplicitParam(name = "mDeliverTime", value = "买家发货时间", required = true, dataType = "date", paramType = "query")
 
     })
     @PostMapping(value = "/delivery/{afterSaleSn}")
     public ResultMessage<AfterSale> delivery(@NotNull(message = "售后编号不能为空") @PathVariable("afterSaleSn") String afterSaleSn,
                                              @NotNull(message = "发货单号不能为空") @RequestParam String logisticsNo,
-                                             @NotNull(message = "请选择物流公司") @RequestParam String logisticsId,
+                                             @NotNull(message = "请选择logistics公司") @RequestParam String logisticsId,
                                              @NotNull(message = "请选择发货时间") @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date mDeliverTime) {
         return ResultUtil.data(afterSaleService.buyerDelivery(afterSaleSn, logisticsNo, logisticsId, mDeliverTime));
     }

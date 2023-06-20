@@ -15,20 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 管理端,分销订单管理接口
+ * 管理端,分销Order管理接口
  *
  * @author pikachu
  * @since 2020-03-14 23:04:56
  */
 @RestController
-@Api(tags = "管理端,分销订单管理接口")
+@Api(tags = "管理端,分销Order管理接口")
 @RequestMapping("/manager/distribution/order")
 public class DistributionOrderManagerController {
 
     @Autowired
     private DistributionOrderService distributionOrderService;
 
-    @ApiOperation(value = "通过id获取分销订单")
+    @ApiOperation(value = "通过id获取分销Order")
     @GetMapping(value = "/get/{id}")
     public ResultMessage<DistributionOrder> get(@PathVariable String id) {
 
@@ -36,7 +36,7 @@ public class DistributionOrderManagerController {
     }
 
 
-    @ApiOperation(value = "分页获取分销订单")
+    @ApiOperation(value = "分页获取分销Order")
     @GetMapping(value = "/getByPage")
     public ResultMessage<IPage<DistributionOrder>> getByPage(DistributionOrderSearchParams distributionOrderSearchParams) {
 

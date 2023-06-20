@@ -26,9 +26,9 @@ public interface ReceiptService extends IService<Receipt> {
     IPage<OrderReceiptDTO> getReceiptData(ReceiptSearchParams searchParams, PageVO pageVO);
 
     /**
-     * 根据订单编号获取发票信息
+     * 根据Order编号获取发票信息
      *
-     * @param orderSn 订单编号
+     * @param orderSn Order编号
      * @return 发票
      */
     Receipt getByOrderSn(String orderSn);

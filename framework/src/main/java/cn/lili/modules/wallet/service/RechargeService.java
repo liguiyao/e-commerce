@@ -15,7 +15,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface RechargeService extends IService<Recharge> {
 
     /**
-     * 创建充值订单
+     * create充值Order
      *
      * @param price 价格
      * @return 预存款充值记录
@@ -23,7 +23,7 @@ public interface RechargeService extends IService<Recharge> {
     Recharge recharge(Double price);
 
     /**
-     * 查询充值订单列表
+     * 查询充值Order列表
      *
      * @param page            分页数据
      * @param rechargeQueryVO 查询条件
@@ -33,26 +33,26 @@ public interface RechargeService extends IService<Recharge> {
 
 
     /**
-     * 支付成功
+     * Success
      *
-     * @param sn            充值订单编号
+     * @param sn            充值Order编号
      * @param receivableNo  流水no
      * @param paymentMethod 支付方式
      */
     void paySuccess(String sn, String receivableNo, String paymentMethod);
 
     /**
-     * 根据充值订单号查询充值信息
+     * 根据充值Order号查询充值信息
      *
-     * @param sn 充值订单号
+     * @param sn 充值Order号
      * @return
      */
     Recharge getRecharge(String sn);
 
     /**
-     * 充值订单取消
+     * 充值Order取消
      *
-     * @param sn 充值订单sn
+     * @param sn 充值Ordersn
      */
     void rechargeOrderCancel(String sn);
 

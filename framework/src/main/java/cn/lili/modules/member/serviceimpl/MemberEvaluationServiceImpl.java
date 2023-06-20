@@ -63,12 +63,12 @@ public class MemberEvaluationServiceImpl extends ServiceImpl<MemberEvaluationMap
     @Resource
     private MemberEvaluationMapper memberEvaluationMapper;
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
     /**
-     * 子订单
+     * 子Order
      */
     @Autowired
     private OrderItemService orderItemService;
@@ -107,9 +107,9 @@ public class MemberEvaluationServiceImpl extends ServiceImpl<MemberEvaluationMap
     @Override
     @Transactional(rollbackFor = Exception.class)
     public MemberEvaluationDTO addMemberEvaluation(MemberEvaluationDTO memberEvaluationDTO, Boolean isSelf) {
-        //获取子订单信息
+        //获取子Order信息
         OrderItem orderItem = orderItemService.getBySn(memberEvaluationDTO.getOrderItemSn());
-        //获取订单信息
+        //获取Order信息
         Order order = orderService.getBySn(orderItem.getOrderSn());
         //检测是否可以添加会员评价
         Member member;
@@ -135,7 +135,7 @@ public class MemberEvaluationServiceImpl extends ServiceImpl<MemberEvaluationMap
         //添加评价
         this.save(memberEvaluation);
 
-        //修改订单货物评价状态为已评价
+        //修改Order货物评价状态为已评价
         orderItemService.updateCommentStatus(orderItem.getSn(), CommentStatusEnum.FINISHED);
         //发送商品评价消息
         String destination = rocketmqCustomProperties.getGoodsTopic() + ":" + GoodsTagsEnum.GOODS_COMMENT_COMPLETE.name();
@@ -234,17 +234,17 @@ public class MemberEvaluationServiceImpl extends ServiceImpl<MemberEvaluationMap
     /**
      * 检测会员评价
      *
-     * @param orderItem 子订单
-     * @param order     订单
+     * @param orderItem 子Order
+     * @param order     Order
      */
     public void checkMemberEvaluation(OrderItem orderItem, Order order) {
 
-        //根据子订单编号判断是否评价过
+        //根据子Order编号判断是否评价过
         if (orderItem.getCommentStatus().equals(CommentStatusEnum.FINISHED.name())) {
             throw new ServiceException(ResultCode.EVALUATION_DOUBLE_ERROR);
         }
 
-        //判断是否是当前会员的订单
+        //判断是否是当前会员的Order
         if (UserContext.getCurrentUser() != null && !order.getMemberId().equals(UserContext.getCurrentUser().getId())) {
             throw new ServiceException(ResultCode.ORDER_NOT_USER);
         }

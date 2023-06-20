@@ -255,7 +255,7 @@ public class PlatformViewServiceImpl extends ServiceImpl<PlatformViewMapper, Pla
     }
 
     /**
-     * 根据查询条件，创建数据
+     * 根据查询条件，create数据
      *
      * @param startDate
      * @param endDate

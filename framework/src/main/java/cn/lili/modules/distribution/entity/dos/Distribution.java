@@ -61,7 +61,7 @@ public class Distribution extends BaseEntity {
     @ApiModelProperty(value = "冻结金额")
     private Double commissionFrozen = 0D;
 
-    @ApiModelProperty(value = "分销订单数")
+    @ApiModelProperty(value = "分销Order数")
     private Integer distributionOrderCount;
 
     /**

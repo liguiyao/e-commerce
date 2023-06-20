@@ -38,7 +38,7 @@ public class WechatMessage extends BaseEntity {
     /**
      * @see OrderStatusEnum
      */
-    @ApiModelProperty("订单状态")
+    @ApiModelProperty("Order状态")
     private String orderStatus;
 
     @ApiModelProperty(value = "模版头部信息")

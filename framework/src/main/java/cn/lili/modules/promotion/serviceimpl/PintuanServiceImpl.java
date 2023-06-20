@@ -62,7 +62,7 @@ public class PintuanServiceImpl extends AbstractPromotionsServiceImpl<PintuanMap
     @Autowired
     private MemberService memberService;
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
@@ -100,7 +100,7 @@ public class PintuanServiceImpl extends AbstractPromotionsServiceImpl<PintuanMap
         searchParams.setParentOrderSn("");
         searchParams.setMemberId("");
         List<Order> orders = orderService.queryListByParams(searchParams);
-        //遍历订单状态为已支付，为团长的拼团订单
+        //遍历Order状态为已支付，为团长的拼团Order
         for (Order order : orders) {
             Member member = memberService.getById(order.getMemberId());
             PintuanMemberVO memberVO = new PintuanMemberVO(member);
@@ -135,7 +135,7 @@ public class PintuanServiceImpl extends AbstractPromotionsServiceImpl<PintuanMap
     /**
      * 获取拼团分享信息
      *
-     * @param parentOrderSn 拼团团长订单sn
+     * @param parentOrderSn 拼团团长Ordersn
      * @param skuId         商品skuId
      * @return 拼团分享信息
      */
@@ -143,10 +143,10 @@ public class PintuanServiceImpl extends AbstractPromotionsServiceImpl<PintuanMap
     public PintuanShareVO getPintuanShareInfo(String parentOrderSn, String skuId) {
         PintuanShareVO pintuanShareVO = new PintuanShareVO();
         pintuanShareVO.setPintuanMemberVOS(new ArrayList<>());
-        //查找团长订单和已和当前拼团订单拼团的订单
+        //查找团长Order和已和当前拼团Order拼团的Order
         List<Order> orders = orderService.queryListByPromotion(PromotionTypeEnum.PINTUAN.name(), PayStatusEnum.PAID.name(), parentOrderSn, parentOrderSn);
         this.setPintuanOrderInfo(orders, pintuanShareVO, skuId);
-        //如果为根据团员订单sn查询拼团订单信息时，找到团长订单sn，然后找到所有参与到同一拼团的订单信息
+        //如果为根据团员Ordersn查询拼团Order信息时，找到团长Ordersn，然后找到所有参与到同一拼团的Order信息
         if (!orders.isEmpty() && pintuanShareVO.getPromotionGoods() == null) {
             List<Order> parentOrders = orderService.queryListByPromotion(PromotionTypeEnum.PINTUAN.name(), PayStatusEnum.PAID.name(), orders.get(0).getParentOrderSn(), orders.get(0).getParentOrderSn());
             this.setPintuanOrderInfo(parentOrders, pintuanShareVO, skuId);
@@ -177,7 +177,7 @@ public class PintuanServiceImpl extends AbstractPromotionsServiceImpl<PintuanMap
             this.timeTrigger.addDelay(timeTriggerMsg);
         }
         if (promotions.getEndTime() == null && promotions.getStartTime() == null) {
-            //过滤父级拼团订单，根据父级拼团订单分组
+            //过滤父级拼团Order，根据父级拼团Order分组
             this.orderService.checkFictitiousOrder(promotions.getId(), promotions.getRequiredNum(), promotions.getFictitious());
         }
         return result;
@@ -205,9 +205,9 @@ public class PintuanServiceImpl extends AbstractPromotionsServiceImpl<PintuanMap
     }
 
     /**
-     * 根据订单信息，从中提取出拼团信息，设置拼团信息
+     * 根据Order信息，从中提取出拼团信息，设置拼团信息
      *
-     * @param orders         订单列表
+     * @param orders         Order列表
      * @param pintuanShareVO 拼团信息
      * @param skuId          商品skuId（用于获取拼团商品信息）
      */

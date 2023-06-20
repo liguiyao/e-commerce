@@ -7,7 +7,7 @@ import lombok.Getter;
 public enum QRCodeLoginSessionStatusEnum {
 
     /**
-     * 二维码创建完毕，等待app端扫码
+     * 二维码create完毕，等待app端扫码
      */
     WAIT_SCANNING(0,"等待扫码"),
 

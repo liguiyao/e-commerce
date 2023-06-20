@@ -40,7 +40,7 @@ public class TradeCashier implements CashierExecute {
     @Autowired
     private TradeService tradeService;
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
@@ -61,7 +61,7 @@ public class TradeCashier implements CashierExecute {
         if (payParam.getOrderType().equals(CashierEnum.TRADE.name())) {
             //准备返回的数据
             CashierParam cashierParam = new CashierParam();
-            //订单信息获取
+            //Order信息获取
             Trade trade = tradeService.getBySn(payParam.getSn());
 
             List<Order> orders = orderService.getByTradeSn(payParam.getSn());
@@ -71,11 +71,11 @@ public class TradeCashier implements CashierExecute {
             cashierParam.setOrderSns(orderSns);
 
             for (Order order : orders) {
-                //如果订单已支付，则不能发器支付
+                //如果Order已支付，则不能发器支付
                 if (order.getPayStatus().equals(PayStatusEnum.PAID.name())) {
                     throw new ServiceException(ResultCode.PAY_PARTIAL_ERROR);
                 }
-                //如果订单状态不是待付款，则抛出异常
+                //如果Order状态不是Unpaid，则抛出异常
                 if (!order.getOrderStatus().equals(OrderStatusEnum.UNPAID.name())) {
                     throw new ServiceException(ResultCode.PAY_BAN);
                 }
@@ -107,7 +107,7 @@ public class TradeCashier implements CashierExecute {
             tradeService.payTrade(paymentSuccessParams.getPayParam().getSn(),
                     paymentSuccessParams.getPaymentMethod(),
                     paymentSuccessParams.getReceivableNo());
-            log.info("交易{}支付成功,方式{},流水号{},", paymentSuccessParams.getPayParam().getSn(),
+            log.info("交易{}Success,方式{},流水号{},", paymentSuccessParams.getPayParam().getSn(),
                     paymentSuccessParams.getPaymentMethod(),
                     paymentSuccessParams.getReceivableNo());
         }

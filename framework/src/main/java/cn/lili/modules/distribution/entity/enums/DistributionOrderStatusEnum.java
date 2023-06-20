@@ -1,7 +1,7 @@
 package cn.lili.modules.distribution.entity.enums;
 
 /**
- * 分销员订单状态
+ * 分销员Order状态
  *
  * @author pikachu
  */
@@ -14,9 +14,9 @@ public enum DistributionOrderStatusEnum {
     WAIT_CASH("待提现"),
     //已提现
     COMPLETE_CASH("提现完成"),
-    //订单取消
-    CANCEL("订单取消"),
-    //订单取消
+    //Order取消
+    CANCEL("Order取消"),
+    //Order取消
     REFUND("退款");
 
     private final String description;

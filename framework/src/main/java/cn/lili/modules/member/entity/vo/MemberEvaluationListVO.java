@@ -37,12 +37,12 @@ public class MemberEvaluationListVO {
     @ApiModelProperty(value = "回复状态")
     private Boolean replyStatus;
 
-    @ApiModelProperty(value = "创建时间")
+    @ApiModelProperty(value = "create时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
-    @ApiModelProperty(value = "物流评分")
+    @ApiModelProperty(value = "logistics评分")
     private Integer deliveryScore;
 
     @ApiModelProperty(value = "服务评分")

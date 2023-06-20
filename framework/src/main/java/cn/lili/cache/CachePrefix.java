@@ -301,15 +301,15 @@ public enum CachePrefix {
     TRADE_SN_CACHE_PREFIX,
 
     /**
-     * 订单编号前缀
+     * Order编号前缀
      */
     ORDER_SN_CACHE_PREFIX,
     /**
-     * 订单编号标记
+     * Order编号标记
      */
     ORDER_SN_SIGN_CACHE_PREFIX,
     /**
-     * 订单编号前缀
+     * Order编号前缀
      */
     PAY_LOG_SN_CACHE_PREFIX,
 
@@ -505,7 +505,7 @@ public enum CachePrefix {
      */
     STORE_USER_MENU,
     /**
-     * 订单暂时缓存
+     * Order暂时缓存
      */
     ORDER,
     /**

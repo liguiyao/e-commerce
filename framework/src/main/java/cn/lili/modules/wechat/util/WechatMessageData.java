@@ -43,7 +43,7 @@ public class WechatMessageData {
 
 
     /**
-     * 创建data数据
+     * createdata数据
      *
      * @return
      */
@@ -66,7 +66,7 @@ public class WechatMessageData {
 
 
     /**
-     * 创建data数据
+     * createdata数据
      *
      * @return
      */
@@ -81,7 +81,7 @@ public class WechatMessageData {
     }
 
     /**
-     * 创建统一格式的map
+     * create统一格式的map
      *
      * @param msg
      * @return

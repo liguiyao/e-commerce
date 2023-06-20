@@ -37,17 +37,17 @@ public class Recharge extends BaseIdEntity {
 
     @CreatedBy
     @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建者", hidden = true)
+    @ApiModelProperty(value = "create者", hidden = true)
     private String createBy;
 
     @CreatedDate
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建时间", hidden = true)
+    @ApiModelProperty(value = "create时间", hidden = true)
     private Date createTime;
 
-    @ApiModelProperty(value = "充值订单编号")
+    @ApiModelProperty(value = "充值Order编号")
     private String rechargeSn;
 
     @ApiModelProperty(value = "会员id")
@@ -83,7 +83,7 @@ public class Recharge extends BaseIdEntity {
     /**
      * 构建充值账单信息
      *
-     * @param rechargeSn 充值订单号
+     * @param rechargeSn 充值Order号
      * @param memberId   会员id
      * @param memberName 会员名称
      * @param money      充值金额

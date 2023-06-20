@@ -76,7 +76,7 @@ public class WechatMessageUtil {
 
         Order order = orderService.getBySn(sn);
         if (order == null) {
-            throw new ServiceException("订单" + sn + "不存在，发送微信公众号消息错误");
+            throw new ServiceException("Order" + sn + "不存在，发送微信公众号消息错误");
         }
         if (ClientTypeEnum.H5.name().equals(order.getClientType())) {
             //获取微信消息
@@ -139,7 +139,7 @@ public class WechatMessageUtil {
         log.info("发送消息订阅");
         Order order = orderService.getBySn(sn);
         if (order == null) {
-            throw new ServiceException("订单" + sn + "不存在，发送订阅消息错误");
+            throw new ServiceException("Order" + sn + "不存在，发送订阅消息错误");
         }
         if (ClientTypeEnum.WECHAT_MP.name().equals(order.getClientType())) {
 

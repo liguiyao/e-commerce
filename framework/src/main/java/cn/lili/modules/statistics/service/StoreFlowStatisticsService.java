@@ -54,12 +54,12 @@ public interface StoreFlowStatisticsService extends IService<StoreFlow> {
     /**
      * 查询今日付款统计
      *
-     * @return 订单统计金额
+     * @return Order统计金额
      */
     Map<String, Object> getOrderStatisticsPrice();
 
     /**
-     * 订单统计，数据概览
+     * Order统计，数据概览
      *
      * @param dates
      * @param orderOverviewVO

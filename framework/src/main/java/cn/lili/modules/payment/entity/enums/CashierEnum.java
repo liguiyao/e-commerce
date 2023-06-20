@@ -1,7 +1,7 @@
 package cn.lili.modules.payment.entity.enums;
 
 /**
- * 订单类型
+ * Order类型
  *
  * @author Chopper
  * @since 2020-12-19 11:50
@@ -9,7 +9,7 @@ package cn.lili.modules.payment.entity.enums;
 public enum CashierEnum {
 
     /**
-     * 订单
+     * Order
      */
     ORDER,
     /**

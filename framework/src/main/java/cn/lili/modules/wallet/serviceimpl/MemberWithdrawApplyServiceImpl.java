@@ -93,11 +93,11 @@ public class MemberWithdrawApplyServiceImpl extends ServiceImpl<MemberWithdrawAp
         QueryWrapper<MemberWithdrawApply> queryWrapper = new QueryWrapper<>();
         //会员名称
         queryWrapper.like(!StringUtils.isEmpty(memberWithdrawApplyQueryVO.getMemberName()), "member_name", memberWithdrawApplyQueryVO.getMemberName());
-        //充值订单号
+        //充值Order号
         queryWrapper.eq(!StringUtils.isEmpty(memberWithdrawApplyQueryVO.getSn()), "sn", memberWithdrawApplyQueryVO.getSn());
         //会员id
         queryWrapper.eq(!StringUtils.isEmpty(memberWithdrawApplyQueryVO.getMemberId()), "member_id", memberWithdrawApplyQueryVO.getMemberId());
-        //已付款的充值订单
+        //已付款的充值Order
         queryWrapper.eq(!StringUtils.isEmpty(memberWithdrawApplyQueryVO.getApplyStatus()), "apply_status", memberWithdrawApplyQueryVO.getApplyStatus());
         //开始时间和结束时间
         if (!StringUtils.isEmpty(memberWithdrawApplyQueryVO.getStartDate()) && !StringUtils.isEmpty(memberWithdrawApplyQueryVO.getEndDate())) {

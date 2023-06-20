@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * 买家端,物流公司接口
+ * 买家端,logistics公司接口
  *
  * @author Bulbasaur
  * @since 2020-05-5 15:10:16
  */
 @RestController
-@Api(tags = "买家端,物流公司接口")
+@Api(tags = "买家端,logistics公司接口")
 @RequestMapping("/buyer/other/logistics")
 public class LogisticsBuyerController {
 
@@ -28,7 +28,7 @@ public class LogisticsBuyerController {
     private LogisticsService logisticsService;
 
 
-    @ApiOperation(value = "分页获取物流公司")
+    @ApiOperation(value = "分页获取logistics公司")
     @GetMapping
     public ResultMessage<List<Logistics>> getByPage() {
         return ResultUtil.data(logisticsService.getOpenLogistics());

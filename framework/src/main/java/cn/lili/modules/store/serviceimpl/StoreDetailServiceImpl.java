@@ -105,7 +105,7 @@ public class StoreDetailServiceImpl extends ServiceImpl<StoreDetailMapper, Store
             this.removeCache(store.getId());
         }
         String destination = rocketmqCustomProperties.getStoreTopic() + ":" + StoreTagsEnum.EDIT_STORE_SETTING.name();
-        //发送订单变更mq消息
+        //发送Order变更mq消息
         rocketMQTemplate.asyncSend(destination, store, RocketmqSendCallbackBuilder.commonCallback());
         return result;
     }

@@ -155,7 +155,7 @@ public class HttpUtils {
 
         BufferedReader reader = null;
         try {
-            //创建连接
+            //create连接
             URL url = new URL(reqUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoOutput(true);
@@ -202,7 +202,7 @@ public class HttpUtils {
 
         BufferedReader reader = null;
         try {
-            //创建连接
+            //create连接
             URL url = new URL(reqUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoOutput(true);

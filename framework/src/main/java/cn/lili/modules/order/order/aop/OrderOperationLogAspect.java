@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 订单操作日志
+ * Order操作日志
  *
  * @author Chopper
  * @since 2020/11/17 7:22 下午
@@ -49,7 +49,7 @@ public class OrderOperationLogAspect {
             //调用线程保存
             ThreadPoolUtil.getPool().execute(new SaveOrderLogThread(orderLog, orderLogService));
         } catch (Exception e) {
-            log.error("订单日志错误",e);
+            log.error("Order日志错误",e);
         }
     }
 

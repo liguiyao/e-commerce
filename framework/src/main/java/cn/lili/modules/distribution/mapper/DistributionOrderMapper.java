@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Update;
 
 /**
- * 分销订单数据处理层
+ * 分销Order数据处理层
  *
  * @author pikachu
  * @since 2020-03-15 10:45:56
@@ -16,7 +16,7 @@ public interface DistributionOrderMapper extends BaseMapper<DistributionOrder> {
     /**
      * 修改分销员提现金额
      *
-     * @param distributionOrderStatus 分销订单状态
+     * @param distributionOrderStatus 分销Order状态
      * @param settleCycle             时间
      */
     @Update("UPDATE li_distribution AS d " +

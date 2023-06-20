@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 充值订单自动取消（每分钟执行）
+ * 充值Order自动取消（每分钟执行）
  *
  * @author zhuhai
  * @since 2021/3/11
@@ -45,11 +45,11 @@ public class RechargeOrderTaskExecute implements EveryMinuteExecute {
         Setting setting = settingService.get(SettingEnum.ORDER_SETTING.name());
         OrderSetting orderSetting = JSONUtil.toBean(setting.getSettingValue(), OrderSetting.class);
         if (orderSetting != null && orderSetting.getAutoCancel() != null) {
-            //充值订单自动取消时间 = 当前时间 - 自动取消时间分钟数
+            //充值Order自动取消时间 = 当前时间 - 自动取消时间分钟数
             DateTime cancelTime = DateUtil.offsetMinute(DateUtil.date(), -orderSetting.getAutoCancel());
             LambdaQueryWrapper<Recharge> queryWrapper = new LambdaQueryWrapper<>();
             queryWrapper.eq(Recharge::getPayStatus, PayStatusEnum.UNPAID.name());
-            //充值订单创建时间 <= 订单自动取消时间
+            //充值Ordercreate时间 <= Order自动取消时间
             queryWrapper.le(Recharge::getCreateTime, cancelTime);
             List<Recharge> list = rechargeService.list(queryWrapper);
             List<String> cancelSnList = list.stream().map(Recharge::getRechargeSn).collect(Collectors.toList());

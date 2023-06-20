@@ -32,7 +32,7 @@ public class WechatLivePlayerUtil {
     private WechatMediaUtil wechatMediaUtil;
 
     /**
-     * 创建小程序直播间
+     * create小程序直播间
      *
      * @param studio 小程序直播
      * @return 房间ID
@@ -50,7 +50,7 @@ public class WechatLivePlayerUtil {
     }
 
     /**
-     * 创建小程序直播间
+     * create小程序直播间
      *
      * @param studio 小程序直播
      * @return 房间ID

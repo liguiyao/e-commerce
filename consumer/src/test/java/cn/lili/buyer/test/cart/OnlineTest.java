@@ -12,7 +12,7 @@ import java.util.Calendar;
 import java.util.Random;
 
 /**
- * 订单库存扣减
+ * Order库存扣减
  */
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -21,13 +21,13 @@ class OnlineTest {
     @Autowired
     private OnlineMemberStatistics onlineMemberStatistics;
 
-    //订单支付，库存扣减单元测试
+    //Order支付，库存扣减单元测试
     @Test
     void everyHour() {
         onlineMemberStatistics.execute();
     }
 
-    //订单支付，库存扣减单元测试
+    //Order支付，库存扣减单元测试
     @Test
     void customSetting() {
         Calendar calendar = Calendar.getInstance();

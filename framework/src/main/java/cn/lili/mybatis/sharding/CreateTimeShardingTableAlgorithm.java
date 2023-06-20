@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * 按创建时间月份分表
+ * 按create时间月份分表
  *
  * @author Chopper
  */

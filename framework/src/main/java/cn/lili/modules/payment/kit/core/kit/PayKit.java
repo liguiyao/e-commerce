@@ -285,7 +285,7 @@ public class PayKit {
     }
 
     /**
-     * v3 接口创建签名
+     * v3 接口create签名
      *
      * @param signMessage 待签名的参数
      * @param keyPath     key.pem 证书路径
@@ -297,7 +297,7 @@ public class PayKit {
     }
 
     /**
-     * v3 接口创建签名
+     * v3 接口create签名
      *
      * @param signMessage 待签名的参数
      * @param privateKey  商户私钥
@@ -310,7 +310,7 @@ public class PayKit {
 
 
     /**
-     * v3 接口创建签名
+     * v3 接口create签名
      *
      * @param signMessage 待签名的参数
      * @param keyPath     key.pem 证书路径
@@ -328,7 +328,7 @@ public class PayKit {
     }
 
     /**
-     * v3 接口创建签名
+     * v3 接口create签名
      *
      * @param signMessage 待签名的参数
      * @param privateKey  商户私钥

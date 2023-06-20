@@ -41,7 +41,7 @@ public class NoticeMessageExecute implements TradeEvent, OrderStatusChangeEvent,
 
     @Override
     public void orderCreate(TradeDTO tradeDTO) {
-        //订单创建发送订单创建站内信息
+        //Ordercreate发送Ordercreate站内信息
         NoticeMessageDTO noticeMessageDTO = new NoticeMessageDTO();
         noticeMessageDTO.setMemberId(tradeDTO.getMemberId());
         noticeMessageDTO.setNoticeMessageNodeEnum(NoticeMessageNodeEnum.ORDER_CREATE_SUCCESS);
@@ -54,34 +54,34 @@ public class NoticeMessageExecute implements TradeEvent, OrderStatusChangeEvent,
 
     @Override
     public void orderChange(OrderMessage orderMessage) {
-        //查询订单信息
+        //查询Order信息
         OrderDetailVO orderDetailVO = orderService.queryDetail(orderMessage.getOrderSn());
         NoticeMessageDTO noticeMessageDTO = new NoticeMessageDTO();
-        //如果订单状态不为空
+        //如果Order状态不为空
         if (orderDetailVO != null) {
             Map<String, String> params = new HashMap<>(2);
             switch (orderMessage.getNewStatus()) {
-                //如果订单新的状态为已取消 则发送取消订单站内信
+                //如果Order新的状态为Cancelled 则发送取消Order站内信
                 case CANCELLED:
                     params.put(NoticeMessageParameterEnum.CANCEL_REASON.getType(), orderDetailVO.getOrder().getCancelReason());
                     noticeMessageDTO.setNoticeMessageNodeEnum(NoticeMessageNodeEnum.ORDER_CANCEL_SUCCESS);
                     break;
-                //如果订单新的状态为已经支付，则发送支付成功站内信
+                //如果Order新的状态为已经支付，则发送Success站内信
                 case PAID:
                     noticeMessageDTO.setNoticeMessageNodeEnum(NoticeMessageNodeEnum.ORDER_PAY_SUCCESS);
                     break;
-                //如果订单新的状态为已发货，则发送已发货站内信
+                //如果Order新的状态为已发货，则发送已发货站内信
                 case DELIVERED:
                     noticeMessageDTO.setNoticeMessageNodeEnum(NoticeMessageNodeEnum.ORDER_DELIVER);
                     break;
-                //如果订单新的状态为已完成，则发送已完成站内信
+                //如果Order新的状态为Complete，则发送Complete站内信
                 case COMPLETED:
-                    //订单完成消息
+                    //Order完成消息
                     noticeMessageDTO.setNoticeMessageNodeEnum(NoticeMessageNodeEnum.ORDER_COMPLETE);
-                    //订单完成也可以进行评价，所以要有评价消息
+                    //Order完成也可以进行评价，所以要有评价消息
                     noticeMessageDTO.setNoticeMessageNodeEnum(NoticeMessageNodeEnum.ORDER_EVALUATION);
                     break;
-                //如果是拼团订单，发送拼团成功消息
+                //如果是拼团Order，发送拼团成功消息
                 case UNDELIVERED:
                     if (OrderPromotionTypeEnum.PINTUAN.name().equals(orderDetailVO.getOrder().getOrderPromotionType())) {
                         //拼团成功消息

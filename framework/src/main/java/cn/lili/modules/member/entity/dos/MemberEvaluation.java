@@ -68,7 +68,7 @@ public class MemberEvaluation extends BaseEntity {
     private String goodsImage;
 
     @NotNull
-    @ApiModelProperty(value = "订单号")
+    @ApiModelProperty(value = "Order号")
     private String orderNo;
 
     @NotNull
@@ -101,7 +101,7 @@ public class MemberEvaluation extends BaseEntity {
     @ApiModelProperty(value = "回复状态")
     private boolean replyStatus;
 
-    @ApiModelProperty(value = "物流评分")
+    @ApiModelProperty(value = "logistics评分")
     private Integer deliveryScore;
 
     @ApiModelProperty(value = "服务评分")
@@ -128,7 +128,7 @@ public class MemberEvaluation extends BaseEntity {
         this.storeId = order.getStoreId();
         //设置店铺名称
         this.storeName = order.getStoreName();
-        //设置订单编号
+        //设置Order编号
         this.orderNo = order.getSn();
         //是否包含图片
         this.haveImage = CharSequenceUtil.isNotEmpty(memberEvaluationDTO.getImages());

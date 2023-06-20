@@ -120,7 +120,7 @@ public class ShunfengPlugin implements LogisticsPlugin {
     /**
      * 文档地址：https://open.sf-express.com/Api/ApiDetails?apiServiceCode=EXP_RECE_SEARCH_ROUTES&category=1&apiClassify=1&interName=%E8%B7%AF%E7%94%B1%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3-EXP_RECE_SEARCH_ROUTES
      *
-     * @param logistics 物流公司
+     * @param logistics logistics公司
      * @param expNo
      * @param phone
      * @return
@@ -133,7 +133,7 @@ public class ShunfengPlugin implements LogisticsPlugin {
             /**
              * 查询号类别:
              * 1:根据顺丰运单号查询,trackingNumber将被当作顺丰运单号处理
-             * 2:根据客户订单号查询,trackingNumber将被当作客户订单号处理
+             * 2:根据客户Order号查询,trackingNumber将被当作客户Order号处理
              */
             msgDataMap.put("trackingType", 1);
             List<String> trackingNumber = new ArrayList<>();

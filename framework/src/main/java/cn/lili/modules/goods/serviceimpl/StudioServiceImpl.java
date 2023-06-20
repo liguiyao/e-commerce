@@ -71,7 +71,7 @@ public class StudioServiceImpl extends ServiceImpl<StudioMapper, Studio> impleme
     @Transactional(rollbackFor = Exception.class)
     public Boolean create(Studio studio) {
         studio.setStoreId(Objects.requireNonNull(UserContext.getCurrentUser()).getStoreId());
-        //创建小程序直播
+        //create小程序直播
         Map<String, String> roomMap = wechatLivePlayerUtil.create(studio);
         studio.setRoomId(Convert.toInt(roomMap.get("roomId")));
         studio.setQrCodeUrl(roomMap.get("qrcodeUrl"));

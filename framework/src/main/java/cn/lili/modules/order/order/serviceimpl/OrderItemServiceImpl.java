@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * 子订单业务层实现
+ * 子Order业务层实现
  *
  * @author Chopper
  * @since 2020/11/17 7:38 下午
@@ -42,11 +42,11 @@ public class OrderItemServiceImpl extends ServiceImpl<OrderItemMapper, OrderItem
     }
 
     /**
-     * 更新订单可投诉状态
+     * 更新Order可投诉状态
      *
-     * @param orderSn            订单sn
+     * @param orderSn            Ordersn
      * @param skuId              商品skuId
-     * @param complainId         订单交易投诉ID
+     * @param complainId         Order交易投诉ID
      * @param complainStatusEnum 修改状态
      */
     @Override

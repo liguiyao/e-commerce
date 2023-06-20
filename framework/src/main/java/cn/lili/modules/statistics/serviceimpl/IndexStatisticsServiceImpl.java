@@ -38,7 +38,7 @@ import java.util.Objects;
 public class IndexStatisticsServiceImpl implements IndexStatisticsService {
 
     /**
-     * 订单统计
+     * Order统计
      */
     @Autowired
     private OrderStatisticsService orderStatisticsService;
@@ -123,7 +123,7 @@ public class IndexStatisticsServiceImpl implements IndexStatisticsService {
         //首页统计内容
         IndexStatisticsVO indexStatisticsVO = new IndexStatisticsVO();
 
-        //获取总订单数量
+        //获取总Order数量
         indexStatisticsVO.setOrderNum(orderStatisticsService.orderNum(null));
         //获取总会员数量
         indexStatisticsVO.setMemberNum(memberStatisticsService.getMemberCount());
@@ -182,7 +182,7 @@ public class IndexStatisticsServiceImpl implements IndexStatisticsService {
 
         //商品总数量
         storeIndexStatisticsVO.setGoodsNum(goodsStatisticsService.goodsNum(GoodsStatusEnum.UPPER, null));
-        //订单总数量、订单总金额
+        //Order总数量、Order总金额
         Map<String, Object> map = storeFlowStatisticsService.getOrderStatisticsPrice();
         storeIndexStatisticsVO.setOrderNum(Convert.toInt(map.get("num").toString()));
         storeIndexStatisticsVO.setOrderPrice(map.get("price") != null ? Double.parseDouble(map.get("price").toString()) : 0.0);
@@ -194,11 +194,11 @@ public class IndexStatisticsServiceImpl implements IndexStatisticsService {
         PlatformViewVO platformViewVO = platformViewService.list(queryParam).get(0);
         storeIndexStatisticsVO.setStoreUV(platformViewVO.getUvNum().intValue());
 
-        //待付款订单数量
+        //UnpaidOrder数量
         storeIndexStatisticsVO.setUnPaidOrder(orderStatisticsService.orderNum(OrderStatusEnum.UNPAID.name()));
-        //待发货订单数量
+        //待发货Order数量
         storeIndexStatisticsVO.setUnDeliveredOrder(orderStatisticsService.orderNum(OrderStatusEnum.UNDELIVERED.name()));
-        //待收货订单数量
+        //待收货Order数量
         storeIndexStatisticsVO.setDeliveredOrder(orderStatisticsService.orderNum(OrderStatusEnum.DELIVERED.name()));
         //待自提数量
         storeIndexStatisticsVO.setSelfPickNum(orderStatisticsService.orderNum(OrderStatusEnum.STAY_PICKED_UP.name()));
@@ -265,9 +265,9 @@ public class IndexStatisticsServiceImpl implements IndexStatisticsService {
     }
 
     /**
-     * 获取当月订单查询条件
+     * 获取当月Order查询条件
      *
-     * @return 当月订单查询参数
+     * @return 当月Order查询参数
      */
     private GoodsStatisticsQueryParam getGoodsStatisticsQueryParam() {
         GoodsStatisticsQueryParam goodsStatisticsQueryParam = new GoodsStatisticsQueryParam();

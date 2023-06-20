@@ -240,7 +240,7 @@ public class CouponRender implements CartRenderStep {
 
         //接收具体优惠券信息
         MemberCoupon coupon = memberCouponDTO.getMemberCoupon();
-        //处理一个极端情况，如果优惠券满减金额大于订单金额
+        //处理一个极端情况，如果优惠券满减金额大于Order金额
         if (coupon.getCouponType().equals(CouponTypeEnum.PRICE.name()) && coupon.getPrice() > countPrice) {
             //将符合优惠券的金额写入，即最大扣减金额
             coupon.setPrice(countPrice);

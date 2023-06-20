@@ -93,14 +93,14 @@ public abstract class BaseElasticsearchService {
                     .put("index.max_result_window", 100000) //最大查询结果数
                     .put("index.mapping.total_fields.limit", 2000));
 
-            //创建索引
+            //create索引
             CreateIndexResponse createIndexResponse = client.indices().create(request, COMMON_OPTIONS);
             createMapping(index);
             log.info(" whether all of the nodes have acknowledged the request : {}", createIndexResponse.isAcknowledged());
             log.info(" Indicates whether the requisite number of shard copies were started for each shard in the index before timing out :{}", createIndexResponse.isShardsAcknowledged());
         } catch (Exception e) {
-            log.error("创建索引错误", e);
-            throw new ElasticsearchException("创建索引 {" + index + "} 失败：" + e.getMessage());
+            log.error("create索引错误", e);
+            throw new ElasticsearchException("create索引 {" + index + "} 失败：" + e.getMessage());
         }
     }
 
@@ -349,13 +349,13 @@ public abstract class BaseElasticsearchService {
                     @Override
                     public void onResponse(AcknowledgedResponse r) {
                         latch.countDown();
-                        log.info("创建索引mapping成功：{}", r);
+                        log.info("create索引mapping成功：{}", r);
                     }
 
                     @Override
                     public void onFailure(Exception e) {
                         latch.countDown();
-                        log.error("创建索引mapping失败", e);
+                        log.error("create索引mapping失败", e);
                     }
                 });
         latch.await(10, TimeUnit.SECONDS);

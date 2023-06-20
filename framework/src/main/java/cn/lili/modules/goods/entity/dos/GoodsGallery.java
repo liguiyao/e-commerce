@@ -23,7 +23,7 @@ public class GoodsGallery extends BaseIdEntity {
 
     @CreatedBy
     @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建者", hidden = true)
+    @ApiModelProperty(value = "create者", hidden = true)
     private String createBy;
 
     /**

@@ -35,7 +35,7 @@ public interface PintuanService extends AbstractPromotionsService<Pintuan> {
     /**
      * 获取拼团分享信息
      *
-     * @param parentOrderSn 拼团团长订单sn
+     * @param parentOrderSn 拼团团长Ordersn
      * @param skuId         商品skuId
      * @return 拼团分享信息
      */

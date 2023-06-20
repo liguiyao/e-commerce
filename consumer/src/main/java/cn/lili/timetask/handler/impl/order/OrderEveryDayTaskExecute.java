@@ -44,12 +44,12 @@ import java.util.stream.Collectors;
 public class OrderEveryDayTaskExecute implements EveryDayExecute {
 
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
     /**
-     * 订单货物
+     * Order货物
      */
     @Autowired
     private OrderItemService orderItemService;
@@ -76,7 +76,7 @@ public class OrderEveryDayTaskExecute implements EveryDayExecute {
     public void execute() {
 
         Setting setting = settingService.get(SettingEnum.ORDER_SETTING.name());
-        //订单设置
+        //Order设置
         OrderSetting orderSetting = JSONUtil.toBean(setting.getSettingValue(), OrderSetting.class);
         if (orderSetting == null) {
             throw new ServiceException(ResultCode.ORDER_SETTING_ERROR);
@@ -109,24 +109,24 @@ public class OrderEveryDayTaskExecute implements EveryDayExecute {
     }
 
     /**
-     * 自动确认收获，订单完成
+     * 自动确认收获，Order完成
      *
-     * @param orderSetting 订单设置
+     * @param orderSetting Order设置
      */
     private void completedOrder(OrderSetting orderSetting) {
 
 
-        //订单自动收货时间 = 当前时间 - 自动收货时间天数
+        //Order自动收货时间 = 当前时间 - 自动收货时间天数
         DateTime receiveTime = DateUtil.offsetDay(DateUtil.date(), -orderSetting.getAutoReceive());
         LambdaQueryWrapper<Order> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Order::getOrderStatus, OrderStatusEnum.DELIVERED.name());
 
-        //订单发货时间 >= 订单自动收货时间
+        //Order发货时间 >= Order自动收货时间
         queryWrapper.le(Order::getLogisticsTime, receiveTime);
         List<Order> list = orderService.list(queryWrapper);
 
         try {
-            //判断是否有符合条件的订单，进行订单完成处理
+            //判断是否有符合条件的Order，进行Order完成处理
             if (!list.isEmpty()) {
                 List<String> receiveSnList = list.stream().map(Order::getSn).collect(Collectors.toList());
                 for (String orderSn : receiveSnList) {
@@ -141,19 +141,19 @@ public class OrderEveryDayTaskExecute implements EveryDayExecute {
     /**
      * 自动好评
      *
-     * @param orderSetting 订单设置
+     * @param orderSetting Order设置
      */
     private void memberEvaluation(OrderSetting orderSetting) {
-        //订单自动收货时间 = 当前时间 - 自动收货时间天数
+        //Order自动收货时间 = 当前时间 - 自动收货时间天数
         DateTime receiveTime = DateUtil.offsetDay(DateUtil.date(), -orderSetting.getAutoEvaluation());
 
-        //订单完成时间 <= 订单自动好评时间
+        //Order完成时间 <= Order自动好评时间
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.le("o.complete_time", receiveTime);
         queryWrapper.eq("oi.comment_status", CommentStatusEnum.UNFINISHED.name());
         List<OrderItem> orderItems = orderItemMapper.waitOperationOrderItem(queryWrapper);
 
-        //判断是否有符合条件的订单，进行自动评价处理
+        //判断是否有符合条件的Order，进行自动评价处理
         if (!orderItems.isEmpty()) {
             for (OrderItem orderItem : orderItems) {
                 MemberEvaluationDTO memberEvaluationDTO = new MemberEvaluationDTO();
@@ -180,29 +180,29 @@ public class OrderEveryDayTaskExecute implements EveryDayExecute {
     /**
      * 关闭允许售后申请
      *
-     * @param orderSetting 订单设置
+     * @param orderSetting Order设置
      */
     private void closeAfterSale(OrderSetting orderSetting) {
         //为0则不限制
         if (orderSetting.getCloseAfterSale() == null || orderSetting.getCloseAfterSale() == 0) {
             return;
         }
-        //订单关闭售后申请时间 = 当前时间 - 自动关闭售后申请天数
+        //Order关闭售后申请时间 = 当前时间 - 自动关闭售后申请天数
         DateTime receiveTime = DateUtil.offsetDay(DateUtil.date(), -orderSetting.getCloseAfterSale());
 
-        //关闭售后订单=未售后订单+小于订单关闭售后申请时间
+        //关闭售后Order=未售后Order+小于Order关闭售后申请时间
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.le("o.complete_time", receiveTime);
         queryWrapper.eq("oi.after_sale_status", OrderItemAfterSaleStatusEnum.NOT_APPLIED.name());
         List<OrderItem> orderItems = orderItemMapper.waitOperationOrderItem(queryWrapper);
 
-        //判断是否有符合条件的订单，关闭允许售后申请处理
+        //判断是否有符合条件的Order，关闭允许售后申请处理
         if (!orderItems.isEmpty()) {
 
-            //获取订单货物ID
+            //获取Order货物ID
             List<String> orderItemIdList = orderItems.stream().map(OrderItem::getId).collect(Collectors.toList());
 
-            //修改订单售后状态
+            //修改Order售后状态
             LambdaUpdateWrapper<OrderItem> lambdaUpdateWrapper = new LambdaUpdateWrapper<OrderItem>()
                     .set(OrderItem::getAfterSaleStatus, OrderItemAfterSaleStatusEnum.EXPIRED.name())
                     .in(OrderItem::getId, orderItemIdList);
@@ -214,7 +214,7 @@ public class OrderEveryDayTaskExecute implements EveryDayExecute {
                         return orderItem;
                     })
                     .collect(Collectors.toList());
-            //修改对应分销订单状态
+            //修改对应分销Order状态
             distributionOrderService.updateDistributionOrderStatus(orderItemsList);
         }
 
@@ -223,7 +223,7 @@ public class OrderEveryDayTaskExecute implements EveryDayExecute {
     /**
      * 关闭允许交易投诉
      *
-     * @param orderSetting 订单设置
+     * @param orderSetting Order设置
      */
     private void closeComplaint(OrderSetting orderSetting) {
 
@@ -231,22 +231,22 @@ public class OrderEveryDayTaskExecute implements EveryDayExecute {
         if (orderSetting.getCloseComplaint() == null || orderSetting.getCloseComplaint() == 0) {
             return;
         }
-        //订单关闭交易投诉申请时间 = 当前时间 - 自动关闭交易投诉申请天数
+        //Order关闭交易投诉申请时间 = 当前时间 - 自动关闭交易投诉申请天数
         DateTime receiveTime = DateUtil.offsetDay(DateUtil.date(), -orderSetting.getCloseComplaint());
 
-        //关闭售后订单=未售后订单+小于订单关闭售后申请时间
+        //关闭售后Order=未售后Order+小于Order关闭售后申请时间
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.le("o.complete_time", receiveTime);
         queryWrapper.eq("oi.complain_status", OrderComplaintStatusEnum.NO_APPLY.name());
         List<OrderItem> orderItems = orderItemMapper.waitOperationOrderItem(queryWrapper);
 
-        //判断是否有符合条件的订单，关闭允许售后申请处理
+        //判断是否有符合条件的Order，关闭允许售后申请处理
         if (!orderItems.isEmpty()) {
 
-            //获取订单货物ID
+            //获取Order货物ID
             List<String> orderItemIdList = orderItems.stream().map(OrderItem::getId).collect(Collectors.toList());
 
-            //修改订单投诉状态
+            //修改Order投诉状态
             LambdaUpdateWrapper<OrderItem> lambdaUpdateWrapper = new LambdaUpdateWrapper<OrderItem>()
                     .set(OrderItem::getComplainStatus, OrderItemAfterSaleStatusEnum.EXPIRED.name())
                     .in(OrderItem::getId, orderItemIdList);

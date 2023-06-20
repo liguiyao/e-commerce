@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 订单创建发票相关处理
+ * Ordercreate发票相关处理
  *
  * @author Chopper
  * @since 2020-07-03 11:20
@@ -28,7 +28,7 @@ public class OrderCreateReceiptExecute implements TradeEvent {
 
     @Override
     public void orderCreate(TradeDTO tradeDTO) {
-        //根据交易sn查询订单信息
+        //根据交易sn查询Order信息
         List<OrderVO> orderList = tradeDTO.getOrderVO();
         //获取发票信息
         ReceiptVO receiptVO = tradeDTO.getReceiptVO();

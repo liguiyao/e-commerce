@@ -32,8 +32,8 @@ INSERT INTO `li_menu`(`id`, `create_by`, `create_time`, `delete_flag`, `update_b
 /** 添加直播间**/
 CREATE TABLE `li_studio` (
      `id` bigint NOT NULL COMMENT 'ID',
-     `create_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '创建者',
-     `create_time` datetime(6) DEFAULT NULL COMMENT '创建时间',
+     `create_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'create者',
+     `create_time` datetime(6) DEFAULT NULL COMMENT 'create时间',
      `delete_flag` bit(1) DEFAULT NULL COMMENT '是否删除',
      `update_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '修改者',
      `update_time` datetime(6) DEFAULT NULL COMMENT '修改时间',
@@ -58,8 +58,8 @@ CREATE TABLE `li_studio` (
 /**添加直播间商品**/
 CREATE TABLE `li_commodity` (
     `id` bigint NOT NULL COMMENT 'ID',
-    `create_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '创建者',
-    `create_time` datetime(6) DEFAULT NULL COMMENT '创建时间',
+    `create_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'create者',
+    `create_time` datetime(6) DEFAULT NULL COMMENT 'create时间',
     `delete_flag` bit(1) DEFAULT NULL COMMENT '是否删除',
     `update_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '修改者',
     `update_time` datetime(6) DEFAULT NULL COMMENT '修改时间',
@@ -87,8 +87,8 @@ CREATE TABLE `li_studio_commodity` (
 /**添加优惠券活动 **/
 CREATE TABLE `li_coupon_activity` (
   `id` bigint NOT NULL COMMENT 'ID',
-  `create_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '创建者',
-  `create_time` datetime(6) DEFAULT NULL COMMENT '创建时间',
+  `create_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'create者',
+  `create_time` datetime(6) DEFAULT NULL COMMENT 'create时间',
   `delete_flag` bit(1) DEFAULT NULL COMMENT '是否删除',
   `update_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '修改者',
   `update_time` datetime(6) DEFAULT NULL COMMENT '修改时间',
@@ -106,8 +106,8 @@ CREATE TABLE `li_coupon_activity` (
 /**添加优惠券活动-优惠券关联 **/
 CREATE TABLE `li_coupon_activity_item` (
     `id` bigint NOT NULL COMMENT 'ID',
-    `create_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '创建者',
-    `create_time` datetime(6) DEFAULT NULL COMMENT '创建时间',
+    `create_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'create者',
+    `create_time` datetime(6) DEFAULT NULL COMMENT 'create时间',
     `delete_flag` bit(1) DEFAULT NULL COMMENT '是否删除',
     `update_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '修改者',
     `update_time` datetime(6) DEFAULT NULL COMMENT '修改时间',

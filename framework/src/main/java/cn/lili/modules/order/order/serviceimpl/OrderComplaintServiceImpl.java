@@ -48,12 +48,12 @@ import java.util.Objects;
 public class OrderComplaintServiceImpl extends ServiceImpl<OrderComplaintMapper, OrderComplaint> implements OrderComplaintService {
 
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
     /**
-     * 订单货物
+     * Order货物
      */
     @Autowired
     private OrderItemService orderItemService;
@@ -124,7 +124,7 @@ public class OrderComplaintServiceImpl extends ServiceImpl<OrderComplaintMapper,
 
         try {
             AuthUser currentUser = Objects.requireNonNull(UserContext.getCurrentUser());
-            //查询订单信息
+            //查询Order信息
             OrderDetailVO orderDetailVO = orderService.queryDetail(orderComplaintDTO.getOrderSn());
             List<OrderItem> orderItems = orderDetailVO.getOrderItems();
             OrderItem orderItem = orderItems.stream().filter(i -> orderComplaintDTO.getSkuId().equals(i.getSkuId())).findFirst().orElse(null);
@@ -149,7 +149,7 @@ public class OrderComplaintServiceImpl extends ServiceImpl<OrderComplaintMapper,
             orderComplaint.setGoodsPrice(goodsSku.getPrice());
             orderComplaint.setNum(orderItem.getNum());
 
-            //获取订单信息
+            //获取Order信息
             orderComplaint.setOrderTime(orderDetailVO.getOrder().getCreateTime());
             orderComplaint.setOrderPrice(orderDetailVO.getOrder().getPriceDetailDTO().getBillPrice());
             orderComplaint.setNum(orderDetailVO.getOrder().getGoodsNum());
@@ -165,16 +165,16 @@ public class OrderComplaintServiceImpl extends ServiceImpl<OrderComplaintMapper,
 
             orderComplaint.setMemberId(currentUser.getId());
             orderComplaint.setMemberName(currentUser.getUsername());
-            //保存订单投诉
+            //保存Order投诉
             this.save(orderComplaint);
 
-            //更新订单投诉状态
+            //更新Order投诉状态
             orderItemService.updateOrderItemsComplainStatus(orderComplaint.getOrderSn(), orderComplaint.getSkuId(), orderComplaint.getId(), OrderComplaintStatusEnum.APPLYING);
             return orderComplaint;
         } catch (ServiceException e) {
             throw e;
         } catch (Exception e) {
-            log.error("订单投诉异常：", e);
+            log.error("Order投诉异常：", e);
             throw new ServiceException(ResultCode.COMPLAINT_ERROR);
         }
     }

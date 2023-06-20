@@ -1,7 +1,7 @@
 package cn.lili.modules.order.order.entity.enums;
 
 /**
- * 订单可申请售后状态枚举
+ * Order可申请售后状态枚举
  *
  * @author Chopper
  * @since 2020/11/17 7:26 下午
@@ -9,9 +9,9 @@ package cn.lili.modules.order.order.entity.enums;
 public enum OrderItemAfterSaleStatusEnum {
 
     /**
-     * 订单申请售后状态
+     * Order申请售后状态
      */
-    NEW("新订单，不能申请售后"),
+    NEW("新Order，不能申请售后"),
     NOT_APPLIED("未申请"),
     ALREADY_APPLIED("已申请"),
     EXPIRED("已失效不允许申请售后"),

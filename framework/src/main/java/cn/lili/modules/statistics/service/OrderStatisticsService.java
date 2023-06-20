@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import java.util.List;
 
 /**
- * 订单统计业务层
+ * Order统计业务层
  *
  * @author Bulbasaur
  * @since 2020/12/9 11:06
@@ -20,7 +20,7 @@ import java.util.List;
 public interface OrderStatisticsService extends IService<Order> {
 
     /**
-     * 订单统计概览
+     * Order统计概览
      *
      * @param statisticsQueryParam
      * @return
@@ -28,10 +28,10 @@ public interface OrderStatisticsService extends IService<Order> {
     OrderOverviewVO overview(StatisticsQueryParam statisticsQueryParam);
 
     /**
-     * 获取订单总数量
+     * 获取Order总数量
      *
-     * @param orderStatus 订单状态
-     * @return 订单总数量
+     * @param orderStatus Order状态
+     * @return Order总数量
      */
     long orderNum(String orderStatus);
 
@@ -39,12 +39,12 @@ public interface OrderStatisticsService extends IService<Order> {
      * 图表统计
      *
      * @param statisticsQueryParam 统计查询参数
-     * @return 订单总数量
+     * @return Order总数量
      */
     List<OrderStatisticsDataVO> statisticsChart(StatisticsQueryParam statisticsQueryParam);
 
     /**
-     * 获取统计的订单
+     * 获取统计的Order
      *
      * @param statisticsQueryParam
      * @param pageVO

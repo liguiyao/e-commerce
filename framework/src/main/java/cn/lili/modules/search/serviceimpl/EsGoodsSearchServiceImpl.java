@@ -358,7 +358,7 @@ public class EsGoodsSearchServiceImpl implements EsGoodsSearchService {
     }
 
     /**
-     * 创建es搜索builder
+     * createes搜索builder
      *
      * @param searchDTO 搜索条件
      * @param pageVo    分页参数

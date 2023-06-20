@@ -37,7 +37,7 @@ public interface MemberEvaluationService extends IService<MemberEvaluation> {
      * 添加会员评价
      * 1.检测用户是否重复评价
      * 2.获取评价相关信息添加评价
-     * 3.修改子订单为已评价状态
+     * 3.修改子Order为已评价状态
      * 4.发送用户评价消息修改商品的评价数量以及好评率
      *
      * @param memberEvaluationDTO 评论

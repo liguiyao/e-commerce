@@ -21,7 +21,7 @@ public class ExperienceSetting implements Serializable {
     @ApiModelProperty(value = "每日签到经验值")
     private Integer signIn;
 
-    @ApiModelProperty(value = "订单评价赠送经验值")
+    @ApiModelProperty(value = "Order评价赠送经验值")
     private Integer comment;
 
     @ApiModelProperty(value = "分享获取经验值")

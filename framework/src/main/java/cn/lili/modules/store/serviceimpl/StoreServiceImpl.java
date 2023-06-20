@@ -181,7 +181,7 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
                 storeDetailService.updateStoreGoodsInfo(store);
             }
             String destination = rocketmqCustomProperties.getStoreTopic() + ":" + StoreTagsEnum.EDIT_STORE_SETTING.name();
-            //发送订单变更mq消息
+            //发送Order变更mq消息
             rocketMQTemplate.asyncSend(destination, store, RocketmqSendCallbackBuilder.commonCallback());
         }
 
@@ -214,7 +214,7 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
             member.setHaveStore(true);
             member.setStoreId(id);
             memberService.updateById(member);
-            //创建店员
+            //create店员
             ClerkAddDTO clerkAddDTO = new ClerkAddDTO();
             clerkAddDTO.setMemberId(member.getId());
             clerkAddDTO.setIsSuper(true);
@@ -277,7 +277,7 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
         if (store == null) {
             AuthUser authUser = Objects.requireNonNull(UserContext.getCurrentUser());
             Member member = memberService.getById(authUser.getId());
-            //根据会员创建店铺
+            //根据会员create店铺
             store = new Store(member);
             BeanUtil.copyProperties(storeCompanyDTO, store);
             this.save(store);

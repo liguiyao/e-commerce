@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 订单日志业务层实现
+ * Order日志业务层实现
  *
  * @author Chopper
  * @since 2020-02-25 14:10:16

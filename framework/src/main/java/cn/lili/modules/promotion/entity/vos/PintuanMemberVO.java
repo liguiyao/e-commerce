@@ -29,7 +29,7 @@ public class PintuanMemberVO {
     @ApiModelProperty(value = "昵称")
     private String nickName;
 
-    @ApiModelProperty(value = "参团订单编号")
+    @ApiModelProperty(value = "参团Order编号")
     private String orderSn;
 
     @ApiModelProperty(value = "已参团人数")

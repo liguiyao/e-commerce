@@ -145,7 +145,7 @@ public class CouponActivityServiceImpl extends AbstractPromotionsServiceImpl<Cou
         boolean result = super.updatePromotionsGoods(couponActivity);
         if (couponActivity instanceof CouponActivityDTO && !PromotionsStatusEnum.CLOSE.name().equals(couponActivity.getPromotionStatus()) && PromotionsScopeTypeEnum.PORTION_GOODS.name().equals(couponActivity.getScopeType())) {
             CouponActivityDTO couponActivityDTO = (CouponActivityDTO) couponActivity;
-            //创建优惠券活动子列表
+            //create优惠券活动子列表
             for (CouponActivityItem couponActivityItem : couponActivityDTO.getCouponActivityItems()) {
                 couponActivityItem.setActivityId(couponActivityDTO.getId());
             }

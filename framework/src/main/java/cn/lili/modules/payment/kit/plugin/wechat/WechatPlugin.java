@@ -130,7 +130,7 @@ public class WechatPlugin implements Payment {
 
             //支付金额
             Integer fen = CurrencyUtil.fen(cashierParam.getPrice());
-            //第三方付款订单
+            //第三方付款Order
             String outOrderNo = SnowFlake.getIdStr();
             //过期时间
             String timeExpire = DateTimeZoneUtil.dateToTimeZone(System.currentTimeMillis() + 1000 * 60 * 3);
@@ -191,7 +191,7 @@ public class WechatPlugin implements Payment {
 
             //支付金额
             Integer fen = CurrencyUtil.fen(cashierParam.getPrice());
-            //第三方付款订单
+            //第三方付款Order
             String outOrderNo = SnowFlake.getIdStr();
             //过期时间
             String timeExpire = DateTimeZoneUtil.dateToTimeZone(System.currentTimeMillis() + 1000 * 60 * 3);
@@ -256,7 +256,7 @@ public class WechatPlugin implements Payment {
 
             //支付金额
             Integer fen = CurrencyUtil.fen(cashierParam.getPrice());
-            //第三方付款订单
+            //第三方付款Order
             String outOrderNo = SnowFlake.getIdStr();
             //过期时间
             String timeExpire = DateTimeZoneUtil.dateToTimeZone(System.currentTimeMillis() + 1000 * 60 * 3);
@@ -323,7 +323,7 @@ public class WechatPlugin implements Payment {
 
             //支付金额
             Integer fen = CurrencyUtil.fen(cashierParam.getPrice());
-            //第三方付款订单
+            //第三方付款Order
             String outOrderNo = SnowFlake.getIdStr();
             //过期时间
             String timeExpire = DateTimeZoneUtil.dateToTimeZone(System.currentTimeMillis() + 1000 * 60 * 3);
@@ -396,7 +396,7 @@ public class WechatPlugin implements Payment {
 
             //支付金额
             Integer fen = CurrencyUtil.fen(cashierParam.getPrice());
-            //第三方付款订单
+            //第三方付款Order
             String outOrderNo = SnowFlake.getIdStr();
             //过期时间
             String timeExpire = DateTimeZoneUtil.dateToTimeZone(System.currentTimeMillis() + 1000 * 60 * 3);
@@ -601,7 +601,7 @@ public class WechatPlugin implements Payment {
         );
 
         paymentService.success(paymentSuccessParams);
-        log.info("微信支付回调：支付成功{}", plainText);
+        log.info("微信支付回调：Success{}", plainText);
     }
 
     @Override

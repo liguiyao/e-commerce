@@ -17,7 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 /**
- * 订单查询参数
+ * Order查询参数
  *
  * @author Chopper
  * @since 2020/11/17 4:33 下午
@@ -31,15 +31,15 @@ public class OrderSearchParams extends PageVO {
     @ApiModelProperty(value = "商品名称")
     private String goodsName;
 
-    @ApiModelProperty(value = "订单编号")
+    @ApiModelProperty(value = "Order编号")
     private String orderSn;
 
     @ApiModelProperty(value = "页面标签",
             example = "ALL:全部," +
-                    "WAIT_PAY:待付款," +
+                    "WAIT_PAY:Unpaid," +
                     "WAIT_ROG:待收货," +
-                    "CANCELLED:已取消," +
-                    "COMPLETE:已完成")
+                    "CANCELLED:Cancelled," +
+                    "COMPLETE:Complete")
     private String tag;
 
     @ApiModelProperty(value = "商家ID")
@@ -54,7 +54,7 @@ public class OrderSearchParams extends PageVO {
     @ApiModelProperty(value = "买家昵称")
     private String buyerName;
 
-    @ApiModelProperty(value = "订单状态")
+    @ApiModelProperty(value = "Order状态")
     private String orderStatus;
 
     @ApiModelProperty(value = "付款状态")
@@ -70,7 +70,7 @@ public class OrderSearchParams extends PageVO {
      * @see OrderTypeEnum
      * @see cn.lili.modules.order.order.entity.enums.OrderPromotionTypeEnum
      */
-    @ApiModelProperty(value = "订单类型", allowableValues = "NORMAL,VIRTUAL,GIFT,PINTUAN,POINT")
+    @ApiModelProperty(value = "Order类型", allowableValues = "NORMAL,VIRTUAL,GIFT,PINTUAN,POINT")
     private String orderType;
 
     @ApiModelProperty(value = "支付方式")
@@ -91,7 +91,7 @@ public class OrderSearchParams extends PageVO {
     @ApiModelProperty(value = "下单结束时间")
     private Date endDate;
 
-    @ApiModelProperty(value = "订单来源")
+    @ApiModelProperty(value = "Order来源")
     private String clientType;
 
     /**
@@ -100,10 +100,10 @@ public class OrderSearchParams extends PageVO {
     @ApiModelProperty(value = "评论状态:未评论(UNFINISHED),待追评(WAIT_CHASE),评论完成(FINISHED)，")
     private String commentStatus;
 
-    @ApiModelProperty(value = "是否为其他订单下的订单，如果是则为依赖订单的sn，否则为空")
+    @ApiModelProperty(value = "是否为其他Order下的Order，如果是则为依赖Order的sn，否则为空")
     private String parentOrderSn;
 
-    @ApiModelProperty(value = "是否为某订单类型的订单，如果是则为订单类型的id，否则为空")
+    @ApiModelProperty(value = "是否为某Order类型的Order，如果是则为Order类型的id，否则为空")
     private String promotionId;
 
     @ApiModelProperty(value = "总价格,可以为范围，如10_1000")
@@ -112,7 +112,7 @@ public class OrderSearchParams extends PageVO {
     /**
      * @see OrderPromotionTypeEnum
      */
-    @ApiModelProperty(value = "订单促销类型")
+    @ApiModelProperty(value = "Order促销类型")
     private String orderPromotionType;
 
     public <T> QueryWrapper<T> queryWrapper() {
@@ -138,7 +138,7 @@ public class OrderSearchParams extends PageVO {
         //按照买家查询
         wrapper.like(CharSequenceUtil.isNotEmpty(memberId), "o.member_id", memberId);
 
-        //按订单编号查询
+        //按Order编号查询
         wrapper.like(CharSequenceUtil.isNotEmpty(orderSn), "o.sn", orderSn);
 
         //按时间查询
@@ -148,10 +148,10 @@ public class OrderSearchParams extends PageVO {
         //按购买人用户名
         wrapper.like(CharSequenceUtil.isNotEmpty(buyerName), "o.member_name", buyerName);
 
-        //按订单类型
+        //按Order类型
         wrapper.eq(CharSequenceUtil.isNotEmpty(orderType), "o.order_type", orderType);
 
-        //物流查询
+        //logistics查询
         wrapper.like(CharSequenceUtil.isNotEmpty(shipName), "o.consignee_name", shipName);
 
         //按商品名称查询
@@ -163,13 +163,13 @@ public class OrderSearchParams extends PageVO {
         //按支付方式
         wrapper.eq(CharSequenceUtil.isNotEmpty(paymentMethod), "o.payment_method", paymentMethod);
 
-        //订单状态
+        //Order状态
         wrapper.eq(CharSequenceUtil.isNotEmpty(orderStatus), "o.order_status", orderStatus);
 
         //付款状态
         wrapper.eq(CharSequenceUtil.isNotEmpty(payStatus), "o.pay_status", payStatus);
 
-        //订单来源
+        //Order来源
         wrapper.like(CharSequenceUtil.isNotEmpty(clientType), "o.client_type", clientType);
 
         //按评价状态
@@ -180,7 +180,7 @@ public class OrderSearchParams extends PageVO {
             String orderStatusColumn = "o.order_status";
             OrderTagEnum tagEnum = OrderTagEnum.valueOf(tag);
             switch (tagEnum) {
-                //待付款
+                //Unpaid
                 case WAIT_PAY:
                     wrapper.eq(orderStatusColumn, OrderStatusEnum.UNPAID.name());
                     break;
@@ -192,11 +192,11 @@ public class OrderSearchParams extends PageVO {
                 case WAIT_ROG:
                     wrapper.eq(orderStatusColumn, OrderStatusEnum.DELIVERED.name());
                     break;
-                //已取消
+                //Cancelled
                 case CANCELLED:
                     wrapper.eq(orderStatusColumn, OrderStatusEnum.CANCELLED.name());
                     break;
-                //已完成
+                //Complete
                 case COMPLETE:
                     wrapper.eq(orderStatusColumn, OrderStatusEnum.COMPLETED.name());
                     break;
@@ -205,7 +205,7 @@ public class OrderSearchParams extends PageVO {
             }
         }
 
-        // 依赖订单
+        // 依赖Order
         wrapper.eq(parentOrderSn != null, "o.parent_order_sn", parentOrderSn);
         // 促销活动id
         wrapper.eq(CharSequenceUtil.isNotEmpty(promotionId), "o.promotion_id", promotionId);

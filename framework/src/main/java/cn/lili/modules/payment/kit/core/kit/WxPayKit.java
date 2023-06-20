@@ -298,10 +298,10 @@ public class WxPayKit {
     }
 
     /**
-     * <p>公众号支付-预付订单再次签名</p>
+     * <p>公众号支付-预付Order再次签名</p>
      * <p>注意此处签名方式需与统一下单的签名类型一致</p>
      *
-     * @param prepayId   预付订单号
+     * @param prepayId   预付Order号
      * @param appId      应用编号
      * @param partnerKey API Key
      * @param signType   签名方式
@@ -326,7 +326,7 @@ public class WxPayKit {
      * JS 调起支付签名
      *
      * @param appId    应用编号
-     * @param prepayId 预付订单号
+     * @param prepayId 预付Order号
      * @param keyPath  key.pem 证书路径
      * @return 唤起支付需要的参数
      * @throws Exception 错误信息
@@ -355,12 +355,12 @@ public class WxPayKit {
     }
 
     /**
-     * <p>APP 支付-预付订单再次签名</p>
+     * <p>APP 支付-预付Order再次签名</p>
      * <p>注意此处签名方式需与统一下单的签名类型一致</p>
      *
      * @param appId      应用编号
      * @param partnerId  商户号
-     * @param prepayId   预付订单号
+     * @param prepayId   预付Order号
      * @param partnerKey API Key
      * @param signType   签名方式
      * @return 再次签名后的 Map
@@ -388,7 +388,7 @@ public class WxPayKit {
      *
      * @param appId     应用编号
      * @param partnerId 商户编号
-     * @param prepayId  预付订单号
+     * @param prepayId  预付Order号
      * @param keyPath   key.pem 证书路径
      * @return 唤起支付需要的参数
      * @throws Exception 错误信息
@@ -418,11 +418,11 @@ public class WxPayKit {
     }
 
     /**
-     * <p>小程序-预付订单再次签名</p>
+     * <p>小程序-预付Order再次签名</p>
      * <p>注意此处签名方式需与统一下单的签名类型一致</p>
      *
      * @param appId      应用编号
-     * @param prepayId   预付订单号
+     * @param prepayId   预付Order号
      * @param partnerKey API Key
      * @param signType   签名方式
      * @return 再次签名后的 Map

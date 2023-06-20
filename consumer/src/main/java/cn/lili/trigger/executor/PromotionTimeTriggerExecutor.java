@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component(TimeExecuteConstant.PROMOTION_EXECUTOR)
 public class PromotionTimeTriggerExecutor implements TimeTriggerExecutor {
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
@@ -29,11 +29,11 @@ public class PromotionTimeTriggerExecutor implements TimeTriggerExecutor {
 
     @Override
     public void execute(Object object) {
-        //拼团订单消息
+        //拼团Order消息
         PintuanOrderMessage pintuanOrderMessage = JSONUtil.toBean(JSONUtil.parseObj(object), PintuanOrderMessage.class);
         if (pintuanOrderMessage != null && pintuanOrderMessage.getPintuanId() != null) {
-            log.info("拼团订单信息消费：{}", pintuanOrderMessage);
-            //拼团订单自动处理
+            log.info("拼团Order信息消费：{}", pintuanOrderMessage);
+            //拼团Order自动处理
             orderService.agglomeratePintuanOrder(pintuanOrderMessage.getPintuanId(), pintuanOrderMessage.getOrderSn());
         }
         Pintuan pintuan = JSONUtil.toBean(JSONUtil.parseObj(object), Pintuan.class);

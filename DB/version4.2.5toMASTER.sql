@@ -7,7 +7,7 @@ CREATE TABLE `li_member_coupon_sign`  (
                                      `coupon_activity_Id` bigint NULL DEFAULT NULL COMMENT '优惠券活动id',
                                      `member_id` bigint NULL DEFAULT NULL COMMENT '会员id',
                                      `invalid_time` datetime NULL DEFAULT NULL COMMENT '过期时间',
-                                     `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+                                     `create_time` datetime NULL DEFAULT NULL COMMENT 'create时间',
                                      PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = DYNAMIC;
 
@@ -16,8 +16,8 @@ CREATE TABLE `li_member_coupon_sign`  (
  */
 CREATE TABLE `li_im_talk` (
                               `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-                              `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '创建者',
-                              `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+                              `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'create者',
+                              `create_time` datetime DEFAULT NULL COMMENT 'create时间',
                               `delete_flag` bit(1) DEFAULT NULL COMMENT '删除标志',
                               `update_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '修改者',
                               `update_time` datetime(6) DEFAULT NULL COMMENT '修改时间',
@@ -48,8 +48,8 @@ CREATE TABLE `li_im_talk` (
  */
 CREATE TABLE `li_im_message` (
                                  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-                                 `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '创建者',
-                                 `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+                                 `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'create者',
+                                 `create_time` datetime DEFAULT NULL COMMENT 'create时间',
                                  `delete_flag` bit(1) DEFAULT NULL COMMENT '删除标识',
                                  `update_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '修改者',
                                  `update_time` datetime(6) DEFAULT NULL COMMENT '修改标识',
@@ -66,7 +66,7 @@ CREATE TABLE `li_im_message` (
 
 
 /**
-  订单增加自提信息
+  Order增加自提信息
  */
 ALTER TABLE li_order ADD `store_address_path` varchar(255) DEFAULT NULL;
 ALTER TABLE li_order ADD  `store_address_center` varchar(255) DEFAULT NULL;
@@ -84,7 +84,7 @@ ALTER TABLE li_foot_print  ADD `store_id` varchar(255) DEFAULT NULL COMMENT '店
 
 
 /**
-  订单增加自提信息
+  Order增加自提信息
  */
 ALTER TABLE li_member_withdraw_apply ADD `real_name` varchar(255) DEFAULT NULL;
 ALTER TABLE li_member_withdraw_apply ADD  `connect_number` varchar(255) DEFAULT NULL;

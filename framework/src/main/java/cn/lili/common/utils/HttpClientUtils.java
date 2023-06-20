@@ -158,7 +158,7 @@ public class HttpClientUtils {
         String resultString = "";
         CloseableHttpResponse response = null;
         try {
-            //创建uri
+            //createuri
             URIBuilder builder = new URIBuilder(url);
             if (param != null) {
                 for (String key : param.keySet()) {
@@ -167,7 +167,7 @@ public class HttpClientUtils {
             }
             URI uri = builder.build();
 
-            //创建http GET请求
+            //createhttp GET请求
             HttpGet httpGet = new HttpGet(uri);
 
             //执行请求

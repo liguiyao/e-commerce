@@ -15,8 +15,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 订单简略信息
- * 用于订单列表查看
+ * Order简略信息
+ * 用于Order列表查看
  *
  * @author Chopper
  * @since 2020-08-17 20:28
@@ -32,13 +32,13 @@ public class OrderSimpleVO {
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty(value = "创建时间")
+    @ApiModelProperty(value = "create时间")
     private Date createTime;
 
     /**
      * @see cn.lili.modules.order.order.entity.enums.OrderStatusEnum
      */
-    @ApiModelProperty(value = "订单状态")
+    @ApiModelProperty(value = "Order状态")
     private String orderStatus;
 
     /**
@@ -67,11 +67,11 @@ public class OrderSimpleVO {
     /**
      * @see ClientTypeEnum
      */
-    @ApiModelProperty(value = "订单来源")
+    @ApiModelProperty(value = "Order来源")
     private String clientType;
 
     /**
-     * 子订单信息
+     * 子Order信息
      */
     private List<OrderItemVO> orderItems;
 
@@ -127,7 +127,7 @@ public class OrderSimpleVO {
     /**
      * @see cn.lili.modules.order.order.entity.enums.OrderTypeEnum
      */
-    @ApiModelProperty(value = "订单类型")
+    @ApiModelProperty(value = "Order类型")
     private String orderType;
 
     /**
@@ -139,7 +139,7 @@ public class OrderSimpleVO {
     /**
      * @see cn.lili.modules.order.order.entity.enums.OrderPromotionTypeEnum
      */
-    @ApiModelProperty(value = "订单促销类型")
+    @ApiModelProperty(value = "Order促销类型")
     private String orderPromotionType;
 
     public List<OrderItemVO> getOrderItems() {
@@ -195,7 +195,7 @@ public class OrderSimpleVO {
      * 初始化自身状态
      */
     public AllowOperation getAllowOperationVO() {
-        //设置订单的可操作状态
+        //设置Order的可操作状态
         return new AllowOperation(this);
     }
 

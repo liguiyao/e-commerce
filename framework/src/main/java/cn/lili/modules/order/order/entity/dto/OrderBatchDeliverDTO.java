@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * 订单批量发货DTO
+ * Order批量发货DTO
  * @author Bulbasaur
  * @since 2021/5/26 4:21 下午
  *
@@ -12,13 +12,13 @@ import lombok.Data;
 @Data
 public class OrderBatchDeliverDTO {
 
-    @ApiModelProperty(value = "订单SN")
+    @ApiModelProperty(value = "OrderSN")
     private String orderSn;
 
-    @ApiModelProperty(value = "物流公司ID")
+    @ApiModelProperty(value = "logistics公司ID")
     private String logisticsId;
 
-    @ApiModelProperty(value = "物流公司名称")
+    @ApiModelProperty(value = "logistics公司名称")
     private String logisticsName;
 
     @ApiModelProperty(value = "发货单号")

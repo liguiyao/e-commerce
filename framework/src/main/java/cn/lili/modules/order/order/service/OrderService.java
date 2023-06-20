@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
- * 子订单业务层
+ * 子Order业务层
  *
  * @author Chopper
  * @since 2020/11/17 7:36 下午
@@ -28,9 +28,9 @@ public interface OrderService extends IService<Order> {
 
 
     /**
-     * 系统取消订单
+     * 系统取消Order
      *
-     * @param orderSn 订单编号
+     * @param orderSn Order编号
      * @param reason  错误原因
      */
     void systemCancel(String orderSn, String reason);
@@ -38,109 +38,109 @@ public interface OrderService extends IService<Order> {
     /**
      * 根据sn查询
      *
-     * @param orderSn 订单编号
-     * @return 订单信息
+     * @param orderSn Order编号
+     * @return Order信息
      */
     Order getBySn(String orderSn);
 
 
     /**
-     * 订单查询
+     * Order查询
      *
      * @param orderSearchParams 查询参数
-     * @return 简短订单分页
+     * @return 简短Order分页
      */
     IPage<OrderSimpleVO> queryByParams(OrderSearchParams orderSearchParams);
 
     /**
-     * 订单信息
+     * Order信息
      *
      * @param orderSearchParams 查询参数
-     * @return 订单信息
+     * @return Order信息
      */
     List<Order> queryListByParams(OrderSearchParams orderSearchParams);
 
     /**
-     * 根据促销查询订单
+     * 根据促销查询Order
      *
-     * @param orderPromotionType 订单类型
+     * @param orderPromotionType Order类型
      * @param payStatus          支付状态
-     * @param parentOrderSn      依赖订单编号
-     * @param orderSn            订单编号
-     * @return 订单信息
+     * @param parentOrderSn      依赖Order编号
+     * @param orderSn            Order编号
+     * @return Order信息
      */
     List<Order> queryListByPromotion(String orderPromotionType, String payStatus, String parentOrderSn, String orderSn);
 
     /**
-     * 根据促销查询订单
+     * 根据促销查询Order
      *
-     * @param orderPromotionType 订单类型
+     * @param orderPromotionType Order类型
      * @param payStatus          支付状态
-     * @param parentOrderSn      依赖订单编号
-     * @param orderSn            订单编号
-     * @return 订单信息
+     * @param parentOrderSn      依赖Order编号
+     * @param orderSn            Order编号
+     * @return Order信息
      */
     long queryCountByPromotion(String orderPromotionType, String payStatus, String parentOrderSn, String orderSn);
 
     /**
-     * 父级拼团订单分组
+     * 父级拼团Order分组
      *
      * @param pintuanId 拼团id
-     * @return 拼团订单信息
+     * @return 拼团Order信息
      */
     List<Order> queryListByPromotion(String pintuanId);
 
 
     /**
-     * 查询导出订单列表
+     * 查询导出Order列表
      *
      * @param orderSearchParams 查询参数
-     * @return 导出订单列表
+     * @return 导出Order列表
      */
     List<OrderExportDTO> queryExportOrder(OrderSearchParams orderSearchParams);
 
 
     /**
-     * 订单详细
+     * Order详细
      *
-     * @param orderSn 订单SN
-     * @return 订单详细
+     * @param orderSn OrderSN
+     * @return Order详细
      */
     OrderDetailVO queryDetail(String orderSn);
 
     /**
-     * 创建订单
+     * createOrder
      * 1.检查交易信息
-     * 2.循环交易购物车列表，创建订单以及相关信息
+     * 2.循环交易购物车列表，createOrder以及相关信息
      *
      * @param tradeDTO 交易DTO
      */
     void intoDB(TradeDTO tradeDTO);
 
     /**
-     * 订单付款
-     * 修改订单付款信息
-     * 记录订单流水
+     * Order付款
+     * 修改Order付款信息
+     * 记录Order流水
      *
-     * @param orderSn       订单编号
+     * @param orderSn       Order编号
      * @param paymentMethod 支付方法
      * @param receivableNo  第三方流水
      */
     void payOrder(String orderSn, String paymentMethod, String receivableNo);
 
     /**
-     * 订单确认成功
+     * Order确认成功
      *
      * @param orderSn
      */
     void afterOrderConfirm(String orderSn);
 
     /**
-     * 取消订单
+     * 取消Order
      *
-     * @param orderSn 订单SN
+     * @param orderSn OrderSN
      * @param reason  取消理由
-     * @return 订单
+     * @return Order
      */
     Order cancel(String orderSn, String reason);
 
@@ -149,134 +149,134 @@ public interface OrderService extends IService<Order> {
      * 发货信息修改
      * 日志功能内部实现
      *
-     * @param orderSn          订单编号
+     * @param orderSn          Order编号
      * @param memberAddressDTO 收货地址信息
-     * @return 订单
+     * @return Order
      */
     Order updateConsignee(String orderSn, MemberAddressDTO memberAddressDTO);
 
     /**
-     * 订单发货
+     * Order发货
      *
-     * @param orderSn       订单编号
+     * @param orderSn       Order编号
      * @param invoiceNumber 发货单号
-     * @param logisticsId   物流公司
-     * @return 订单
+     * @param logisticsId   logistics公司
+     * @return Order
      */
     Order delivery(String orderSn, String invoiceNumber, String logisticsId);
 
     /**
-     * 订单发货
+     * Order发货
      *
-     * @param orderSn       订单编号
-     * @return 订单
+     * @param orderSn       Order编号
+     * @return Order
      */
     Order shunFengDelivery(String orderSn);
 
     /**
-     * 获取物流踪迹
+     * 获取logistics踪迹
      *
-     * @param orderSn 订单编号
-     * @return 物流踪迹
+     * @param orderSn Order编号
+     * @return logistics踪迹
      */
     Traces getTraces(String orderSn);
 
     /**
-     * 获取地图版 物流踪迹
+     * 获取地图版 logistics踪迹
      *
-     * @param orderSn 订单编号
-     * @return 物流踪迹
+     * @param orderSn Order编号
+     * @return logistics踪迹
      */
     Traces getMapTraces(String orderSn);
 
     /**
-     * 订单核验
+     * Order核验
      *
      * @param verificationCode 验证码
-     * @param orderSn          订单编号
-     * @return 订单
+     * @param orderSn          Order编号
+     * @return Order
      */
     Order take(String orderSn, String verificationCode);
 
 
     /**
-     * 订单核验
+     * Order核验
      *
      * @param verificationCode 验证码
-     * @return 订单
+     * @return Order
      */
     Order take(String verificationCode);
 
     /**
-     * 根据核验码获取订单信息
+     * 根据核验码获取Order信息
      *
      * @param verificationCode 验证码
-     * @return 订单
+     * @return Order
      */
     Order getOrderByVerificationCode(String verificationCode);
 
     /**
-     * 订单完成
+     * Order完成
      *
-     * @param orderSn 订单编号
+     * @param orderSn Order编号
      */
     void complete(String orderSn);
 
     /**
-     * 系统定时完成订单
+     * 系统定时完成Order
      *
-     * @param orderSn 订单编号
+     * @param orderSn Order编号
      */
     void systemComplete(String orderSn);
 
     /**
-     * 通过trade 获取订单列表
+     * 通过trade 获取Order列表
      *
      * @param tradeSn 交易编号
-     * @return 订单列表
+     * @return Order列表
      */
     List<Order> getByTradeSn(String tradeSn);
 
     /**
-     * 发送更新订单状态的信息
+     * 发送更新Order状态的信息
      *
-     * @param orderMessage 订单传输信息
+     * @param orderMessage Order传输信息
      */
     void sendUpdateStatusMessage(OrderMessage orderMessage);
 
     /**
-     * 根据订单sn逻辑删除订单
+     * 根据Ordersn逻辑删除Order
      *
-     * @param sn 订单sn
+     * @param sn Ordersn
      */
     void deleteOrder(String sn);
 
     /**
      * 开具发票
      *
-     * @param sn 订单sn
+     * @param sn Ordersn
      * @return
      */
     Boolean invoice(String sn);
 
     /**
-     * 自动成团订单处理
+     * 自动成团Order处理
      *
      * @param pintuanId     拼团活动id
-     * @param parentOrderSn 拼团订单sn
+     * @param parentOrderSn 拼团Ordersn
      */
     void agglomeratePintuanOrder(String pintuanId, String parentOrderSn);
 
     /**
-     * 获取待发货订单编号列表
+     * 获取待发货Order编号列表
      *
      * @param response      响应
-     * @param logisticsName 店铺已选择物流公司列表
+     * @param logisticsName 店铺已选择logistics公司列表
      */
     void getBatchDeliverList(HttpServletResponse response, List<String> logisticsName);
 
     /**
-     * 订单批量发货
+     * Order批量发货
      *
      * @param files 文件
      */
@@ -284,19 +284,19 @@ public interface OrderService extends IService<Order> {
 
 
     /**
-     * 获取订单实际支付的总金额
+     * 获取Order实际支付的总金额
      *
-     * @param orderSn 订单sn
+     * @param orderSn Ordersn
      * @return 金额
      */
     Double getPaymentTotal(String orderSn);
 
     /**
-     * 查询订单支付记录
+     * 查询Order支付记录
      *
      * @param page         分页
      * @param queryWrapper 查询条件
-     * @return 订单支付记录分页
+     * @return Order支付记录分页
      */
     IPage<PaymentLog> queryPaymentLogs(IPage<PaymentLog> page, Wrapper<PaymentLog> queryWrapper);
 

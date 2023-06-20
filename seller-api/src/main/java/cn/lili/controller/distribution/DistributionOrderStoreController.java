@@ -17,29 +17,29 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Objects;
 
 /**
- * 店铺端,分销订单接口
+ * 店铺端,分销Order接口
  *
  * @author Bulbasaur
  * @since 2020/11/16 10:06 下午
  */
 @RestController
-@Api(tags = "店铺端,分销订单接口")
+@Api(tags = "店铺端,分销Order接口")
 @RequestMapping("/store/distribution/order")
 public class DistributionOrderStoreController {
 
     /**
-     * 分销订单
+     * 分销Order
      */
     @Autowired
     private DistributionOrderService distributionOrderService;
 
-    @ApiOperation(value = "获取分销订单列表")
+    @ApiOperation(value = "获取分销Order列表")
     @GetMapping
     public ResultMessage<IPage<DistributionOrder>> distributionOrder(DistributionOrderSearchParams distributionOrderSearchParams) {
         String storeId = Objects.requireNonNull(UserContext.getCurrentUser()).getStoreId();
-        //获取当前登录商家账号-查询当前店铺的分销订单
+        //获取当前登录商家账号-查询当前店铺的分销Order
         distributionOrderSearchParams.setStoreId(storeId);
-        //查询分销订单列表
+        //查询分销Order列表
         IPage<DistributionOrder> distributionOrderPage = distributionOrderService.getDistributionOrderPage(distributionOrderSearchParams);
         return ResultUtil.data(distributionOrderPage);
     }

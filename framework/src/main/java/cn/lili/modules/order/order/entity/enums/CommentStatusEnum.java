@@ -9,9 +9,9 @@ package cn.lili.modules.order.order.entity.enums;
 public enum CommentStatusEnum {
 
     /**
-     * 新订单，不能进行评论
+     * 新Order，不能进行评论
      */
-    NEW("新订单，不能进行评论"),
+    NEW("新Order，不能进行评论"),
     /**
      * 未完成的评论
      */

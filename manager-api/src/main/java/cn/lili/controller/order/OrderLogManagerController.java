@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 管理端,订单日志管理接口
+ * 管理端,Order日志管理接口
  *
  * @author Chopper
  * @since 2020/11/17 4:34 下午
  */
 @RestController
-@Api(tags = "管理端,订单日志管理接口")
+@Api(tags = "管理端,Order日志管理接口")
 @RequestMapping("/manager/order/orderLog")
 public class OrderLogManagerController {
     @Autowired

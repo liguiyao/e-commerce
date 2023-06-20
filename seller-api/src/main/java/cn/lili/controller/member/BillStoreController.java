@@ -66,7 +66,7 @@ public class BillStoreController {
         return ResultUtil.data(storeFlowService.getStoreFlow(id, flowType, pageVO));
     }
 
-    @ApiOperation(value = "获取商家分销订单流水分页")
+    @ApiOperation(value = "获取商家分销Order流水分页")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "结算单ID", required = true, paramType = "path", dataType = "String")
     })

@@ -11,7 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 /**
- * 订单导出DTO
+ * Order导出DTO
  * @author Bulbasaur
  * @since 2021/6/3 6:36 下午
  *
@@ -19,12 +19,12 @@ import java.util.Date;
 @Data
 public class OrderExportDTO {
 
-    @ApiModelProperty("订单编号")
+    @ApiModelProperty("Order编号")
     private String sn;
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty(value = "创建时间")
+    @ApiModelProperty(value = "create时间")
     private Date createTime;
 
     @ApiModelProperty(value = "用户名")
@@ -45,7 +45,7 @@ public class OrderExportDTO {
     @ApiModelProperty(value = "支付方式")
     private String paymentMethod;
 
-    @ApiModelProperty(value = "物流公司名称")
+    @ApiModelProperty(value = "logistics公司名称")
     private String logisticsName;
 
     @ApiModelProperty(value = "运费")
@@ -66,13 +66,13 @@ public class OrderExportDTO {
     @ApiModelProperty(value = "商品数量")
     private Integer num;
 
-    @ApiModelProperty(value = "买家订单备注")
+    @ApiModelProperty(value = "买家Order备注")
     private String remark;
 
     /**
      * @see OrderStatusEnum
      */
-    @ApiModelProperty(value = "订单状态")
+    @ApiModelProperty(value = "Order状态")
     private String orderStatus;
 
     /**

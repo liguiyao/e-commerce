@@ -9,15 +9,15 @@ package cn.lili.modules.message.entity.enums;
 public enum NoticeMessageNodeEnum {
 
     /**
-     * 订单
+     * Order
      */
-    ORDER_CREATE_SUCCESS("订单提交成功通知"),
-    ORDER_CANCEL_SUCCESS("订单取消成功通知"),
-    ORDER_PAY_SUCCESS("订单支付成功通知"),
+    ORDER_CREATE_SUCCESS("Order提交成功通知"),
+    ORDER_CANCEL_SUCCESS("Order取消成功通知"),
+    ORDER_PAY_SUCCESS("OrderSuccess通知"),
     ORDER_PAY_ERROR("支付失败自动退款通知"),
-    ORDER_DELIVER("订单发货通知"),
-    ORDER_COMPLETE("订单完成通知"),
-    ORDER_EVALUATION("订单评价提醒"),
+    ORDER_DELIVER("Order发货通知"),
+    ORDER_COMPLETE("Order完成通知"),
+    ORDER_EVALUATION("Order评价提醒"),
 
     /**
      * 售后

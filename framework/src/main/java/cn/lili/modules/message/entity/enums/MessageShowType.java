@@ -8,10 +8,10 @@ package cn.lili.modules.message.entity.enums;
  */
 public enum MessageShowType {
 
-    //订单
-    ORDER("订单"),
+    //Order
+    ORDER("Order"),
     //售后单
-    AFTER_SALE("售后订单"),
+    AFTER_SALE("售后Order"),
     //站内信
     NOTICE("站内信");
 

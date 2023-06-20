@@ -1,7 +1,7 @@
 package cn.lili.modules.order.order.entity.enums;
 
 /**
- * 订单元Key枚举
+ * Order元Key枚举
  *
  * @author Chopper
  * @since 2020/11/17 7:26 下午
@@ -9,7 +9,7 @@ package cn.lili.modules.order.order.entity.enums;
 public enum OrderMetaKeyEnum {
 
     /**
-     * 订单属性
+     * Order属性
      */
     POINT("使用的积分"),
     DISCOUNT_PRICE("优惠金额"),

@@ -16,7 +16,7 @@ public class AfterSaleVO extends AfterSale {
      */
     public AfterSaleAllowOperation getAfterSaleAllowOperationVO() {
 
-        //设置订单的可操作状态
+        //设置Order的可操作状态
         return new AfterSaleAllowOperation(this);
     }
 }

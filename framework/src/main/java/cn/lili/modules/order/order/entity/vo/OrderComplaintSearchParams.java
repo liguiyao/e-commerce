@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * 订单投诉查询参数
+ * Order投诉查询参数
  *
  * @author paulG
  * @since 2020/12/4
@@ -22,7 +22,7 @@ public class OrderComplaintSearchParams {
     @ApiModelProperty(value = "交易投诉状态")
     private String status;
 
-    @ApiModelProperty(value = "订单号")
+    @ApiModelProperty(value = "Order号")
     private String orderSn;
 
     @ApiModelProperty(value = "会员id")

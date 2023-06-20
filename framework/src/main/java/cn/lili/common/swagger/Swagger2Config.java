@@ -84,7 +84,7 @@ public class Swagger2Config {
     @Bean
     public Docket orderRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("订单")
+                .groupName("Order")
                 .apiInfo(apiInfo()).select()
                 //扫描所有有注解的api，用这种方式更灵活
 //               .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))

@@ -56,11 +56,11 @@ public class GoodsImportServiceImpl implements GoodsImportService {
     public void download(HttpServletResponse response) {
 //        String storeId = "1376369067769724928";
         String storeId = Objects.requireNonNull(UserContext.getCurrentUser()).getStoreId();
-        //创建Excel工作薄对象
+        //createExcel工作薄对象
         Workbook workbook = new HSSFWorkbook();
         //生成一个表格 设置：页签
         Sheet sheet = workbook.createSheet("导入模板");
-        //创建第1行
+        //create第1行
         Row row0 = sheet.createRow(0);
         row0.createCell(0).setCellValue("商品名称");
         row0.createCell(1).setCellValue("商品卖点");
@@ -255,20 +255,20 @@ public class GoodsImportServiceImpl implements GoodsImportService {
         //将下拉框数据放到新的sheet里，然后excle通过新的sheet数据加载下拉框数据
         Sheet hidden = workbook.createSheet(sheetName);
 
-        //创建单元格对象
+        //create单元格对象
         Cell cell = null;
         //遍历我们上面的数组，将数据取出来放到新sheet的单元格中
         for (int i = 0, length = sheetData.length; i < length; i++) {
             //取出数组中的每个元素
             String name = sheetData[i];
-            //根据i创建相应的行对象（说明我们将会把每个元素单独放一行）
+            //根据icreate相应的行对象（说明我们将会把每个元素单独放一行）
             Row row = hidden.createRow(i);
-            //创建每一行中的第一个单元格
+            //create每一行中的第一个单元格
             cell = row.createCell(0);
             //然后将数组中的元素赋值给这个单元格
             cell.setCellValue(name);
         }
-        // 创建名称，可被其他单元格引用
+        // create名称，可被其他单元格引用
         Name namedCell = workbook.createName();
         namedCell.setNameName(sheetName);
         // 设置名称引用的公式

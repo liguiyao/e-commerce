@@ -1,7 +1,7 @@
 package cn.lili.modules.order.order.entity.enums;
 
 /**
- * 订单出库状态枚举
+ * Order出库状态枚举
  *
  * @author Chopper
  * @since 2020/11/17 7:26 下午

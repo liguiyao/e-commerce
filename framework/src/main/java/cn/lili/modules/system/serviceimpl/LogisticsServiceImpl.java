@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 物流公司业务层实现
+ * logistics公司业务层实现
  *
  * @author Chopper
  * @since 2020/11/17 8:02 下午
@@ -66,7 +66,7 @@ public class LogisticsServiceImpl extends ServiceImpl<LogisticsMapper, Logistics
         try {
             return logisticsPluginFactory.filePlugin().pollQuery(this.getById(logisticsId), logisticsNo, phone);
         } catch (Exception e) {
-            log.error("获取物流公司错误", e);
+            log.error("获取logistics公司错误", e);
 
         }
         return null;
@@ -77,7 +77,7 @@ public class LogisticsServiceImpl extends ServiceImpl<LogisticsMapper, Logistics
         try {
             return logisticsPluginFactory.filePlugin().pollMapTrack(this.getById(logisticsId), logisticsNo, phone, from, to);
         } catch (Exception e) {
-            log.error("获取物流公司错误", e);
+            log.error("获取logistics公司错误", e);
 
         }
         return null;
@@ -87,13 +87,13 @@ public class LogisticsServiceImpl extends ServiceImpl<LogisticsMapper, Logistics
     public Map labelOrder(String orderSn, String logisticsId) {
         //获取设置
         LogisticsSetting logisticsSetting = this.getLogisticsSetting();
-        //获取订单及子订单
+        //获取Order及子Order
         Order order = OperationalJudgment.judgment(orderService.getBySn(orderSn));
         if ((LogisticsEnum.SHUNFENG.name().equals(logisticsSetting.getType()) && order.getDeliverStatus().equals(DeliverStatusEnum.DELIVERED.name()) && order.getOrderStatus().equals(OrderStatusEnum.DELIVERED.name()))
                 || (order.getDeliverStatus().equals(DeliverStatusEnum.UNDELIVERED.name()) && order.getOrderStatus().equals(OrderStatusEnum.UNDELIVERED.name()))) {
-            //订单货物
+            //Order货物
             List<OrderItem> orderItems = orderItemService.getByOrderSn(orderSn);
-            //获取对应物流
+            //获取对应logistics
             Logistics logistics;
 
             if(LogisticsEnum.SHUNFENG.name().equals(logisticsSetting.getType())){
@@ -101,7 +101,7 @@ public class LogisticsServiceImpl extends ServiceImpl<LogisticsMapper, Logistics
             }else{
                 logistics = this.getById(logisticsId);
             }
-            // 店铺-物流公司设置
+            // 店铺-logistics公司设置
             LambdaQueryWrapper<StoreLogistics> lambdaQueryWrapper = Wrappers.lambdaQuery();
             lambdaQueryWrapper.eq(StoreLogistics::getLogisticsId, logistics.getId());
             lambdaQueryWrapper.eq(StoreLogistics::getStoreId, order.getStoreId());

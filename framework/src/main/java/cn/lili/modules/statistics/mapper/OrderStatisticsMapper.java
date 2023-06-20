@@ -13,7 +13,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 /**
- * 订单统计数据处理层
+ * Order统计数据处理层
  *
  * @author Bulbasaur
  * @since 2020/11/17 7:34 下午
@@ -21,30 +21,30 @@ import java.util.List;
 public interface OrderStatisticsMapper extends BaseMapper<Order> {
 
     /**
-     * 获取订单统计数据
+     * 获取Order统计数据
      *
      * @param queryWrapper 查询条件
-     * @return 订单统计列表
+     * @return Order统计列表
      */
     @Select("SELECT DATE_FORMAT(create_time,'%Y-%m-%d') AS create_time,sum(flow_price) AS price FROM li_order " +
             " ${ew.customSqlSegment}")
     List<OrderStatisticsDataVO> getOrderStatisticsData(@Param(Constants.WRAPPER) Wrapper queryWrapper);
 
     /**
-     * 订单数量
+     * Order数量
      *
      * @param queryWrapper 查询条件
-     * @return 订单数量
+     * @return Order数量
      */
     @Select("SELECT count(0) FROM li_order ${ew.customSqlSegment}")
     Integer count(@Param(Constants.WRAPPER) Wrapper queryWrapper);
 
     /**
-     * 查询订单简短信息分页
+     * 查询Order简短信息分页
      *
      * @param page         分页
      * @param queryWrapper 查询条件
-     * @return 简短订单分页
+     * @return 简短Order分页
      */
     @Select("select o.sn,o.flow_price,o.create_time,o.order_status,o.pay_status,o.payment_method,o.payment_time,o.member_name,o.store_name as store_name,o.store_id as store_id,o.client_type,o.order_type,o.deliver_status " +
             ",GROUP_CONCAT(oi.goods_id) as group_goods_id," +

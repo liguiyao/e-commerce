@@ -17,7 +17,7 @@ public class AfterSaleAllowOperation {
     @ApiModelProperty(value = "可以确认售后")
     private Boolean confirm = false;
 
-    @ApiModelProperty(value = "可以回寄物流")
+    @ApiModelProperty(value = "可以回寄logistics")
     private Boolean returnGoods = false;
 
     @ApiModelProperty(value = "可以收货")

@@ -60,7 +60,7 @@ public class ImTalkServiceImpl extends ServiceImpl<ImTalkMapper, ImTalk> impleme
         String finalSelfId = selfId;
         queryWrapper.and(wq-> wq.eq(ImTalk::getUserId2, userId).eq(ImTalk::getUserId1, finalSelfId).or().eq(ImTalk::getUserId2, finalSelfId).eq(ImTalk::getUserId1, userId));
         ImTalk imTalk = this.getOne(queryWrapper);
-        //如果没有聊天，则创建聊天
+        //如果没有聊天，则create聊天
         if (imTalk == null) {
             //当自己为店铺时
             if(UserEnums.STORE.equals(currentUser.getRole())){
@@ -104,7 +104,7 @@ public class ImTalkServiceImpl extends ServiceImpl<ImTalkMapper, ImTalk> impleme
         String finalSelfId = selfId;
         queryWrapper.and(wq-> wq.eq(ImTalk::getUserId2, userId).eq(ImTalk::getUserId1, finalSelfId).or().eq(ImTalk::getUserId2, finalSelfId).eq(ImTalk::getUserId1, userId));
         ImTalk imTalk = this.getOne(queryWrapper);
-        //如果没有聊天，则创建聊天
+        //如果没有聊天，则create聊天
         if (imTalk == null) {
             //当自己为店铺时
             if(UserEnums.STORE.equals(currentUser.getRole())){

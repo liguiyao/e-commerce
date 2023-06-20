@@ -19,6 +19,6 @@ public class FileUtil {
      */
     public static String getUrl(String url, Integer width, Integer height) {
         //缩略图全路径
-        return url + "?x-oss-process=style/" + width + "X" + height;
+        return url + "?x-oss-process=image/resize,h_" + height + ",w_" + width;
     }
 }

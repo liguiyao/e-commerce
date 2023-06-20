@@ -11,17 +11,17 @@ import cn.lili.modules.payment.kit.dto.PaymentSuccessParams;
 public interface PaymentService {
 
     /**
-     * 支付成功通知
+     * Success通知
      *
-     * @param paymentSuccessParams 支付成功回调参数
+     * @param paymentSuccessParams Success回调参数
      */
     void success(PaymentSuccessParams paymentSuccessParams);
 
 
     /**
-     * 平台支付成功
+     * 平台Success
      *
-     * @param paymentSuccessParams 支付成功回调参数
+     * @param paymentSuccessParams Success回调参数
      */
     void adminPaySuccess(PaymentSuccessParams paymentSuccessParams);
 

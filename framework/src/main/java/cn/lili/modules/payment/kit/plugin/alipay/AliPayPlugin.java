@@ -87,7 +87,7 @@ public class AliPayPlugin implements Payment {
     public ResultMessage<Object> h5pay(HttpServletRequest request, HttpServletResponse response, PayParam payParam) {
 
         CashierParam cashierParam = cashierSupport.cashierParam(payParam);
-        //请求订单编号
+        //请求Order编号
         String outTradeNo = SnowFlake.getIdStr();
         //准备支付参数
         AlipayTradeWapPayModel payModel = new AlipayTradeWapPayModel();
@@ -122,7 +122,7 @@ public class AliPayPlugin implements Payment {
         try {
 
             CashierParam cashierParam = cashierSupport.cashierParam(payParam);
-            //请求订单编号
+            //请求Order编号
             String outTradeNo = SnowFlake.getIdStr();
 
             AlipayTradeAppPayModel payModel = new AlipayTradeAppPayModel();
@@ -159,7 +159,7 @@ public class AliPayPlugin implements Payment {
 
             AlipayTradePrecreateModel payModel = new AlipayTradePrecreateModel();
 
-            //请求订单编号
+            //请求Order编号
             String outTradeNo = SnowFlake.getIdStr();
 
             payModel.setBody(cashierParam.getTitle());
@@ -285,7 +285,7 @@ public class AliPayPlugin implements Payment {
             boolean verifyResult = AlipaySignature.rsaCertCheckV1(map, alipayPaymentSetting.getAlipayPublicCertPath(), "UTF-8",
                     "RSA2");
             if (verifyResult) {
-                log.info("支付回调通知：支付成功-参数：{}", map);
+                log.info("支付回调通知：Success-参数：{}", map);
             } else {
                 log.info("支付回调通知：支付失败-参数：{}", map);
             }
@@ -327,7 +327,7 @@ public class AliPayPlugin implements Payment {
                         new PaymentSuccessParams(PaymentMethodEnum.ALIPAY.name(), tradeNo, totalAmount, payParam);
 
                 paymentService.success(paymentSuccessParams);
-                log.info("支付回调通知：支付成功-参数：{},回调参数:{}", map, payParam);
+                log.info("支付回调通知：Success-参数：{},回调参数:{}", map, payParam);
             } else {
                 log.info("支付回调通知：支付失败-参数：{}", map);
             }

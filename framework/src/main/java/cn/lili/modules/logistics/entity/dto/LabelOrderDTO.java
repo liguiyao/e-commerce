@@ -18,13 +18,13 @@ import java.util.List;
 @Data
 public class LabelOrderDTO {
 
-    //订单
+    //Order
     Order order;
-    //订单货物
+    //Order货物
     List<OrderItem> orderItems;
-    //物流公司
+    //logistics公司
     Logistics logistics;
-    //店铺物流公司配置
+    //店铺logistics公司配置
     StoreLogistics storeLogistics;
     //店铺发件地址
     StoreDeliverGoodsAddressDTO storeDeliverGoodsAddressDTO;

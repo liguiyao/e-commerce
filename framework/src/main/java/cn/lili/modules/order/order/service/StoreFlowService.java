@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import java.util.List;
 
 /**
- * 商家订单流水业务层
+ * 商家Order流水业务层
  *
  * @author Chopper
  * @since 2020/11/17 7:37 下午
@@ -20,14 +20,14 @@ import java.util.List;
 public interface StoreFlowService extends IService<StoreFlow> {
 
     /**
-     * 支付订单
+     * 支付Order
      *
-     * @param orderSn 订单编号
+     * @param orderSn Order编号
      */
     void payOrder(String orderSn);
 
     /**
-     * 订单退款
+     * Order退款
      *
      * @param afterSale 售后单
      */

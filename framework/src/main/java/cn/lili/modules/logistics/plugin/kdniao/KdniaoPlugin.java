@@ -115,11 +115,11 @@ public class KdniaoPlugin implements LogisticsPlugin {
     public Map<String,Object> labelOrder(LabelOrderDTO labelOrderDTO) {
         try {
             Map<String,Object> resultMap = new HashMap();
-            //订单
+            //Order
             Order order = labelOrderDTO.getOrder();
-            //订单货物
+            //Order货物
             List<OrderItem> orderItems = labelOrderDTO.getOrderItems();
-            //获取对应物流
+            //获取对应logistics
             Logistics logistics = labelOrderDTO.getLogistics();
             //收件人地址
             String[] ConsigneeAddress = order.getConsigneeAddressPath().split(",");
@@ -127,12 +127,12 @@ public class KdniaoPlugin implements LogisticsPlugin {
             StoreDeliverGoodsAddressDTO storeDeliverGoodsAddressDTO = labelOrderDTO.getStoreDeliverGoodsAddressDTO();
             //发件人地址
             String[] consignorAddress = storeDeliverGoodsAddressDTO.getSalesConsignorAddressPath().split(",");
-            //店铺-物流公司设置
+            //店铺-logistics公司设置
             StoreLogistics storeLogistics = labelOrderDTO.getStoreLogistics();
 
             //组装快递鸟应用级参数
             String resultDate = "{" +
-                    "'OrderCode': '" + order.getSn() + "'," + //订单编码
+                    "'OrderCode': '" + order.getSn() + "'," + //Order编码
                     "'ShipperCode': '" + logistics.getCode() + "'," +   //快递公司编码
                     "'CustomerName': '" + storeLogistics.getCustomerName() + "'," +//客户编码
                     "'CustomerPwd': '" + storeLogistics.getCustomerPwd() + "'," +     //客户密码
@@ -162,7 +162,7 @@ public class KdniaoPlugin implements LogisticsPlugin {
                     //商品信息
                     "'Commodity': [";
 
-            //子订单信息
+            //子Order信息
             for (OrderItem orderItem : orderItems) {
                 resultDate = resultDate + "{" +
                         "'GoodsName': '" + orderItem.getGoodsName() + "'," +

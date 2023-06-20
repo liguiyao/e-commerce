@@ -166,7 +166,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
             if (CharSequenceUtil.isNotEmpty(body) && Boolean.TRUE.equals(JSONUtil.isJsonObj(body.toString()))) {
                 //将body转换为map
                 Map<String, Object> map = JSONUtil.parseObj(body.toString());
-                //创建空的map用于存储结果
+                //create空的map用于存储结果
                 Map<String, Object> resultMap = new HashMap<>(map.size());
                 //遍历数组
                 for (Map.Entry<String, Object> entry : map.entrySet()) {

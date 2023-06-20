@@ -36,7 +36,7 @@ public class TradeDTO implements Serializable {
     @ApiModelProperty(value = "sn")
     private String sn;
 
-    @ApiModelProperty(value = "是否为其他订单下的订单，如果是则为依赖订单的sn，否则为空")
+    @ApiModelProperty(value = "是否为其他Order下的Order，如果是则为依赖Order的sn，否则为空")
     private String parentOrderSn;
 
     @ApiModelProperty(value = "购物车列表")
@@ -81,7 +81,7 @@ public class TradeDTO implements Serializable {
     private Map<String, String> skuPromotionDetail;
 
     /**
-     * 使用平台优惠券，一笔订单只能使用一个平台优惠券
+     * 使用平台优惠券，一笔Order只能使用一个平台优惠券
      */
     private MemberCouponDTO platformCoupon;
 
@@ -133,7 +133,7 @@ public class TradeDTO implements Serializable {
     private String distributionId;
 
     /**
-     * 订单vo
+     * Ordervo
      */
     private List<OrderVO> orderVO;
 

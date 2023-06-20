@@ -1,7 +1,7 @@
 package cn.lili.modules.order.order.entity.enums;
 
 /**
- * 订单促销类型枚举
+ * Order促销类型枚举
  *
  * @author Chopper
  * @since 2020/11/17 7:28 下午
@@ -9,23 +9,23 @@ package cn.lili.modules.order.order.entity.enums;
 public enum OrderPromotionTypeEnum {
 
     /**
-     * 普通订单
+     * 普通Order
      */
     NORMAL,
     /**
-     * 赠品订单
+     * 赠品Order
      */
     GIFT,
     /**
-     * 拼团订单
+     * 拼团Order
      */
     PINTUAN,
     /**
-     * 积分订单
+     * 积分Order
      */
     POINTS,
     /**
-     * 砍价订单
+     * 砍价Order
      */
     KANJIA
 

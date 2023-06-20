@@ -30,14 +30,14 @@ public class AfterSaleLog extends BaseIdEntity {
 
     @CreatedBy
     @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建者", hidden = true)
+    @ApiModelProperty(value = "create者", hidden = true)
     private String createBy;
 
     @CreatedDate
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建时间", hidden = true)
+    @ApiModelProperty(value = "create时间", hidden = true)
     private Date createTime;
 
     @ApiModelProperty(value = "售后服务单号")

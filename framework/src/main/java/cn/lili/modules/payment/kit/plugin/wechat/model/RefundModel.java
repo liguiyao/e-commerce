@@ -16,12 +16,12 @@ public class RefundModel {
 
 
     /**
-     * 原支付交易对应的微信订单号
+     * 原支付交易对应的微信Order号
      */
     private String transaction_id;
 
     /**
-     * 商户订单号
+     * 商户Order号
      */
     private String out_trade_no;
 

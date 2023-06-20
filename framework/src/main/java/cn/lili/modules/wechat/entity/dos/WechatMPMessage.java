@@ -36,6 +36,6 @@ public class WechatMPMessage extends BaseEntity {
     @ApiModelProperty(value = "是否开启")
     private Boolean enable = true;
 
-    @ApiModelProperty("订单状态")
+    @ApiModelProperty("Order状态")
     private String orderStatus;
 }

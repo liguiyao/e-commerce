@@ -259,7 +259,7 @@ public class EsGoodsIndexServiceImpl extends BaseElasticsearchService implements
                         cache.put(GoodsSkuService.getStockCacheKey(goodsSku.getId()), goodsSku.getQuantity());
                     }
 
-                    //批量插入索引，如果为第一次则删除原索引并创建新索引
+                    //批量插入索引，如果为第一次则删除原索引并create新索引
                     this.initIndex(esGoodsIndices, i == 1);
                 }
 
@@ -293,14 +293,14 @@ public class EsGoodsIndexServiceImpl extends BaseElasticsearchService implements
         String indexName = this.getIndexName();
 
         //索引初始化，因为mapping结构问题：
-        //但是如果索引已经自动生成过，这里就不会创建索引，设置mapping，所以这里决定在初始化索引的同时，将已有索引删除，重新创建
+        //但是如果索引已经自动生成过，这里就不会create索引，设置mapping，所以这里决定在初始化索引的同时，将已有索引删除，重新create
 
         boolean indexExist = this.indexExist(indexName);
         log.info("检测 {} 索引结构是否存在：{}", indexName, indexExist);
         if (!indexExist) {
 
             log.info("初始化索引结构 {}", indexName);
-            //如果索引不存在，则创建索引
+            //如果索引不存在，则create索引
             createIndexRequest(indexName);
         }
 
@@ -513,7 +513,7 @@ public class EsGoodsIndexServiceImpl extends BaseElasticsearchService implements
         String indexName = this.getIndexName();
 
         //索引初始化，因为mapping结构问题：
-        //但是如果索引已经自动生成过，这里就不会创建索引，设置mapping，所以这里决定在初始化索引的同时，将已有索引删除，重新创建
+        //但是如果索引已经自动生成过，这里就不会create索引，设置mapping，所以这里决定在初始化索引的同时，将已有索引删除，重新create
 
         //如果索引存在，则删除，重新生成。 这里应该有更优解。
         boolean indexExist = this.indexExist(indexName);
@@ -521,7 +521,7 @@ public class EsGoodsIndexServiceImpl extends BaseElasticsearchService implements
             if (indexExist) {
                 this.deleteIndexRequest(indexName);
             }
-            //如果索引不存在，则创建索引
+            //如果索引不存在，则create索引
             this.createIndexRequest(indexName);
         }
 

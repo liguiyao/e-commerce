@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * 店铺端,订单日志接口
+ * 店铺端,Order日志接口
  *
  * @author Chopper
  * @since 2020/12/5
  **/
 @RestController
-@Api(tags = "店铺端,订单日志接口")
+@Api(tags = "店铺端,Order日志接口")
 @RequestMapping("/store/order/orderLog")
 public class OrderLogStoreController {
 
@@ -34,8 +34,8 @@ public class OrderLogStoreController {
     @Autowired
     private OrderService orderService;
 
-    @ApiOperation(value = "通过订单编号获取订单日志")
-    @ApiImplicitParam(name = "orderSn", value = "订单编号", required = true, paramType = "path")
+    @ApiOperation(value = "通过Order编号获取Order日志")
+    @ApiImplicitParam(name = "orderSn", value = "Order编号", required = true, paramType = "path")
     @GetMapping(value = "/{orderSn}")
     public ResultMessage<List<OrderLog>> get(@PathVariable String orderSn) {
         OperationalJudgment.judgment(orderService.getBySn(orderSn));

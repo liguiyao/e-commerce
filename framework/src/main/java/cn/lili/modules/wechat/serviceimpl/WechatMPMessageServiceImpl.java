@@ -152,7 +152,7 @@ public class WechatMPMessageServiceImpl extends ServiceImpl<WechatMPMessageMappe
         PAIDkeyWord.add(WechatMessageItemEnums.PRICE);
         PAIDkeyWord.add(WechatMessageItemEnums.GOODS_INFO);
         msg.add(new WechatMPMessageData(
-                "订单支付成功,准备发货",
+                "OrderSuccess,准备发货",
                 "487", PAIDkeyWord,
                 OrderStatusEnum.UNDELIVERED));
         //发货提醒
@@ -163,18 +163,18 @@ public class WechatMPMessageServiceImpl extends ServiceImpl<WechatMPMessageMappe
         deliverdKeyWord.add(WechatMessageItemEnums.LOGISTICS_NAME);
         deliverdKeyWord.add(WechatMessageItemEnums.LOGISTICS_NO);
         msg.add(new WechatMPMessageData(
-                "订单发货成功",
+                "Order发货成功",
                 "374", deliverdKeyWord,
                 OrderStatusEnum.DELIVERED));
 
 
-        //已完成
+        //Complete
 
         List<WechatMessageItemEnums> completeKeyWord = new ArrayList<>();
         completeKeyWord.add(WechatMessageItemEnums.SHOP_NAME);
         completeKeyWord.add(WechatMessageItemEnums.GOODS_INFO);
         msg.add(new WechatMPMessageData(
-                "订单完成",
+                "Order完成",
                 "3606", completeKeyWord,
                 OrderStatusEnum.COMPLETED));
 

@@ -24,9 +24,9 @@ public class MemberWithdrawApplyQueryVO implements Serializable {
     private static final long serialVersionUID = 4735408873104054674L;
 
     /**
-     * 充值订单编号
+     * 充值Order编号
      */
-    @ApiModelProperty(value = "充值订单编号")
+    @ApiModelProperty(value = "充值Order编号")
     private String sn;
 
     /**

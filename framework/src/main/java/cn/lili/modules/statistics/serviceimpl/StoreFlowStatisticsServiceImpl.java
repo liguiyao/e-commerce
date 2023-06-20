@@ -72,7 +72,7 @@ public class StoreFlowStatisticsServiceImpl extends ServiceImpl<StoreFlowStatist
     @Override
     public Map<String, Object> getOrderStatisticsPrice() {
         QueryWrapper queryWrapper = Wrappers.query();
-        //支付订单
+        //支付Order
         queryWrapper.eq("flow_type", FlowTypeEnum.PAY.name());
 
         //商家查询，则增加商家判定
@@ -101,7 +101,7 @@ public class StoreFlowStatisticsServiceImpl extends ServiceImpl<StoreFlowStatist
     }
 
     /**
-     * 订单统计-下单属性填充
+     * Order统计-下单属性填充
      *
      * @param dates
      * @param orderOverviewVO
@@ -115,11 +115,11 @@ public class StoreFlowStatisticsServiceImpl extends ServiceImpl<StoreFlowStatist
         if (StringUtils.isNotEmpty(statisticsQueryParam.getStoreId())) {
             queryWrapper.eq("store_id", statisticsQueryParam.getStoreId());
         }
-        //查询流水金额和订单数量
+        //查询流水金额和Order数量
         queryWrapper.select("SUM(flow_price) AS price , COUNT(0) AS num");
         //获取查询结果
         Map order = orderStatisticsService.getMap(queryWrapper);
-        //赋予订单数和流水金额
+        //赋予Order数和流水金额
         orderOverviewVO.setOrderNum(order != null && order.containsKey("num") ? (Long) order.get("num") : 0L);
         orderOverviewVO.setOrderAmount(order != null && order.containsKey("price") ? (double) order.get("price") : 0L);
 
@@ -140,13 +140,13 @@ public class StoreFlowStatisticsServiceImpl extends ServiceImpl<StoreFlowStatist
     }
 
     /**
-     * 订单统计-付款属性填充
+     * Order统计-付款属性填充
      *
      * @param dates
      * @param orderOverviewVO
      */
     private void initPayment(Date[] dates, OrderOverviewVO orderOverviewVO, StatisticsQueryParam statisticsQueryParam) {
-        //付款订单数，付款金额
+        //付款Order数，付款金额
         QueryWrapper queryWrapper = Wrappers.query();
         queryWrapper.between("create_time", dates[0], dates[1]);
         //如果有店铺id传入，则查询店铺
@@ -170,13 +170,13 @@ public class StoreFlowStatisticsServiceImpl extends ServiceImpl<StoreFlowStatist
     }
 
     /**
-     * 订单统计-付款属性填充
+     * Order统计-付款属性填充
      *
      * @param dates
      * @param orderOverviewVO
      */
     private void initAfterSale(Date[] dates, OrderOverviewVO orderOverviewVO, StatisticsQueryParam statisticsQueryParam) {
-        //付款订单数，付款金额
+        //付款Order数，付款金额
         QueryWrapper queryWrapper = Wrappers.query();
         queryWrapper.between("create_time", dates[0], dates[1]);
         queryWrapper.select("SUM(final_price) AS price , COUNT(0) AS num");

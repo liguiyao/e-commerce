@@ -55,7 +55,7 @@ public class PintuanBuyerController {
         return ResultUtil.data(pintuanService.getPintuanMember(pintuanId));
     }
 
-    @ApiOperation(value = "获取当前拼团订单的拼团分享信息")
+    @ApiOperation(value = "获取当前拼团Order的拼团分享信息")
     @GetMapping("/share")
     public ResultMessage<PintuanShareVO> share(String parentOrderSn, String skuId) {
         return ResultUtil.data(pintuanService.getPintuanShareInfo(parentOrderSn, skuId));

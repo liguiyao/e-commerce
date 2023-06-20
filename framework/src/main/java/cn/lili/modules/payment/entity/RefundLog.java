@@ -37,7 +37,7 @@ public class RefundLog extends BaseIdEntity {
     @ApiModelProperty(value = "退单编号")
     private String afterSaleNo;
 
-    @ApiModelProperty(value = "订单编号")
+    @ApiModelProperty(value = "Order编号")
     private String orderSn;
 
     @ApiModelProperty(value = "金额")
@@ -76,6 +76,6 @@ public class RefundLog extends BaseIdEntity {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建时间", hidden = true)
+    @ApiModelProperty(value = "create时间", hidden = true)
     private Date createTime;
 }

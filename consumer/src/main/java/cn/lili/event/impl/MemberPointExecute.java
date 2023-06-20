@@ -46,7 +46,7 @@ public class MemberPointExecute implements MemberRegisterEvent, GoodsCommentComp
     @Autowired
     private MemberService memberService;
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
@@ -78,9 +78,9 @@ public class MemberPointExecute implements MemberRegisterEvent, GoodsCommentComp
     }
 
     /**
-     * 非积分订单订单完成后赠送积分
+     * 非积分OrderOrder完成后赠送积分
      *
-     * @param orderMessage 订单消息
+     * @param orderMessage Order消息
      */
     @Override
     public void orderChange(OrderMessage orderMessage) {
@@ -96,14 +96,14 @@ public class MemberPointExecute implements MemberRegisterEvent, GoodsCommentComp
                 if (order.getPayStatus().equals(PayStatusEnum.UNPAID.name())) {
                     return;
                 }
-                String content = "订单取消，积分返还：" + point + "分";
+                String content = "Order取消，积分返还：" + point + "分";
                 //赠送会员积分
                 memberService.updateMemberPoint(point, PointTypeEnum.INCREASE.name(), order.getMemberId(), content);
                 break;
             }
             case COMPLETED: {
                 Order order = orderService.getBySn(orderMessage.getOrderSn());
-                //如果是积分订单 则直接返回
+                //如果是积分Order 则直接返回
                 if (CharSequenceUtil.isNotEmpty(order.getOrderPromotionType())
                         && order.getOrderPromotionType().equals(OrderPromotionTypeEnum.POINTS.name())) {
                     return;

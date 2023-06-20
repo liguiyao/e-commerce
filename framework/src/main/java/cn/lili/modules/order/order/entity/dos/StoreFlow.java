@@ -25,14 +25,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 /**
- * 商家订单流水
+ * 商家Order流水
  *
  * @author Chopper
  * @since 2020/11/17 7:31 下午
  */
 @Data
 @TableName("li_store_flow")
-@ApiModel(value = "商家订单流水")
+@ApiModel(value = "商家Order流水")
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class StoreFlow extends BaseIdEntity {
@@ -42,10 +42,10 @@ public class StoreFlow extends BaseIdEntity {
     @ApiModelProperty(value = "流水编号")
     private String sn;
 
-    @ApiModelProperty(value = "订单sn")
+    @ApiModelProperty(value = "Ordersn")
     private String orderSn;
 
-    @ApiModelProperty(value = "子订单sn")
+    @ApiModelProperty(value = "子Ordersn")
     private String orderItemSn;
 
     @ApiModelProperty(value = "售后SN")
@@ -92,7 +92,7 @@ public class StoreFlow extends BaseIdEntity {
     /**
      * @see cn.lili.modules.order.order.entity.enums.OrderPromotionTypeEnum
      */
-    @ApiModelProperty(value = "订单促销类型")
+    @ApiModelProperty(value = "Order促销类型")
     private String orderPromotionType;
 
     @ApiModelProperty(value = "积分活动商品结算价格")
@@ -138,12 +138,12 @@ public class StoreFlow extends BaseIdEntity {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建时间", hidden = true)
+    @ApiModelProperty(value = "create时间", hidden = true)
     private Date createTime;
 
 
     public StoreFlow(Order order, OrderItem item, FlowTypeEnum flowTypeEnum) {
-        //获取订单促销类型,如果为促销订单则获取促销商品并获取结算价
+        //获取Order促销类型,如果为促销Order则获取促销商品并获取结算价
         String promotionType = order.getOrderPromotionType();
         BeanUtil.copyProperties(item, this);
 
@@ -161,7 +161,7 @@ public class StoreFlow extends BaseIdEntity {
         this.setMemberName(order.getMemberName());
         this.setGoodsName(item.getGoodsName());
         this.setOrderPromotionType(item.getPromotionType());
-        //格式化订单价格详情
+        //格式化Order价格详情
         PriceDetailDTO priceDetailDTO = JSONUtil.toBean(item.getPriceDetail(), PriceDetailDTO.class);
         //站点优惠券比例=最大比例(100)-店铺承担比例
         this.setSiteCouponPoint(CurrencyUtil.sub(100, priceDetailDTO.getSiteCouponPoint()));
@@ -173,7 +173,7 @@ public class StoreFlow extends BaseIdEntity {
         /**
          * @TODO 计算平台佣金
          */
-        //店铺流水金额=goodsPrice(商品总金额（商品原价）)+ freightPrice(配送费) - discountPrice(优惠金额) - couponPrice(优惠券金额) + updatePrice(订单修改金额)
+        //店铺流水金额=goodsPrice(商品总金额（商品原价）)+ freightPrice(配送费) - discountPrice(优惠金额) - couponPrice(优惠券金额) + updatePrice(Order修改金额)
         this.setFinalPrice(item.getPriceDetailDTO().getFlowPrice());
         //平台收取交易佣金=(flowPrice(流水金额) * platFormCommissionPoint(平台佣金比例))/100
         this.setCommissionPrice(item.getPriceDetailDTO().getPlatFormCommission());
@@ -181,7 +181,7 @@ public class StoreFlow extends BaseIdEntity {
         this.setDistributionRebate(item.getPriceDetailDTO().getDistributionCommission());
         //最终结算金额=flowPrice(流水金额) - platFormCommission(平台收取交易佣金) - distributionCommission(单品分销返现支出)
         this.setBillPrice(item.getPriceDetailDTO().getBillPrice());
-        //兼容为空，以及普通订单操作
+        //兼容为空，以及普通Order操作
         if (CharSequenceUtil.isNotEmpty(promotionType)) {
             //如果为砍价活动，填写砍价结算价
             if (promotionType.equals(OrderPromotionTypeEnum.KANJIA.name())) {

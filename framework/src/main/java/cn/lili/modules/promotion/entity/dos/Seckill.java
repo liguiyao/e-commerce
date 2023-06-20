@@ -59,7 +59,7 @@ public class Seckill extends BasePromotions {
     private Integer goodsNum;
 
     public Seckill(int day, String hours, String seckillRule) {
-        //默认创建*天后的秒杀活动
+        //默认create*天后的秒杀活动
         DateTime dateTime = DateUtil.beginOfDay(DateUtil.offsetDay(new Date(), day));
         this.applyEndTime = dateTime;
         this.hours = hours;

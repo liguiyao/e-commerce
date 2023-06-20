@@ -198,19 +198,19 @@ public class CheckDataRender implements CartRenderStep {
     }
 
     /**
-     * 订单预校验
-     * 1、自己拼团自己创建都拼团判定、拼团限购
+     * Order预校验
+     * 1、自己拼团自己create都拼团判定、拼团限购
      * 2、积分购买，积分足够与否
      *
      * @param tradeDTO
      */
     private void preCalibration(TradeDTO tradeDTO) {
 
-        //拼团订单预校验
+        //拼团Order预校验
         if (tradeDTO.getCartTypeEnum().equals(CartTypeEnum.PINTUAN)) {
-            //拼团判定，不能参与自己创建的拼团
+            //拼团判定，不能参与自己create的拼团
             if (tradeDTO.getParentOrderSn() != null) {
-                //订单接收
+                //Order接收
                 Order parentOrder = orderService.getBySn(tradeDTO.getParentOrderSn());
                 //参与活动判定
                 if (parentOrder.getMemberId().equals(UserContext.getCurrentUser().getId())) {

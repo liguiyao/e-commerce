@@ -213,7 +213,7 @@ public class CartController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "shippingMethod", value = "配送方式：SELF_PICK_UP(自提)," +
                     "LOCAL_TOWN_DELIVERY(同城配送)," +
-                    "LOGISTICS(物流) ", required = true, paramType = "query"),
+                    "LOGISTICS(logistics) ", required = true, paramType = "query"),
             @ApiImplicitParam(name = "way", value = "购物车类型 ", paramType = "query")
     })
     @PutMapping("/shippingMethod")
@@ -231,7 +231,7 @@ public class CartController {
         }
     }
 
-    @ApiOperation(value = "获取用户可选择的物流方式")
+    @ApiOperation(value = "获取用户可选择的logistics方式")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "way", value = "购物车类型 ", paramType = "query")
     })
@@ -270,7 +270,7 @@ public class CartController {
 
 
     @PreventDuplicateSubmissions
-    @ApiOperation(value = "创建交易")
+    @ApiOperation(value = "create交易")
     @PostMapping(value = "/create/trade", consumes = "application/json", produces = "application/json")
     public ResultMessage<Object> crateTrade(@RequestBody TradeParams tradeParams) {
         try {

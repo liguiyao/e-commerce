@@ -13,14 +13,14 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface TradeService extends IService<Trade> {
 
     /**
-     * 创建交易
-     * 1.订单数据校验
+     * create交易
+     * 1.Order数据校验
      * 2.积分预处理
      * 3.优惠券预处理
      * 4.添加交易
-     * 5.添加订单
+     * 5.添加Order
      * 6.将交易写入缓存供消费者调用
-     * 7.发送交易创建消息
+     * 7.发送交易create消息
      *
      * @param tradeDTO 购物车视图
      * @return 交易

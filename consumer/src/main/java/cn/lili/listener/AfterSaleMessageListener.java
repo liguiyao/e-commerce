@@ -24,7 +24,7 @@ import java.util.List;
 public class AfterSaleMessageListener implements RocketMQListener<MessageExt> {
 
     /**
-     * 售后订单状态
+     * 售后Order状态
      */
     @Autowired
     private List<AfterSaleStatusChangeEvent> afterSaleStatusChangeEvents;

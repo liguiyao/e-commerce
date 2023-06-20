@@ -1,7 +1,7 @@
 package cn.lili.modules.order.order.entity.enums;
 
 /**
- * 订单类型枚举
+ * Order类型枚举
  *
  * @author Chopper
  * @since 2020/11/17 7:28 下午
@@ -9,17 +9,17 @@ package cn.lili.modules.order.order.entity.enums;
 public enum OrderTypeEnum {
 
     /**
-     * 普通订单
+     * 普通Order
      */
     NORMAL,
 
     /**
-     * 虚拟订单
+     * 虚拟Order
      */
     VIRTUAL,
 
     /**
-     * 虚拟订单
+     * 虚拟Order
      */
     E_COUPON,
 }

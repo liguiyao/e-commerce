@@ -55,7 +55,7 @@ public class DistributionPriceRender implements CartRenderStep {
         if (StringUtil.isEmpty(distributionId)) {
             return;
         }
-        //循环订单商品列表，如果是分销商品则计算商品佣金
+        //循环Order商品列表，如果是分销商品则计算商品佣金
         tradeDTO.setDistributionId(distributionId);
 
         List<String> skuIds = tradeDTO.getCheckedSkuList().stream().map(cartSkuVO -> {

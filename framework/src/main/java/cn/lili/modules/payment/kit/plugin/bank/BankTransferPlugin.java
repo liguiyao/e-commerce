@@ -46,9 +46,9 @@ public class BankTransferPlugin implements Payment {
     }
 
     /**
-     * 支付订单
+     * 支付Order
      *
-     * @param order 订单
+     * @param order Order
      */
     public void callBack(Order order) {
 

@@ -24,13 +24,13 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 店铺端,订单统计接口
+ * 店铺端,Order统计接口
  *
  * @author Bulbasaur
  * @since 2020/12/9 19:04
  */
 @Slf4j
-@Api(tags = "店铺端,订单统计接口")
+@Api(tags = "店铺端,Order统计接口")
 @RestController
 @RequestMapping("/store/statistics/order")
 public class OrderStatisticsStoreController {
@@ -41,12 +41,12 @@ public class OrderStatisticsStoreController {
     @Autowired
     private AfterSaleStatisticsService afterSaleStatisticsService;
     /**
-     * 订单统计
+     * Order统计
      */
     @Autowired
     private OrderStatisticsService orderStatisticsService;
 
-    @ApiOperation(value = "订单概览统计")
+    @ApiOperation(value = "Order概览统计")
     @GetMapping("/overview")
     public ResultMessage<OrderOverviewVO> overview(StatisticsQueryParam statisticsQueryParam) {
         String storeId = Objects.requireNonNull(UserContext.getCurrentUser()).getStoreId();
@@ -54,12 +54,12 @@ public class OrderStatisticsStoreController {
             statisticsQueryParam.setStoreId(storeId);
             return ResultUtil.data(orderStatisticsService.overview(statisticsQueryParam));
         } catch (Exception e) {
-            log.error("订单概览统计错误", e);
+            log.error("Order概览统计错误", e);
         }
         return null;
     }
 
-    @ApiOperation(value = "订单图表统计")
+    @ApiOperation(value = "Order图表统计")
     @GetMapping
     public ResultMessage<List<OrderStatisticsDataVO>> statisticsChart(StatisticsQueryParam statisticsQueryParam) {
         String storeId = Objects.requireNonNull(UserContext.getCurrentUser()).getStoreId();
@@ -67,13 +67,13 @@ public class OrderStatisticsStoreController {
             statisticsQueryParam.setStoreId(storeId);
             return ResultUtil.data(orderStatisticsService.statisticsChart(statisticsQueryParam));
         } catch (Exception e) {
-            log.error("订单图表统计错误", e);
+            log.error("Order图表统计错误", e);
         }
         return null;
     }
 
 
-    @ApiOperation(value = "订单统计")
+    @ApiOperation(value = "Order统计")
     @GetMapping("/order")
     public ResultMessage<IPage<OrderSimpleVO>> order(StatisticsQueryParam statisticsQueryParam, PageVO pageVO) {
         String storeId = Objects.requireNonNull(UserContext.getCurrentUser()).getStoreId();
@@ -81,7 +81,7 @@ public class OrderStatisticsStoreController {
             statisticsQueryParam.setStoreId(storeId);
             return ResultUtil.data(orderStatisticsService.getStatistics(statisticsQueryParam, pageVO));
         } catch (Exception e) {
-            log.error("订单统计错误", e);
+            log.error("Order统计错误", e);
         }
         return null;
     }

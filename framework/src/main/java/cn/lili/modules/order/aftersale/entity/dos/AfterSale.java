@@ -30,10 +30,10 @@ public class AfterSale extends BaseEntity {
     @ApiModelProperty(value = "售后服务单号")
     private String sn;
 
-    @ApiModelProperty(value = "订单编号")
+    @ApiModelProperty(value = "Order编号")
     private String orderSn;
 
-    @ApiModelProperty(value = "订单货物编号")
+    @ApiModelProperty(value = "Order货物编号")
     private String orderItemSn;
 
     @ApiModelProperty(value = "交易编号")
@@ -117,7 +117,7 @@ public class AfterSale extends BaseEntity {
     @ApiModelProperty(value = "商家备注")
     private String auditRemark;
 
-    @ApiModelProperty(value = "订单支付方式返回的交易号")
+    @ApiModelProperty(value = "Order支付方式返回的交易号")
     private String payOrderNo;
 
     @ApiModelProperty(value = "申请退款金额")
@@ -133,15 +133,15 @@ public class AfterSale extends BaseEntity {
     private Date refundTime;
 
     /**
-     * 买家物流信息
+     * 买家logistics信息
      */
     @ApiModelProperty(value = "发货单号")
     private String mLogisticsNo;
 
-    @ApiModelProperty(value = "物流公司CODE")
+    @ApiModelProperty(value = "logistics公司CODE")
     private String mLogisticsCode;
 
-    @ApiModelProperty(value = "物流公司名称")
+    @ApiModelProperty(value = "logistics公司名称")
     private String mLogisticsName;
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")

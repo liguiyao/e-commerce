@@ -94,7 +94,7 @@ spring:
     #          #实际的表结点,下面代表的是li_order_为开头的所有表，如果能确定表的范围例如按月份分表，这里的写法是data2020.li_order_$->{2020..2021}_$->{01..12}  表示例如 li_order_2020_01 li_order_2020_03 li_order_2021_01
     #          actual-data-nodes: data2020.li_order_$->{2019..2021}_$->{01..12}
     #          table-strategy:
-    #            # 分表策略，根据创建日期
+    #            # 分表策略，根据create日期
     #            standard:
     #              sharding-column: create_time
     #              #分表策略

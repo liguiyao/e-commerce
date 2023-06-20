@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
  **/
 @Data
 @TableName("li_order_complaint_communication")
-@ApiModel(value = "订单交易投诉通信")
+@ApiModel(value = "Order交易投诉通信")
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderComplaintCommunication extends BaseEntity {

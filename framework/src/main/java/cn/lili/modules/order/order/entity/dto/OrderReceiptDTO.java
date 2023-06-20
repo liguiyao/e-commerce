@@ -7,16 +7,16 @@ import lombok.Data;
 
 
 /**
- * 订单发票
+ * Order发票
  *
  * @author lili
  * @since 2020/11/28 11:38
  */
 @Data
-@ApiModel(value = "订单发票")
+@ApiModel(value = "Order发票")
 public class OrderReceiptDTO extends Receipt {
 
-    @ApiModelProperty(value = "订单状态")
+    @ApiModelProperty(value = "Order状态")
     private String orderStatus;
 
 }

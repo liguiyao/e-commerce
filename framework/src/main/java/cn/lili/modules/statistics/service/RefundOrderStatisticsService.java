@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
- * 退款订单统计业务层
+ * 退款Order统计业务层
  *
  * @author Bulbasaur
  * @since 2020/12/9 11:06
@@ -17,7 +17,7 @@ public interface RefundOrderStatisticsService extends IService<StoreFlow> {
 
 
     /**
-     * 查询订单统计分页
+     * 查询Order统计分页
      *
      * @param statisticsQueryParam 查询参数
      * @param pageVO               分页
@@ -26,7 +26,7 @@ public interface RefundOrderStatisticsService extends IService<StoreFlow> {
     IPage<RefundOrderStatisticsDataVO> getRefundOrderStatisticsData(PageVO pageVO, StatisticsQueryParam statisticsQueryParam);
 
     /**
-     * 查询退款订单统计金额
+     * 查询退款Order统计金额
      *
      * @param statisticsQueryParam 查询参数
      * @return 退款统计金额

@@ -16,7 +16,7 @@ import java.util.List;
 @Accessors(chain = true)
 public class Detail {
     /**
-     * 订单原价
+     * Order原价
      */
     private int cost_price;
     /**

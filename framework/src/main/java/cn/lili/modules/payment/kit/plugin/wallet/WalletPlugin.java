@@ -119,7 +119,7 @@ public class WalletPlugin implements Payment {
         try {
             memberWalletService.increase(new MemberWalletUpdateDTO(refundLog.getTotalAmount(),
                     refundLog.getMemberId(),
-                    "订单[" + refundLog.getOrderSn() + "]，售后单[" + refundLog.getAfterSaleNo() + "]，退还金额[" + refundLog.getTotalAmount() + "]",
+                    "Order[" + refundLog.getOrderSn() + "]，售后单[" + refundLog.getAfterSaleNo() + "]，退还金额[" + refundLog.getTotalAmount() + "]",
                     DepositServiceTypeEnum.WALLET_REFUND.name()));
             refundLog.setIsRefund(true);
             refundLogService.save(refundLog);
@@ -129,7 +129,7 @@ public class WalletPlugin implements Payment {
     }
 
     /**
-     * 支付订单
+     * 支付Order
      *
      * @param payParam     支付参数
      * @param cashierParam 收银台参数
@@ -144,7 +144,7 @@ public class WalletPlugin implements Payment {
             boolean result = memberWalletService.reduce(new MemberWalletUpdateDTO(
                             cashierParam.getPrice(),
                             UserContext.getCurrentUser().getId(),
-                            "订单[" + cashierParam.getOrderSns() + "]支付金额[" + cashierParam.getPrice() + "]",
+                            "Order[" + cashierParam.getOrderSns() + "]支付金额[" + cashierParam.getPrice() + "]",
                             DepositServiceTypeEnum.WALLET_PAY.name()
                     )
             );
@@ -164,7 +164,7 @@ public class WalletPlugin implements Payment {
                     memberWalletService.increase(new MemberWalletUpdateDTO(
                             cashierParam.getPrice(),
                             UserContext.getCurrentUser().getId(),
-                            "订单[" + cashierParam.getOrderSns() + "]支付异常，余额返还[" + cashierParam.getPrice() + "]",
+                            "Order[" + cashierParam.getOrderSns() + "]支付异常，余额返还[" + cashierParam.getPrice() + "]",
                             DepositServiceTypeEnum.WALLET_REFUND.name())
                     );
                     throw e;

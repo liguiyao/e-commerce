@@ -23,10 +23,10 @@ public class StoreFlowPayDownloadVO {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建时间", hidden = true)
+    @ApiModelProperty(value = "create时间", hidden = true)
     private Date createTime;
 
-    @ApiModelProperty(value = "订单sn")
+    @ApiModelProperty(value = "Ordersn")
     private String orderSn;
 
     @ApiModelProperty(value = "店铺名称 ")

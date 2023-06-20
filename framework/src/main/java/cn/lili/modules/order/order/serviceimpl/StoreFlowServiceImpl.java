@@ -33,7 +33,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * 商家订单流水业务层实现
+ * 商家Order流水业务层实现
  *
  * @author Chopper
  * @since 2020/11/17 7:38 下午
@@ -43,12 +43,12 @@ import java.util.List;
 public class StoreFlowServiceImpl extends ServiceImpl<StoreFlowMapper, StoreFlow> implements StoreFlowService {
 
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
     /**
-     * 订单货物
+     * Order货物
      */
     @Autowired
     private OrderItemService orderItemService;
@@ -62,18 +62,18 @@ public class StoreFlowServiceImpl extends ServiceImpl<StoreFlowMapper, StoreFlow
     private BillService billService;
 
     /**
-     * 店铺订单支付流水
+     * 店铺Order支付流水
      *
-     * @param orderSn 订单编号
+     * @param orderSn Order编号
      */
     @Override
     public void payOrder(String orderSn) {
-        //根据订单编号获取子订单列表
+        //根据Order编号获取子Order列表
         List<OrderItem> orderItems = orderItemService.getByOrderSn(orderSn);
-        //根据订单编号获取订单数据
+        //根据Order编号获取Order数据
         Order order = orderService.getBySn(orderSn);
 
-        //循环子订单记录流水
+        //循环子Order记录流水
         for (OrderItem item : orderItems) {
             StoreFlow storeFlow = new StoreFlow(order, item, FlowTypeEnum.PAY);
             //添加付款交易流水
@@ -83,7 +83,7 @@ public class StoreFlowServiceImpl extends ServiceImpl<StoreFlowMapper, StoreFlow
 
 
     /**
-     * 店铺订单退款流水
+     * 店铺Order退款流水
      *
      * @param afterSale 售后单
      */
@@ -114,9 +114,9 @@ public class StoreFlowServiceImpl extends ServiceImpl<StoreFlowMapper, StoreFlow
         storeFlow.setNum(afterSale.getNum());
         //分类ID
         storeFlow.setCategoryId(payStoreFlow.getCategoryId());
-        //佣金 = （佣金/订单商品数量）* 售后商品数量
+        //佣金 = （佣金/Order商品数量）* 售后商品数量
         storeFlow.setCommissionPrice(CurrencyUtil.mul(CurrencyUtil.div(payStoreFlow.getCommissionPrice(), payStoreFlow.getNum()), afterSale.getNum()));
-        //分销佣金 =（分销佣金/订单商品数量）* 售后商品数量
+        //分销佣金 =（分销佣金/Order商品数量）* 售后商品数量
         storeFlow.setDistributionRebate(CurrencyUtil.mul(CurrencyUtil.div(payStoreFlow.getDistributionRebate(), payStoreFlow.getNum()), afterSale.getNum()));
         //流水金额 = 支付最终结算金额
         storeFlow.setFinalPrice(payStoreFlow.getBillPrice());
@@ -186,7 +186,7 @@ public class StoreFlowServiceImpl extends ServiceImpl<StoreFlowMapper, StoreFlow
 
 
         LambdaQueryWrapper<StoreFlow> lambdaQueryWrapper = Wrappers.lambdaQuery();
-        //分销订单过滤是否判定
+        //分销Order过滤是否判定
         lambdaQueryWrapper.isNotNull(storeFlowQueryDTO.getJustDistribution() != null && storeFlowQueryDTO.getJustDistribution(),
                 StoreFlow::getDistributionRebate);
 

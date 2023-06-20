@@ -47,7 +47,7 @@ public class MemberPointsHistoryServiceImpl extends ServiceImpl<MemberPointsHist
         LambdaQueryWrapper<MemberPointsHistory> lambdaQueryWrapper = new LambdaQueryWrapper<MemberPointsHistory>()
                 .eq(CharSequenceUtil.isNotEmpty(memberId), MemberPointsHistory::getMemberId, memberId)
                 .like(CharSequenceUtil.isNotEmpty(memberName), MemberPointsHistory::getMemberName, memberName);
-        //如果排序为空，则默认创建时间倒序
+        //如果排序为空，则默认create时间倒序
         if (CharSequenceUtil.isEmpty(page.getSort())) {
             page.setSort("createTime");
             page.setOrder("desc");

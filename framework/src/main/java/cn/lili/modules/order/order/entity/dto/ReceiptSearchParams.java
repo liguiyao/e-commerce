@@ -32,7 +32,7 @@ public class ReceiptSearchParams {
     @ApiModelProperty(value = "商家ID")
     private String storeId;
 
-    @ApiModelProperty(value = "订单号")
+    @ApiModelProperty(value = "Order号")
     private String orderSn;
 
     @ApiModelProperty(value = "发票状态")

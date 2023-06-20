@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * 订单支付信息获取
+ * Order支付信息获取
  *
  * @author Chopper
  * @since 2021-01-25 20:00
@@ -33,7 +33,7 @@ import java.util.List;
 @Component
 public class OrderCashier implements CashierExecute {
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
@@ -53,14 +53,14 @@ public class OrderCashier implements CashierExecute {
         if (payParam.getOrderType().equals(CashierEnum.ORDER.name())) {
             //准备返回的数据
             CashierParam cashierParam = new CashierParam();
-            //订单信息获取
+            //Order信息获取
             OrderDetailVO order = orderService.queryDetail(payParam.getSn());
 
-            //如果订单已支付，则不能发器支付
+            //如果Order已支付，则不能发器支付
             if (order.getOrder().getPayStatus().equals(PayStatusEnum.PAID.name())) {
                 throw new ServiceException(ResultCode.PAY_DOUBLE_ERROR);
             }
-            //如果订单状态不是待付款，则抛出异常
+            //如果Order状态不是Unpaid，则抛出异常
             if (!order.getOrder().getOrderStatus().equals(OrderStatusEnum.UNPAID.name())) {
                 throw new ServiceException(ResultCode.PAY_BAN);
             }
@@ -98,7 +98,7 @@ public class OrderCashier implements CashierExecute {
             orderService.payOrder(payParam.getSn(),
                     paymentSuccessParams.getPaymentMethod(),
                     paymentSuccessParams.getReceivableNo());
-            log.info("订单{}支付成功,金额{},方式{}", payParam.getSn(),
+            log.info("Order{}Success,金额{},方式{}", payParam.getSn(),
                     paymentSuccessParams.getPaymentMethod(),
                     paymentSuccessParams.getReceivableNo());
         }

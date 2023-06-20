@@ -13,7 +13,7 @@ public enum TradeStatusEnum {
      */
     UNPAID("未付款"),
     PAID("已付款"),
-    CANCELLED("已取消");
+    CANCELLED("Cancelled");
 
     private final String description;
 

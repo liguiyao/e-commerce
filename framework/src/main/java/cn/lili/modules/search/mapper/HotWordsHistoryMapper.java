@@ -21,10 +21,10 @@ import java.util.List;
 public interface HotWordsHistoryMapper extends BaseMapper<HotWordsHistory> {
 
     /**
-     * 获取订单统计数据
+     * 获取Order统计数据
      *
      * @param queryWrapper 查询条件
-     * @return 订单统计列表
+     * @return Order统计列表
      */
     @Select("SELECT sum(score) as score,keywords FROM li_hot_words_history " +" ${ew.customSqlSegment}")
     List<HotWordsHistory> statistics(@Param(Constants.WRAPPER) Wrapper queryWrapper);

@@ -156,16 +156,16 @@ public interface CartService {
     void selectCoupon(String couponId, String way, boolean use);
 
     /**
-     * 创建交易
-     * 1.获取购物车类型，不同的购物车类型有不同的订单逻辑
+     * create交易
+     * 1.获取购物车类型，不同的购物车类型有不同的Order逻辑
      * 购物车类型：购物车、立即购买、虚拟商品、拼团、积分
      * 2.校验用户的收件人信息
      * 3.设置交易的基础参数
      * 4.交易信息存储到缓存中
-     * 5.创建交易
+     * 5.create交易
      * 6.清除购物车选择数据
      *
-     * @param tradeParams 创建交易参数
+     * @param tradeParams create交易参数
      * @return 交易信息
      */
     Trade createTrade(TradeParams tradeParams);

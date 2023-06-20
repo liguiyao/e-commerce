@@ -30,7 +30,7 @@ import java.util.Date;
 import java.util.Optional;
 
 /**
- * 订单
+ * Order
  *
  * @author Chopper
  * @since 2020/11/17 7:30 下午
@@ -38,13 +38,13 @@ import java.util.Optional;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @TableName("li_order")
-@ApiModel(value = "订单")
+@ApiModel(value = "Order")
 @NoArgsConstructor
 public class Order extends BaseEntity {
 
 
     private static final long serialVersionUID = 2233811628066468683L;
-    @ApiModelProperty("订单编号")
+    @ApiModelProperty("Order编号")
     private String sn;
 
     @ApiModelProperty("交易编号 关联Trade")
@@ -66,7 +66,7 @@ public class Order extends BaseEntity {
     /**
      * @see OrderStatusEnum
      */
-    @ApiModelProperty(value = "订单状态")
+    @ApiModelProperty(value = "Order状态")
     private String orderStatus;
 
     /**
@@ -133,22 +133,22 @@ public class Order extends BaseEntity {
     @ApiModelProperty(value = "发货单号")
     private String logisticsNo;
 
-    @ApiModelProperty(value = "物流公司CODE")
+    @ApiModelProperty(value = "logistics公司CODE")
     private String logisticsCode;
 
-    @ApiModelProperty(value = "物流公司名称")
+    @ApiModelProperty(value = "logistics公司名称")
     private String logisticsName;
 
-    @ApiModelProperty(value = "订单商品总重量")
+    @ApiModelProperty(value = "Order商品总重量")
     private Double weight;
 
     @ApiModelProperty(value = "商品数量")
     private Integer goodsNum;
 
-    @ApiModelProperty(value = "买家订单备注")
+    @ApiModelProperty(value = "买家Order备注")
     private String remark;
 
-    @ApiModelProperty(value = "订单取消原因")
+    @ApiModelProperty(value = "Order取消原因")
     private String cancelReason;
 
     @ApiModelProperty(value = "完成时间")
@@ -165,34 +165,34 @@ public class Order extends BaseEntity {
     /**
      * @see ClientTypeEnum
      */
-    @ApiModelProperty(value = "订单来源")
+    @ApiModelProperty(value = "Order来源")
     private String clientType;
 
     @ApiModelProperty(value = "是否需要发票")
     private Boolean needReceipt;
 
-    @ApiModelProperty(value = "是否为其他订单下的订单，如果是则为依赖订单的sn，否则为空")
+    @ApiModelProperty(value = "是否为其他Order下的Order，如果是则为依赖Order的sn，否则为空")
     private String parentOrderSn = "";
 
-    @ApiModelProperty(value = "是否为某订单类型的订单，如果是则为订单类型的id，否则为空")
+    @ApiModelProperty(value = "是否为某Order类型的Order，如果是则为Order类型的id，否则为空")
     private String promotionId;
 
     /**
      * @see OrderTypeEnum
      */
-    @ApiModelProperty(value = "订单类型")
+    @ApiModelProperty(value = "Order类型")
     private String orderType;
 
     /**
      * @see OrderPromotionTypeEnum
      */
-    @ApiModelProperty(value = "订单促销类型")
+    @ApiModelProperty(value = "Order促销类型")
     private String orderPromotionType;
 
     @ApiModelProperty(value = "价格价格详情")
     private String priceDetail;
 
-    @ApiModelProperty(value = "订单是否支持原路退回")
+    @ApiModelProperty(value = "Order是否支持原路退回")
     private Boolean canReturn;
 
     @ApiModelProperty(value = "提货码")
@@ -220,7 +220,7 @@ public class Order extends BaseEntity {
     private String storeAddressCenter;
 
     /**
-     * 构建订单
+     * 构建Order
      *
      * @param cartVO   购物车VO
      * @param tradeDTO 交易DTO
@@ -230,7 +230,7 @@ public class Order extends BaseEntity {
         BeanUtil.copyProperties(tradeDTO, this);
         BeanUtil.copyProperties(cartVO.getPriceDetailDTO(), this);
         BeanUtil.copyProperties(cartVO, this);
-        //填写订单类型
+        //填写Order类型
         this.setTradeType(cartVO, tradeDTO);
         setId(oldId);
 
@@ -272,18 +272,18 @@ public class Order extends BaseEntity {
 
 
     /**
-     * 填写交易（订单）类型
-     * 1.判断是普通、促销订单
-     * 2.普通订单进行区分：实物订单、虚拟订单
-     * 3.促销订单判断货物进行区分实物、虚拟商品。
-     * 4.拼团订单需要填写父订单ID
+     * 填写交易（Order）类型
+     * 1.判断是普通、促销Order
+     * 2.普通Order进行区分：实物Order、虚拟Order
+     * 3.促销Order判断货物进行区分实物、虚拟商品。
+     * 4.拼团Order需要填写父OrderID
      *
      * @param cartVO   购物车VO
      * @param tradeDTO 交易DTO
      */
     private void setTradeType(CartVO cartVO, TradeDTO tradeDTO) {
 
-        //判断是否为普通订单、促销订单
+        //判断是否为普通Order、促销Order
         if (tradeDTO.getCartTypeEnum().equals(CartTypeEnum.CART) || tradeDTO.getCartTypeEnum().equals(CartTypeEnum.BUY_NOW)) {
             this.setOrderType(OrderTypeEnum.NORMAL.name());
             this.setOrderPromotionType(OrderPromotionTypeEnum.NORMAL.name());
@@ -291,17 +291,17 @@ public class Order extends BaseEntity {
             this.setOrderType(OrderTypeEnum.VIRTUAL.name());
             this.setOrderPromotionType(OrderPromotionTypeEnum.NORMAL.name());
         } else {
-            //促销订单（拼团、积分）-判断购买的是虚拟商品还是实物商品
+            //促销Order（拼团、积分）-判断购买的是虚拟商品还是实物商品
             String goodsType = cartVO.getCheckedSkuList().get(0).getGoodsSku().getGoodsType();
             if (CharSequenceUtil.isEmpty(goodsType) || goodsType.equals(GoodsTypeEnum.PHYSICAL_GOODS.name())) {
                 this.setOrderType(OrderTypeEnum.NORMAL.name());
             } else {
                 this.setOrderType(OrderTypeEnum.VIRTUAL.name());
             }
-            //填写订单的促销类型
+            //填写Order的促销类型
             this.setOrderPromotionType(tradeDTO.getCartTypeEnum().name());
 
-            //判断是否为拼团订单，如果为拼团订单获取拼团ID，判断是否为主订单
+            //判断是否为拼团Order，如果为拼团Order获取拼团ID，判断是否为主Order
             if (tradeDTO.getCartTypeEnum().name().equals(PromotionTypeEnum.PINTUAN.name()) && cartVO.getCheckedSkuList().get(0).getPromotionMap() != null && !cartVO.getCheckedSkuList().get(0).getPromotionMap().isEmpty()) {
                 Optional<String> pintuanPromotions = cartVO.getCheckedSkuList().get(0).getPromotionMap().keySet().stream().filter(i -> i.contains(PromotionTypeEnum.PINTUAN.name())).findFirst();
                 pintuanPromotions.ifPresent(s -> promotionId = s.split("-")[1]);

@@ -6,20 +6,20 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * 物流公司设置
+ * logistics公司设置
  *
  * @author Chopper
  * @since 2020/11/17 8:01 下午
  */
 
 @Data
-@ApiModel(value = "物流公司VO")
+@ApiModel(value = "logistics公司VO")
 public class StoreLogisticsVO extends BaseEntity {
 
-    @ApiModelProperty(value = "物流公司ID")
+    @ApiModelProperty(value = "logistics公司ID")
     private String logisticsId;
 
-    @ApiModelProperty(value = "物流公司名称")
+    @ApiModelProperty(value = "logistics公司名称")
     private String name;
 
     @ApiModelProperty(value = "已选择", notes = "如果已选择则有值，没有选择则无值")

@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 拼团订单延时任务信息
+ * 拼团Order延时任务信息
  *
  * @author paulG
  * @since 2021/5/7
@@ -21,7 +21,7 @@ public class PintuanOrderMessage {
     private String pintuanId;
 
     /**
-     * 父拼团订单sn
+     * 父拼团Ordersn
      */
     private String orderSn;
 

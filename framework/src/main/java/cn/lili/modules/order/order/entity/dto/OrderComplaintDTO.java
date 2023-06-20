@@ -26,7 +26,7 @@ public class OrderComplaintDTO {
     private String images;
 
     @NotBlank
-    @ApiModelProperty(value = "订单号")
+    @ApiModelProperty(value = "Order号")
     private String orderSn;
 
     @NotBlank

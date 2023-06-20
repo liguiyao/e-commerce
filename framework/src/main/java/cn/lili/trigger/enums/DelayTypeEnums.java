@@ -13,9 +13,9 @@ public enum DelayTypeEnums {
      */
     PROMOTION("促销活动"),
     /**
-     * 拼团订单
+     * 拼团Order
      */
-    PINTUAN_ORDER("拼团订单"),
+    PINTUAN_ORDER("拼团Order"),
 
     /**
      * 直播

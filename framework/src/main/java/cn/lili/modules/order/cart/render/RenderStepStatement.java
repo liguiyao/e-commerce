@@ -50,7 +50,7 @@ public class RenderStepStatement {
     };
 
     /**
-     * 交易创建前渲染
+     * 交易create前渲染
      * 渲染购物车 生成SN 》分销人员佣金渲染 》平台佣金渲染
      */
     public static RenderStepEnums[] singleTradeRender = {
@@ -64,7 +64,7 @@ public class RenderStepStatement {
     };
 
     /**
-     * 交易创建前渲染
+     * 交易create前渲染
      * 渲染购物车 生成SN 》分销人员佣金渲染 》平台佣金渲染
      */
     public static RenderStepEnums[] pintuanTradeRender = {
@@ -79,7 +79,7 @@ public class RenderStepStatement {
     };
 
     /**
-     * 交易创建前渲染
+     * 交易create前渲染
      * 渲染购物车 生成SN 》分销人员佣金渲染 》平台佣金渲染
      */
     public static RenderStepEnums[] tradeRender = {

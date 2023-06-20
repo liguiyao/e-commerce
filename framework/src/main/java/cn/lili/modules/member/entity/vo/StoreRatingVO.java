@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class StoreRatingVO {
 
-    @ApiModelProperty(value = "物流评分")
+    @ApiModelProperty(value = "logistics评分")
     private String deliveryScore;
 
     @ApiModelProperty(value = "服务评分")

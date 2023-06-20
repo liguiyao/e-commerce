@@ -53,7 +53,7 @@ public class PromotionEverydayExecute implements EveryDayExecute {
             log.error("清楚商品索引中无效促销异常", e);
         }
         try {
-            //定时创建活动
+            //定时create活动
             addSeckill();
         } catch (Exception e) {
             log.error("秒杀活动添加异常", e);

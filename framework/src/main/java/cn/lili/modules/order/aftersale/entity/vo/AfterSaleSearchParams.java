@@ -25,7 +25,7 @@ public class AfterSaleSearchParams extends PageVO {
     @ApiModelProperty(value = "售后服务单号")
     private String sn;
 
-    @ApiModelProperty(value = "订单编号")
+    @ApiModelProperty(value = "Order编号")
     private String orderSn;
 
     @ApiModelProperty(value = "会员名称")

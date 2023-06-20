@@ -65,7 +65,7 @@ public class UnionPayPlugin implements Payment {
             String notifyUrl = unionPaymentSetting.getUnionPayDomain().concat("/unionPay/payNotify");
             //用户ip
             String ip = IpKit.getRealIp(request);
-            //第三方付款订单
+            //第三方付款Order
             String outOrderNo = SnowFlake.getIdStr();
             String attach = URLEncoder.createDefault().encode(JSONUtil.toJsonStr(payParam), StandardCharsets.UTF_8);
             Map<String, String> params = UnifiedOrderModel.builder()
@@ -218,11 +218,11 @@ public class UnionPayPlugin implements Payment {
 
         if ("0".equals(status) && "0".equals(returnCode)) {
             UnionPaymentSetting unionPaymentSetting = this.unionPaymentSetting();
-            // 注意重复通知的情况，同一订单号可能收到多次通知，请注意一定先判断订单状态
+            // 注意重复通知的情况，同一Order号可能收到多次通知，请注意一定先判断Order状态
             // 注意此处签名方式需与统一下单的签名类型一致
             if (WxPayKit.verifyNotify(params, unionPaymentSetting.getUnionPayKey(), SignType.MD5)) {
-                log.info("支付成功....");
-                // 更新订单信息
+                log.info("Success....");
+                // 更新Order信息
                 // 发送通知等
 
             }

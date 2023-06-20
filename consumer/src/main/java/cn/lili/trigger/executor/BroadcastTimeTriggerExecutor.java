@@ -25,7 +25,7 @@ public class BroadcastTimeTriggerExecutor implements TimeTriggerExecutor {
 
     @Override
     public void execute(Object object) {
-        //直播间订单消息
+        //直播间Order消息
         BroadcastMessage broadcastMessage = JSONUtil.toBean(JSONUtil.parseObj(object), BroadcastMessage.class);
         if (broadcastMessage != null && broadcastMessage.getStudioId() != null) {
             log.info("直播间消费：{}", broadcastMessage);

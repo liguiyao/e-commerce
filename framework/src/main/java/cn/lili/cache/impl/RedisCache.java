@@ -228,9 +228,9 @@ public class RedisCache implements Cache {
 
     /**
      * 使用Sorted Set记录keyword
-     * zincrby命令，对于一个Sorted Set，存在的就把分数加x(x可自行设定)，不存在就创建一个分数为1的成员
+     * zincrby命令，对于一个Sorted Set，存在的就把分数加x(x可自行设定)，不存在就create一个分数为1的成员
      *
-     * @param sortedSetName sortedSetName的Sorted Set不用预先创建，不存在会自动创建，存在则向里添加数据
+     * @param sortedSetName sortedSetName的Sorted Set不用预先create，不存在会自动create，存在则向里添加数据
      * @param keyword       关键词
      */
     @Override

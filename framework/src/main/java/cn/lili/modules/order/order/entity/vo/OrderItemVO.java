@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 子订单VO
+ * 子OrderVO
  *
  * @author Chopper
  * @since 2020-08-17 20:28

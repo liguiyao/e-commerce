@@ -20,7 +20,7 @@ public class Receipt extends BaseEntity {
 
     private static final long serialVersionUID = -8210927482915675995L;
 
-    @ApiModelProperty(value = "订单编号")
+    @ApiModelProperty(value = "Order编号")
     private String orderSn;
 
     @ApiModelProperty(value = "发票抬头")

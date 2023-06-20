@@ -11,7 +11,7 @@ activate 平台
 平台 -> 平台: 更新售后状态
 return 售后审核响应
 
-user -> 平台: 填写物流信息
+user -> 平台: 填写logistics信息
 seller->平台: 确认收货
 activate 平台
 平台 -> 平台: 自动退款

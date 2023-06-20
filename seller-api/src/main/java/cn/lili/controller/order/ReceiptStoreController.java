@@ -59,8 +59,8 @@ public class ReceiptStoreController {
         return ResultUtil.data(receiptService.invoicing(id));
     }
 
-    @ApiOperation(value = "通过订单编号获取")
-    @ApiImplicitParam(name = "orderSn", value = "订单编号", required = true, dataType = "String", paramType = "path")
+    @ApiOperation(value = "通过Order编号获取")
+    @ApiImplicitParam(name = "orderSn", value = "Order编号", required = true, dataType = "String", paramType = "path")
     @GetMapping(value = "/get/orderSn/{orderSn}")
     public ResultMessage<Receipt> getByOrderSn(@PathVariable String orderSn) {
         OperationalJudgment.judgment(orderService.getBySn(orderSn));

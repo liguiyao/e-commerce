@@ -1,7 +1,7 @@
 package cn.lili.modules.order.order.entity.enums;
 
 /**
- * 前端订单页面TAB标签枚举
+ * 前端Order页面TAB标签枚举
  *
  * @author Chopper
  * @since 2020/11/17 7:28 下午
@@ -10,14 +10,14 @@ public enum OrderTagEnum {
 
 
     /**
-     * 所有订单
+     * 所有Order
      */
     ALL("全部"),
 
     /**
-     * 待付款
+     * Unpaid
      */
-    WAIT_PAY("待付款"),
+    WAIT_PAY("Unpaid"),
 
     /**
      * 待收货
@@ -30,14 +30,14 @@ public enum OrderTagEnum {
     WAIT_ROG("待收货"),
 
     /**
-     * 已完成
+     * Complete
      */
-    COMPLETE("已完成"),
+    COMPLETE("Complete"),
 
     /**
-     * 已取消
+     * Cancelled
      */
-    CANCELLED("已取消");
+    CANCELLED("Cancelled");
 
     private final String description;
 

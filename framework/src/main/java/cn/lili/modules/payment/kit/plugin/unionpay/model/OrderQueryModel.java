@@ -7,7 +7,7 @@
  *
  * <p>Node.js 版: https://gitee.com/javen205/TNWX</p>
  *
- * <p>云闪付-订单查询</p>
+ * <p>云闪付-Order查询</p>
  *
  * @author Javen
  */

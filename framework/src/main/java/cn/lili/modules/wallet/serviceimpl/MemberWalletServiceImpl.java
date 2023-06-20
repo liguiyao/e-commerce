@@ -89,7 +89,7 @@ public class MemberWalletServiceImpl extends ServiceImpl<MemberWalletMapper, Mem
         queryWrapper.eq("member_id", memberId);
         //执行查询
         MemberWallet memberWallet = this.getOne(queryWrapper, false);
-        //如果没有钱包，则创建钱包
+        //如果没有钱包，则create钱包
         if (memberWallet == null) {
             memberWallet = this.save(memberId, memberService.getById(memberId).getUsername());
         }

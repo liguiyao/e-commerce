@@ -17,7 +17,7 @@ public class BillDTO implements Serializable {
     private static final long serialVersionUID = 4441580387361184989L;
 
 
-    @ApiModelProperty(value = "结算周期内订单付款总金额")
+    @ApiModelProperty(value = "结算周期内Order付款总金额")
     private Double orderPrice;
 
     @ApiModelProperty(value = "退单金额")
@@ -32,7 +32,7 @@ public class BillDTO implements Serializable {
     @ApiModelProperty(value = "分销返现支出")
     private Double distributionCommission;
 
-    @ApiModelProperty(value = "分销订单退还，返现佣金返还")
+    @ApiModelProperty(value = "分销Order退还，返现佣金返还")
     private Double distributionRefundCommission;
 
     @ApiModelProperty(value = "平台优惠券补贴")

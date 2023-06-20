@@ -22,10 +22,10 @@ public class PriceDetailDTO implements Serializable {
 
     private static final long serialVersionUID = 8808470688518188146L;
     /**
-     * 订单原始总价格
-     * 用于订单价格修改金额计算使用
+     * Order原始总价格
+     * 用于Order价格修改金额计算使用
      */
-    @ApiModelProperty(value = "订单原始总价格")
+    @ApiModelProperty(value = "Order原始总价格")
     private Double originalPrice;
 
     @ApiModelProperty(value = "商品总金额（商品原价）")
@@ -81,14 +81,14 @@ public class PriceDetailDTO implements Serializable {
 
     //========= update price ==========
 
-    @ApiModelProperty(value = "订单修改金额")
+    @ApiModelProperty(value = "Order修改金额")
     private Double updatePrice;
 
     //=========end update price==========
 
     @ApiModelProperty(value = "流水金额(入账 出帐金额) = " +
             "goodsPrice(商品总金额（商品原价）) + freightPrice(配送费) - " +
-            "discountPrice(优惠金额) - couponPrice(优惠券金额) + updatePrice(订单修改金额)")
+            "discountPrice(优惠金额) - couponPrice(优惠券金额) + updatePrice(Order修改金额)")
     private Double flowPrice;
 
     @ApiModelProperty(value = "结算价格 与 商家/供应商 结算价格（例如积分商品/砍价商品）")
@@ -165,9 +165,9 @@ public class PriceDetailDTO implements Serializable {
 
 
     /**
-     * 写入修改金额，自动计算订单各个金额
+     * 写入修改金额，自动计算Order各个金额
      *
-     * @param updatePrice 修改后的订单金额
+     * @param updatePrice 修改后的Order金额
      */
     public void setUpdatePrice(Double updatePrice) {
         this.updatePrice = updatePrice;
@@ -197,7 +197,7 @@ public class PriceDetailDTO implements Serializable {
         if (settlementPrice > 0) {
             billPrice = settlementPrice;
         } else {
-            //如果是普通订单最终结算金额 = flowPrice - platFormCommission - distributionCommission 流水金额-平台佣金-分销佣金
+            //如果是普通Order最终结算金额 = flowPrice - platFormCommission - distributionCommission 流水金额-平台佣金-分销佣金
             billPrice = CurrencyUtil.sub(flowPrice, platFormCommission, distributionCommission);
         }
     }
@@ -396,7 +396,7 @@ public class PriceDetailDTO implements Serializable {
         if (couponPrice == null || discountPrice == null) {
             return;
         }
-        //如果订单优惠总额>商品金额，则处理一下数据，使得两数相加<=商品金额
+        //如果Order优惠总额>商品金额，则处理一下数据，使得两数相加<=商品金额
         if (CurrencyUtil.add(couponPrice, discountPrice) > goodsPrice) {
             couponPrice = CurrencyUtil.sub(goodsPrice, discountPrice);
             this.setCouponPrice(couponPrice);

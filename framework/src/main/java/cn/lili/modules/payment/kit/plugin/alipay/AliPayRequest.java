@@ -87,7 +87,7 @@ public class AliPayRequest {
     }
 
     /**
-     * 统一收单线下交易预创建 <br>
+     * 统一收单线下交易预create <br>
      * 适用于：扫码支付等 <br>
      *
      * @param model     {@link AlipayTradePrecreateModel}

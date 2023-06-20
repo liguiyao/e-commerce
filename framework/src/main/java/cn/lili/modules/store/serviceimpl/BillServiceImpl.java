@@ -97,7 +97,7 @@ public class BillServiceImpl extends ServiceImpl<BillMapper, Bill> implements Bi
             bill.setRefundPrice(refundBill.getRefundPrice() != null ? refundBill.getRefundPrice() : 0D);
             //退单产生退还佣金金额
             bill.setRefundCommissionPrice(refundBill.getRefundCommissionPrice() != null ? refundBill.getRefundCommissionPrice() : 0D);
-            //分销订单退还，返现佣金返还
+            //分销Order退还，返现佣金返还
             bill.setDistributionRefundCommission(refundBill.getDistributionRefundCommission() != null ? refundBill.getDistributionRefundCommission() : 0D);
             //退货平台优惠券补贴返还
             bill.setSiteCouponRefundCommission(refundBill.getSiteCouponRefundCommission() != null ? refundBill.getSiteCouponRefundCommission() : 0D);
@@ -114,7 +114,7 @@ public class BillServiceImpl extends ServiceImpl<BillMapper, Bill> implements Bi
         double orderPrice = 0D;
 
         if (orderBill != null) {
-            //结算周期内订单付款总金额
+            //结算周期内Order付款总金额
             bill.setOrderPrice(orderBill.getOrderPrice() != null ? orderBill.getOrderPrice() : 0D);
             //平台收取佣金
             bill.setCommissionPrice(orderBill.getCommissionPrice() != null ? orderBill.getCommissionPrice() : 0D);
@@ -127,7 +127,7 @@ public class BillServiceImpl extends ServiceImpl<BillMapper, Bill> implements Bi
             //砍价商品结算价格
             bill.setKanjiaSettlementPrice(orderBill.getKanjiaSettlementPrice() != null ? orderBill.getKanjiaSettlementPrice() : 0D);
 
-            //入款结算金额= 店铺支付结算金额 + 平台优惠券补贴 + 分销订单退还，返现佣金返还+退单产生退还佣金金额
+            //入款结算金额= 店铺支付结算金额 + 平台优惠券补贴 + 分销Order退还，返现佣金返还+退单产生退还佣金金额
             orderPrice = CurrencyUtil.add(orderBill.getBillPrice() == null ? 0 : orderBill.getBillPrice(), bill.getSiteCouponCommission() == null ? 0 : bill.getSiteCouponCommission(), bill.getDistributionRefundCommission() == null ? 0 : bill.getDistributionRefundCommission(), bill.getRefundCommissionPrice() == null ? 0 : bill.getRefundCommissionPrice());
         }
         //最终结算金额=入款结算金额-退款结算金额-退货平台优惠券补贴返还
@@ -214,18 +214,18 @@ public class BillServiceImpl extends ServiceImpl<BillMapper, Bill> implements Bi
     public void download(HttpServletResponse response, String id) {
 
         Bill bill = this.getById(id);
-        ExcelWriter writer = ExcelUtil.getWriterWithSheet("入账订单");
-        writer.setSheet("入账订单");
+        ExcelWriter writer = ExcelUtil.getWriterWithSheet("入账Order");
+        writer.setSheet("入账Order");
         writer.addHeaderAlias("createTime", "入账时间");
         writer.setColumnWidth(0, 20);
-        writer.addHeaderAlias("orderSn", "订单编号");
+        writer.addHeaderAlias("orderSn", "Order编号");
         writer.setColumnWidth(1, 35);
         writer.addHeaderAlias("storeName", "店铺名称");
         writer.setColumnWidth(2, 20);
         writer.addHeaderAlias("goodsName", "商品名称");
         writer.setColumnWidth(3, 70);
         writer.addHeaderAlias("num", "销售量");
-        writer.addHeaderAlias("finalPrice", "订单金额");
+        writer.addHeaderAlias("finalPrice", "Order金额");
         writer.addHeaderAlias("commissionPrice", "平台分佣");
         writer.addHeaderAlias("siteCouponPrice", "平台优惠券");
         writer.setColumnWidth(7, 12);
@@ -241,10 +241,10 @@ public class BillServiceImpl extends ServiceImpl<BillMapper, Bill> implements Bi
         List<StoreFlowPayDownloadVO> storeFlowList = storeFlowService.getStoreFlowPayDownloadVO(StoreFlowQueryDTO.builder().type(FlowTypeEnum.PAY.name()).bill(bill).build());
         writer.write(storeFlowList, true);
 
-        writer.setSheet("退款订单");
+        writer.setSheet("退款Order");
         writer.addHeaderAlias("createTime", "入账时间");
         writer.setColumnWidth(0, 20);
-        writer.addHeaderAlias("orderSn", "订单编号");
+        writer.addHeaderAlias("orderSn", "Order编号");
         writer.setColumnWidth(1, 35);
         writer.addHeaderAlias("refundSn", "售后单号");
         writer.setColumnWidth(2, 35);

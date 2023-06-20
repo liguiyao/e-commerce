@@ -22,13 +22,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * 管理端,订单统计接口
+ * 管理端,Order统计接口
  *
  * @author Bulbasaur
  * @since 2020/12/9 19:04
  */
 @Slf4j
-@Api(tags = "管理端,订单统计接口")
+@Api(tags = "管理端,Order统计接口")
 @RestController
 @RequestMapping("/manager/statistics/order")
 public class OrderStatisticsManagerController {
@@ -37,36 +37,36 @@ public class OrderStatisticsManagerController {
     @Autowired
     private AfterSaleStatisticsService afterSaleStatisticsService;
 
-    @ApiOperation(value = "订单概览统计")
+    @ApiOperation(value = "Order概览统计")
     @GetMapping("/overview")
     public ResultMessage<OrderOverviewVO> overview(StatisticsQueryParam statisticsQueryParam) {
         try {
             return ResultUtil.data(orderStatisticsService.overview(statisticsQueryParam));
         } catch (Exception e) {
-            log.error("订单概览统计错误",e);
+            log.error("Order概览统计错误",e);
         }
         return null;
     }
 
-    @ApiOperation(value = "订单图表统计")
+    @ApiOperation(value = "Order图表统计")
     @GetMapping
     public ResultMessage<List<OrderStatisticsDataVO>> statisticsChart(StatisticsQueryParam statisticsQueryParam) {
         try {
             return ResultUtil.data(orderStatisticsService.statisticsChart(statisticsQueryParam));
         } catch (Exception e) {
-            log.error("订单图表统计",e);
+            log.error("Order图表统计",e);
         }
         return null;
     }
 
 
-    @ApiOperation(value = "订单统计")
+    @ApiOperation(value = "Order统计")
     @GetMapping("/order")
     public ResultMessage<IPage<OrderSimpleVO>> order(StatisticsQueryParam statisticsQueryParam, PageVO pageVO) {
         try {
             return ResultUtil.data(orderStatisticsService.getStatistics(statisticsQueryParam, pageVO));
         } catch (Exception e) {
-            log.error("订单统计",e);
+            log.error("Order统计",e);
         }
         return null;
     }

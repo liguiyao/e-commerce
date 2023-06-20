@@ -12,14 +12,14 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotNull;
 
 /**
- * 店铺-物流公司设置
+ * 店铺-logistics公司设置
  *
  * @author Chopper
  * @since 2020/11/17 8:01 下午
  */
 @Data
 @TableName("li_store_logistics")
-@ApiModel(value = "店铺-物流公司")
+@ApiModel(value = "店铺-logistics公司")
 @AllArgsConstructor
 @NoArgsConstructor
 public class StoreLogistics extends BaseEntity {
@@ -29,7 +29,7 @@ public class StoreLogistics extends BaseEntity {
     @ApiModelProperty(value = "店铺ID")
     private String storeId;
 
-    @ApiModelProperty(value = "物流公司ID")
+    @ApiModelProperty(value = "logistics公司ID")
     @NotNull
     private String logisticsId;
 

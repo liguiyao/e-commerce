@@ -15,7 +15,7 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 /**
- * 订单数据处理层
+ * Order数据处理层
  *
  * @author Chopper
  * @since 2020/11/17 7:35 下午
@@ -23,19 +23,19 @@ import java.util.List;
 public interface OrderMapper extends BaseMapper<Order> {
 
     /**
-     * 修改订单状态
+     * 修改Order状态
      *
      * @param status  状态
-     * @param orderSn 订单编号
+     * @param orderSn Order编号
      */
     @Update({"update li_order set order_status = #{status} where sn = #{orderSn}"})
     void updateStatus(String status, String orderSn);
 
     /**
-     * 查询导出订单DTO列表
+     * 查询导出OrderDTO列表
      *
      * @param queryWrapper 查询条件
-     * @return 导出订单DTO列表
+     * @return 导出OrderDTO列表
      */
     @Select("SELECT o.sn,o.create_time,o.member_name,o.consignee_name,o.consignee_mobile,o.consignee_address_path,o.consignee_detail," +
             "o.payment_method, o.logistics_name,o.freight_price,oi.goods_price,o.discount_price,o.flow_price,oi.goods_name,oi.num," +
@@ -44,21 +44,21 @@ public interface OrderMapper extends BaseMapper<Order> {
     List<OrderExportDTO> queryExportOrder(@Param(Constants.WRAPPER) Wrapper<OrderSimpleVO> queryWrapper);
 
     /**
-     * 查询订单支付记录
+     * 查询Order支付记录
      *
      * @param page         分页
      * @param queryWrapper 查询条件
-     * @return 订单支付记录分页
+     * @return Order支付记录分页
      */
     @Select("select * from li_order ${ew.customSqlSegment} ")
     IPage<PaymentLog> queryPaymentLogs(IPage<PaymentLog> page, @Param(Constants.WRAPPER) Wrapper<PaymentLog> queryWrapper);
 
     /**
-     * 查询订单简短信息分页
+     * 查询Order简短信息分页
      *
      * @param page         分页
      * @param queryWrapper 查询条件
-     * @return 简短订单分页
+     * @return 简短Order分页
      */
     @Select("select o.sn,o.flow_price,o.create_time,o.order_status,o.pay_status,o.payment_method,o.payment_time,o.member_name,o.store_name as store_name,o.store_id as store_id,o.client_type,o.order_type,o.deliver_status,o.order_promotion_type " +
             ",GROUP_CONCAT(oi.goods_id) as group_goods_id," +
@@ -75,10 +75,10 @@ public interface OrderMapper extends BaseMapper<Order> {
     IPage<OrderSimpleVO> queryByParams(IPage<OrderSimpleVO> page, @Param(Constants.WRAPPER) Wrapper<OrderSimpleVO> queryWrapper);
 
     /**
-     * 查询订单信息
+     * 查询Order信息
      *
      * @param queryWrapper 查询条件
-     * @return 简短订单分页
+     * @return 简短Order分页
      */
     @Select("select o.* " +
             " FROM li_order o INNER JOIN li_order_item AS oi on o.sn = oi.order_sn ${ew.customSqlSegment} ")

@@ -22,12 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020/11/16 10:03 下午
  */
 @RestController
-@Api(tags = "买家端,分销订单接口")
+@Api(tags = "买家端,分销Order接口")
 @RequestMapping("/buyer/distribution/order")
 public class DistributionOrderBuyerController {
 
     /**
-     * 分销订单
+     * 分销Order
      */
     @Autowired
     private DistributionOrderService distributionOrderService;
@@ -38,7 +38,7 @@ public class DistributionOrderBuyerController {
     private DistributionService distributionService;
 
 
-    @ApiOperation(value = "分销员订单")
+    @ApiOperation(value = "分销员Order")
     @GetMapping
     public ResultMessage<IPage<DistributionOrder>> casHistory(DistributionOrderSearchParams distributionOrderSearchParams) {
         //获取当前登录的分销员

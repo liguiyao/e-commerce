@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class IndexStatisticsVO {
 
-    @ApiModelProperty(value = "订单总数量")
+    @ApiModelProperty(value = "Order总数量")
     private Long orderNum;
     @ApiModelProperty(value = "商品总数量")
     private Long goodsNum;
@@ -36,7 +36,7 @@ public class IndexStatisticsVO {
     /**
      * 今日信息概括
      */
-    @ApiModelProperty(value = "今日订单数")
+    @ApiModelProperty(value = "今日Order数")
     private Long todayOrderNum;
     @ApiModelProperty(value = "今日下单金额")
     private Double todayOrderPrice;

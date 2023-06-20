@@ -24,9 +24,9 @@ public class RechargeQueryVO implements Serializable {
     private static final long serialVersionUID = 318396158590640917L;
 
     /**
-     * 充值订单编号
+     * 充值Order编号
      */
-    @ApiModelProperty(value = "充值订单编号")
+    @ApiModelProperty(value = "充值Order编号")
     private String rechargeSn;
 
     /**

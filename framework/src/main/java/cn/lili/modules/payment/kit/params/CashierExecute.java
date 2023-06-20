@@ -22,7 +22,7 @@ public interface CashierExecute {
     CashierParam getPaymentParams(PayParam payParam);
 
     /**
-     * 支付成功
+     * Success
      *
      * @param paymentSuccessParams 支付回调
      */

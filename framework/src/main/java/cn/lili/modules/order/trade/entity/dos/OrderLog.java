@@ -18,14 +18,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 /**
- * 订单日志
+ * Order日志
  *
  * @author Chopper
  * @since 2020-03-25 2:30 下午
  */
 @Data
 @TableName("li_order_log")
-@ApiModel(value = "订单日志")
+@ApiModel(value = "Order日志")
 @NoArgsConstructor
 public class OrderLog extends BaseIdEntity {
 
@@ -34,17 +34,17 @@ public class OrderLog extends BaseIdEntity {
 
     @CreatedBy
     @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建者", hidden = true)
+    @ApiModelProperty(value = "create者", hidden = true)
     private String createBy;
 
     @CreatedDate
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建时间", hidden = true)
+    @ApiModelProperty(value = "create时间", hidden = true)
     private Date createTime;
 
-    @ApiModelProperty(value = "订单编号")
+    @ApiModelProperty(value = "Order编号")
     private String orderSn;
 
     @ApiModelProperty(value = "操作者id(可以是卖家)")

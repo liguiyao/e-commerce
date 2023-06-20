@@ -29,7 +29,7 @@ public class PointSetting implements Serializable {
     @ApiModelProperty(value = "每日签到积分")
     private Integer signIn;
 
-    @ApiModelProperty(value = "订单评价赠送积分")
+    @ApiModelProperty(value = "Order评价赠送积分")
     private Integer comment;
 
     @ApiModelProperty(value = "积分具体设置")

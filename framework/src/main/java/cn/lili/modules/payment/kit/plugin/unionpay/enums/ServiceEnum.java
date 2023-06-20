@@ -31,7 +31,7 @@ public enum ServiceEnum {
      */
     WEI_XIN_APP_PAY("pay.weixin.raw.app"),
     /**
-     * 查询订单
+     * 查询Order
      */
     QUERY("unified.trade.query"),
     /**
@@ -43,11 +43,11 @@ public enum ServiceEnum {
      */
     REFUND_QUERY("unified.trade.refundquery"),
     /**
-     * 关闭订单
+     * 关闭Order
      */
     CLOSE("unified.trade.close"),
     /**
-     * 撤销订单
+     * 撤销Order
      */
     MICRO_PAY_REVERSE("unified.micropay.reverse"),
     /**

@@ -19,7 +19,7 @@ public enum MessageStatusEnum {
     AUTO_REPLY,
     //正常收发消息沟通，文字、表情等沟通
     MSG,
-    //扩展。比如发送商品、发送订单
+    //扩展。比如发送商品、发送Order
     EXTEND,
     //系统提示，如提示 对方已离线
     SYSTEM,

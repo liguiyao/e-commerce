@@ -32,7 +32,7 @@ public class Bill extends BaseIdEntity {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(value = "创建时间", hidden = true)
+    @ApiModelProperty(value = "create时间", hidden = true)
     private Date createTime;
 
     @ApiModelProperty(value = "账单号")
@@ -76,7 +76,7 @@ public class Bill extends BaseIdEntity {
     @ApiModelProperty(value = "支行联行号")
     private String bankCode;
 
-    @ApiModelProperty(value = "结算周期内订单付款总金额")
+    @ApiModelProperty(value = "结算周期内Order付款总金额")
     private Double orderPrice;
 
     @ApiModelProperty(value = "退单金额")
@@ -91,7 +91,7 @@ public class Bill extends BaseIdEntity {
     @ApiModelProperty(value = "分销返现支出")
     private Double distributionCommission;
 
-    @ApiModelProperty(value = "分销订单退还，返现佣金返还")
+    @ApiModelProperty(value = "分销Order退还，返现佣金返还")
     private Double distributionRefundCommission;
 
     @ApiModelProperty(value = "平台优惠券补贴")
@@ -110,9 +110,9 @@ public class Bill extends BaseIdEntity {
     /**
      * 开始算钱啦
      * billPrice(最终结算金额) =
-     *   orderPrice(结算周期内订单付款总金额) - refundPrice(退单金额)
+     *   orderPrice(结算周期内Order付款总金额) - refundPrice(退单金额)
      * - commissionPrice(平台收取佣金) + refundCommissionPrice(退单产生退还佣金金额)
-     * - distributionCommission(分销返现支出) + distributionRefundCommission(分销订单退还，返现佣金返还)
+     * - distributionCommission(分销返现支出) + distributionRefundCommission(分销Order退还，返现佣金返还)
      * + siteCouponCommission(平台优惠券补贴) - siteCouponRefundCommission(退货平台优惠券补贴返还)
      * + kanjiaSettlementPrice(砍价商品结算价格) + pointSettlementPrice(pointSettlementPrice)
      */

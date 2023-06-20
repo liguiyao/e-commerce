@@ -35,7 +35,7 @@ public class RechargeTradeBuyerController {
 
     @PreventDuplicateSubmissions
     @PostMapping
-    @ApiOperation(value = "创建余额充值订单")
+    @ApiOperation(value = "create余额充值Order")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "price", value = "充值金额", required = true, dataType = "double", paramType = "query")
     })

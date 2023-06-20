@@ -33,7 +33,7 @@ public class DistributionBuyerController {
     @Autowired
     private DistributionService distributionService;
     /**
-     * 分销员订单
+     * 分销员Order
      */
     @Autowired
     private DistributionOrderService distributionOrderService;
@@ -44,7 +44,7 @@ public class DistributionBuyerController {
         return ResultUtil.data(distributionService.applyDistribution(distributionApplyDTO));
     }
 
-    @ApiOperation(value = "获取分销员分页订单列表")
+    @ApiOperation(value = "获取分销员分页Order列表")
     @GetMapping("/distributionOrder")
     public ResultMessage<IPage<DistributionOrder>> distributionOrderPage(DistributionOrderSearchParams distributionOrderSearchParams) {
         distributionOrderSearchParams.setDistributionId(distributionService.getDistribution().getId());

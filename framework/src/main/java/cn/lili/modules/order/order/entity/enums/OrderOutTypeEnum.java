@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 订单出库的类型枚举
+ * Order出库的类型枚举
  *
  * @author Chopper
  * @since 2020/11/17 7:27 下午

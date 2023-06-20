@@ -17,9 +17,9 @@ public enum DeliveryMethodEnum {
      */
     LOCAL_TOWN_DELIVERY("同城配送"),
     /**
-     * "物流"
+     * "logistics"
      */
-    LOGISTICS("物流");
+    LOGISTICS("logistics");
 
     private final String description;
 

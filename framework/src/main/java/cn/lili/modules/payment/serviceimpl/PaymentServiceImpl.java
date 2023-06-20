@@ -37,7 +37,7 @@ public class PaymentServiceImpl implements PaymentService {
             return;
         }
 
-        log.debug("支付成功，第三方流水：{}", paymentSuccessParams.getReceivableNo());
+        log.debug("Success，第三方流水：{}", paymentSuccessParams.getReceivableNo());
         //支付结果处理
         for (CashierExecute cashierExecute : cashierExecutes) {
             cashierExecute.paymentSuccess(paymentSuccessParams);

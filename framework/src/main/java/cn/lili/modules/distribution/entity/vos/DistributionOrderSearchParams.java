@@ -19,7 +19,7 @@ import java.util.Date;
  * @since 2020-03-14 23:04:56
  */
 @Data
-@ApiModel(value = "分销订单查询对象")
+@ApiModel(value = "分销Order查询对象")
 public class DistributionOrderSearchParams extends PageVO {
 
     private static final long serialVersionUID = -8736018687663645064L;
@@ -27,13 +27,13 @@ public class DistributionOrderSearchParams extends PageVO {
     @ApiModelProperty(value = "分销员名称")
     private String distributionName;
 
-    @ApiModelProperty(value = "订单sn")
+    @ApiModelProperty(value = "Ordersn")
     private String orderSn;
 
     @ApiModelProperty(value = "分销员ID", hidden = true)
     private String distributionId;
 
-    @ApiModelProperty(value = "分销订单状态")
+    @ApiModelProperty(value = "分销Order状态")
     private String distributionOrderStatus;
 
     @ApiModelProperty(value = "店铺ID")

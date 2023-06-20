@@ -1,7 +1,7 @@
 package cn.lili.modules.order.order.entity.enums;
 
 /**
- * 订单状态枚举
+ * Order状态枚举
  *
  * @author Chopper
  * @since 2020/11/17 7:27 下午
@@ -9,19 +9,19 @@ package cn.lili.modules.order.order.entity.enums;
 public enum OrderStatusEnum {
 
     /**
-     * 订单状态
+     * Order状态
      */
     UNPAID("未付款"),
     PAID("已付款"),
     UNDELIVERED("待发货"),
     DELIVERED("已发货"),
-    COMPLETED("已完成"),
+    COMPLETED("Complete"),
     STAY_PICKED_UP("待自提"),
     /**
-     * 虚拟订单需要核验商品
+     * 虚拟Order需要核验商品
      */
     TAKE("待核验"),
-    CANCELLED("已取消");
+    CANCELLED("Cancelled");
 
     private final String description;
 

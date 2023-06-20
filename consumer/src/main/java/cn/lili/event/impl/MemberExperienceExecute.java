@@ -40,7 +40,7 @@ public class MemberExperienceExecute implements MemberRegisterEvent, GoodsCommen
     @Autowired
     private MemberService memberService;
     /**
-     * 订单
+     * Order
      */
     @Autowired
     private OrderService orderService;
@@ -72,16 +72,16 @@ public class MemberExperienceExecute implements MemberRegisterEvent, GoodsCommen
     }
 
     /**
-     * 完成订单赠送经验值
+     * 完成Order赠送经验值
      *
-     * @param orderMessage 订单消息
+     * @param orderMessage Order消息
      */
     @Override
     public void orderChange(OrderMessage orderMessage) {
         if (orderMessage.getNewStatus().equals(OrderStatusEnum.COMPLETED)) {
             //获取经验值设置
             ExperienceSetting experienceSetting = getExperienceSetting();
-            //获取订单信息
+            //获取Order信息
             Order order = orderService.getBySn(orderMessage.getOrderSn());
             //计算赠送经验值数量
             Double point = CurrencyUtil.mul(experienceSetting.getMoney(), order.getFlowPrice(), 0);

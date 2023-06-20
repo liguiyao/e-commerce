@@ -17,17 +17,17 @@ public enum WechatMessageItemEnums {
      */
     MEMBER_NAME(new String[]{"买家昵称"}),
     /**
-     * 订单金额
+     * Order金额
      */
-    PRICE(new String[]{"支付金额","订单金额"}),
+    PRICE(new String[]{"支付金额","Order金额"}),
     /**
-     * 订单详情
+     * Order详情
      */
-    GOODS_INFO(new String[]{"订单详情","商品清单","商品名称"}),
+    GOODS_INFO(new String[]{"Order详情","商品清单","商品名称"}),
     /**
-     * 订单编号
+     * Order编号
      */
-    ORDER_SN(new String[]{"订单编号"}),
+    ORDER_SN(new String[]{"Order编号"}),
     /**
      * 快递公司
      */

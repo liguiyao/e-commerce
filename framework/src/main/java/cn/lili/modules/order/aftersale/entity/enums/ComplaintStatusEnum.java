@@ -29,9 +29,9 @@ public enum ComplaintStatusEnum {
      */
     WAIT_ARBITRATION("等待仲裁"),
     /**
-     * 已完成
+     * Complete
      */
-    COMPLETE("已完成");
+    COMPLETE("Complete");
 
     private final String description;
 

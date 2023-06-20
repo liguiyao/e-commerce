@@ -19,7 +19,7 @@ public enum SettingEnum {
     GOODS_SETTING,
     //快递设置
     LOGISTICS_SETTING,
-    //订单配置
+    //Order配置
     ORDER_SETTING,
     //阿里OSS配置
     OSS_SETTING,

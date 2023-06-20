@@ -12,19 +12,19 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * 订单支付日志：实际为订单部分字段提取过来的一个vo
+ * Order支付日志：实际为Order部分字段提取过来的一个vo
  *
  * @author Chopper
  * @since 2020/11/17 7:30 下午
  */
 @Data
 
-@ApiModel(value = "订单")
+@ApiModel(value = "Order")
 public class PaymentLog extends BaseEntity {
 
 
     private static final long serialVersionUID = 2233811628066468683L;
-    @ApiModelProperty("订单编号")
+    @ApiModelProperty("Order编号")
     private String sn;
 
     @ApiModelProperty("交易编号 关联Trade")
@@ -68,13 +68,13 @@ public class PaymentLog extends BaseEntity {
     /**
      * @see ClientTypeEnum
      */
-    @ApiModelProperty(value = "订单来源")
+    @ApiModelProperty(value = "Order来源")
     private String clientType;
 
     /**
      * @see OrderTypeEnum
      */
-    @ApiModelProperty(value = "订单类型")
+    @ApiModelProperty(value = "Order类型")
     private String orderType;
 
 }

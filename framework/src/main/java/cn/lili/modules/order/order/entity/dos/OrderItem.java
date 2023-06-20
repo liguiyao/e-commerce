@@ -23,24 +23,24 @@ import lombok.NoArgsConstructor;
 import java.util.stream.Collectors;
 
 /**
- * 子订单
+ * 子Order
  *
  * @author Chopper
  * @since 2020/11/17 7:30 下午
  */
 @Data
 @TableName("li_order_item")
-@ApiModel(value = "子订单")
+@ApiModel(value = "子Order")
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderItem extends BaseEntity {
 
     private static final long serialVersionUID = 2108971190191410182L;
 
-    @ApiModelProperty(value = "订单编号")
+    @ApiModelProperty(value = "Order编号")
     private String orderSn;
 
-    @ApiModelProperty(value = "子订单编号")
+    @ApiModelProperty(value = "子Order编号")
     private String sn;
 
     @ApiModelProperty(value = "单价")

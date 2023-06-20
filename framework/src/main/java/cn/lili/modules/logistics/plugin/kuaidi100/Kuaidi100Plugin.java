@@ -124,11 +124,11 @@ public class Kuaidi100Plugin implements LogisticsPlugin {
     @Override
     public Map<String,Object> labelOrder(LabelOrderDTO labelOrderDTO) {
         try {
-            //订单
+            //Order
             Order order = labelOrderDTO.getOrder();
-            //订单货物
+            //Order货物
             List<OrderItem> orderItems = labelOrderDTO.getOrderItems();
-            //获取对应物流
+            //获取对应logistics
             Logistics logistics = labelOrderDTO.getLogistics();
             //收件人地址
             String[] consigneeAddress = order.getConsigneeAddressPath().split(",");
@@ -136,7 +136,7 @@ public class Kuaidi100Plugin implements LogisticsPlugin {
             StoreDeliverGoodsAddressDTO storeDeliverGoodsAddressDTO = labelOrderDTO.getStoreDeliverGoodsAddressDTO();
             //发件人地址
             String[] consignorAddress = storeDeliverGoodsAddressDTO.getSalesConsignorAddressPath().split(",");
-            //店铺-物流公司设置
+            //店铺-logistics公司设置
             StoreLogistics storeLogistics = labelOrderDTO.getStoreLogistics();
 
 

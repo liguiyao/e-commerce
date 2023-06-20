@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
- * 订单投诉通信业务层
+ * Order投诉通信业务层
  *
  * @author paulG
  * @since 2020/12/5
@@ -16,7 +16,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface OrderComplaintCommunicationService extends IService<OrderComplaintCommunication> {
 
     /**
-     * 添加订单投诉通信
+     * 添加Order投诉通信
      *
      * @param communicationVO 投诉通信VO
      * @return 状态

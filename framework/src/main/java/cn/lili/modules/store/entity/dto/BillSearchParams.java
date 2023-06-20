@@ -48,7 +48,7 @@ public class BillSearchParams extends PageVO {
     public <T> QueryWrapper<T> queryWrapper() {
         QueryWrapper<T> wrapper = new QueryWrapper<>();
 
-        //创建时间
+        //create时间
         if (StringUtils.isNotEmpty(startDate) && StringUtils.isNotEmpty(endDate)) {
             wrapper.between("create_time", startDate, endDate);
         } else if (StringUtils.isNotEmpty(startDate)) {

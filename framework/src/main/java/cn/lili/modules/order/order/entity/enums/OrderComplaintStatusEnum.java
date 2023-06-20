@@ -1,7 +1,7 @@
 package cn.lili.modules.order.order.entity.enums;
 
 /**
- * 订单的投诉状态
+ * Order的投诉状态
  *
  * @author paulG
  * @since 2020/12/5
@@ -9,7 +9,7 @@ package cn.lili.modules.order.order.entity.enums;
 public enum OrderComplaintStatusEnum {
 
     /**
-     * 新订单，不能申请投诉
+     * 新Order，不能申请投诉
      */
     NEW("待审核"),
     /**
@@ -21,9 +21,9 @@ public enum OrderComplaintStatusEnum {
      */
     APPLYING("申请中"),
     /**
-     * 已完成
+     * Complete
      */
-    COMPLETE("已完成"),
+    COMPLETE("Complete"),
     /**
      * 已失效
      */
